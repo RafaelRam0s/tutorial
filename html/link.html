@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Hyperlinks em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Links</h1>
+            
+                <div>
+                    <p>Links são formas de acessar suas páginas ou outros sites externos</p>
+
+                    <h3>Tag a</h3>
+                    
+                    <div>
+                        <h4>Atributo href</h4>
+
+                        <div>
+                            <p>Os links são informados dentro do atributo href na tag a</p>
+
+                            <p>Link para outra página do seu site: <a href="../index.html">Redirecionar para a página inicial</a></p>
+
+                            <p>Link para outro site: <a href="https://www.w3schools.com/html/html_links.asp">Redirecionar para o w3schools</a></p>
+
+                            <p>Se quiser redirecionar alguém para outra parte do seu site esse outro ponto terá que ter um id e no href colocamos o jogo da velha (#) e adicionamos logo em seguida o nome do id, desta forma a tela do usuário vai para o elemento colocando-o no topo da tela de visualização</p>
+                                
+                            <p>Cuidado se for redirecionar para uma parte muito inferior da página, exemplo, se você tem uma tela de 200px e em uma página o rodapé tem 100px dele para baixo se você tenta redirecionar para o rodapé ele falha e passa para o topo da página, para concertar isso temos o css sroll-margin-top</p>
+
+                            <p>Link para outra parte do seu site: <a href="#rodape">Redirecionar para o rodapé</a></p>
+
+                            <p>Link para outra parte em outra página: <a href="imagens.html#tag_map_area">Redirecionar para o elemento com id tag_map_area na página de imagens</a></p>
+                        </div>
+
+                        <h4 id="atributo_target" style="scroll-margin-top: 20px;">Atributo target</h4>
+
+                        <div>
+                            <p>Além de redirecionar apenas a própria janela de exibição, podemos fazer outros tipos</p>
+
+                            <p>Link padrão que redireciona na própria janela <a href="#" target="_self">Página link</a></p>
+
+                            <p>Link criando outra janela <a href="link.html" target="_blank">Página link</a></p>
+
+                            <p>Link que se estiver em um iframe redireciona na janela principal janela <a href="imagens.html#tag_map_area" target="_parent">Página link</a></p>
+
+                            <p>Iframe para exemplo dos efeitos do link:</p>
+
+                            <iframe src="link.html#atributo_target" frameborder="0"></iframe>
+                        </div>
+                        
+                        <h4>Email por link</h4>
+
+                        <div>
+                            <p>Links para ativar email são bem práticos para facilitar a vida do usuário. <b>Por favor não envie nenhuma mensagem, os e-mails não tenho idéia se existe um proprietário dos emails que serão abertos</b></p>
+                    
+                            <p>Temos como ativar o e-mail colocando dentro do href "mailto:" e logo em seguida o e-mail do destinatário <a href="mailto:ramos@teste.br">Clique para testar</a></p>
+                    
+                            <p>Mandar um e-mail para vários destinatários <a href="mailto:ramos@teste.br,rafael@teste.br">Clique para testar</a></p>
+                    
+                            <p>Mandar um e-mail como cópia para outro destinatário: <a href="mailto:ramos@teste.br?cc=rafael@teste.br">Clique para testar</a></p>
+                            <!-- Quando acabamos de inserir a configuração de destinatário e queremos colocar mais uma definição, colocamos um ponto de interrogação (?) no final do último destinatário inserido
+                                Exemplos:
+                                    mailto:ramos@teste.br,rafael@teste.br?cc=silva@teste.br
+                                    
+                                    mailto:ramos@teste.br,rafael@teste.br?cc=silva@teste.br,teste@teste.br
+                    
+                                    mailto:ramos@teste.br,rafael@teste.br?bcc=silva@teste.br
+                    
+                                    mailto:ramos@teste.br,rafael@teste.br?subject=Um título de email
+                            -->
+                    
+                            <!-- cc= - serve para colocar um destinatário que receberá a cópia do email -->
+                    
+                            <p>Mandar um e-mail com destinatário oculto: <a href="mailto:ramos@teste.br?cc=rafael@teste.br&amp;bcc=silva@teste.br">Clique para testar</a></p>
+                            <!-- bcc= - serve para colocar um destinatário que receberá a cópia oculta do email -->
+                    
+                            <!-- Se quiser inserir alguma outra configuração após ter colocado o cc coloque o "e comercial" (&), de base segue a mesma lógica do interrogação (?) -->
+                    
+                            <p>Mandar um e-mail com assunto: <a href="mailto:ramos@teste.br?cc=rafael@teste.br&amp;bcc=silva@teste.br&amp;subject=Um título de email">Clique para testar</a></p>
+                            <!-- subject= - coloca um assunto no email -->
+                    
+                            <!-- Se quiser inserir alguma outra configuração após ter colocado o bcc coloque o código "&amp;", de base segue a mesma lógica do interrogação (?) -->
+                    
+                            <p>Mandar um e-mail com uma mensagem <a href="mailto:ramos@teste.br?cc=rafael@teste.br&amp;bcc=silva@teste.br&amp;subject=Um título de email&amp;body=Por algum motivo no site em que eu uso para estudar falava para não usar espaços e sim divisão 20 tipo%20isso, mas não sei qual o problema sendo que até o nonbody-space funciona&nbsp;aqui">Clique para testar</a></p>
+                            <!-- body= - serve para colocar o corpo do email, a sua mensagem -->
+                    
+                            <!-- Se quiser inserir alguma outra configuração após ter colocado o subject coloque o código "&amp;", de base segue a mesma lógica do interrogação (?) -->
+                    
+                        </div>
+
+                        <h4>Atributo download:</h4>
+
+                        <div>
+                            <p>Só é usado se o atributo href estiver definido, pois ele pega a url especificada nele e baixa aquele arquivo. O valor deste atributo será o nome do arquivo baixado. Há restrições quanto aos valores permitidos tem que seguir a regra de nomenclatura de arquivos, e o navegador detectará automaticamente a extensão de arquivo correta e a adicionará ao arquivo (.img, .pdf, .txt, .html, etc.). Se o valor for omitido, o nome do arquivo original será usado.</p>
+
+                            <p>Download de um documento que está nos arquivos do seu documento: <a href="../midia/image/tecnologia/programando.png" download="linhas_de_codigo">Baixe a imagem "programando.png"</a></p>
+                    
+                            <p>Download de um documento com a extensão errada, logo o arquivo é baixado mas se tentar abrir dá erro <a href="../midia/image/tecnologia/programando.png" download="linhas_de_codigo.mp3">Baixe a imagem "programando.png" como uma música "programando.mp3"</a></p>
+
+                            <p>Dowload de um arquivo externo <a href="https://download.mozilla.org/?product=firefox-39.0-SSL&amp;os=win&amp;lang=en-US" download="firefox-39-installer.exe">Baixe o instalador do firefox</a></p>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div id="rodape" class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

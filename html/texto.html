@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Texto em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Texto em HTML</h1>
+            
+                <div>
+
+                    <p>Para escrevermos algo, seja em um livro, uma redação ou um código, possuimos regras e métodos de organização, a forma de montar um texto muitas vezes é composta por um título e um parágrafo, e neles definimos como e onde haverá quebra de linha e como os espaçamentos entre as palavras devem ser considerados.</p>
+
+                    <h3>Tags h1, h2, h3, h4, h5 e h6</h3>
+
+                    <div>
+                        <p>Você pode fazer um título na página com as tags <span class="tag_aberta">h1</span>, <span class="tag_aberta">h2</span>, <span class="tag_aberta">h3</span>, <span class="tag_aberta">h4</span>, <span class="tag_aberta">h5</span> e <span class="tag_aberta">h6</span>, todas representam um título, a diferença em usar cada uma delas é a importância que o título tem.</p>
+
+                        <p>Por exemplo um livro teria o título da capa em h1 pois ele é único e muito importante para explicar o conteúdo, dentro dele temos o sumário, história e prefácio, esses seriam o h2 e dentro da história temos os capítulos com seus títulos esses seriam o h3.</p>
+
+                        <p>O ideal é que por cada página html exista uma única tag h1, ela é importante para os mecanismos de busca como o Google poderem entender e classificar melhor o seu site.</p>
+    
+                    </div>
+
+                    <h3>Tag p</h3>
+
+                    <div>
+                        <p>A tag p representa um parágrafo, é dentro dele que escrevemos a maior parte do conteúdo textual das páginas</p>
+                    </div>
+
+                    <h3>Tag br</h3>
+
+                    <div>
+                        <p>No código html podemos dar vários espaços, enters, tabs mas se as tags estiverem com sua abertura e fechamento corretas o texto sempre ficará formatado para ser uma linha inteira com quebras de linha automaticas e espaços únicos entre as palavras.</p>
+
+                        <p>A tag br representa uma breaking row, que no português significa quebra de linha, ela realiza o ato de onde estiver inserida no texto causar uma quebra de linha.</p>
+
+                        <p>
+                            Este é um parágrafo de exemplo;
+                            <br /> Agora ocorreu uma quebra de linha devido ao uso da tag.
+                            <br /> Inclusive posso utiliza-la mesmo fora do texto para dar espaçamento, porém essa é uma prática ruim, pois existem outras formas de aumentar o espaço entre tags. <br /> A tag br deve ser usada exclusivamente para uma quebra de linha e não para criar espaçamentos.
+                            <br /> <br /> <br /> <br /> <br />
+                            Segue imagem de como o código foi escrito:
+                            <img src="../midia/image/page_texto/explicacao_da_tag_br_no_html.png" alt="Explicação da tag br no html" class="w_md_50" width="569" height="272">
+                        </p>
+                        
+                    </div>
+
+                    <h3>Tag wbr</h3>
+                    <!-- Quebra de linha caso o conteudo diminua -->
+                    <div>
+                        <p>Quando escrevemos muitas palavras em um texto é normal que quando se chega ao final da página a palavra seja dividida, mas no caso do html cada palavra age como um bloco, então para que ocorra uma divisão em uma palavra muito extensa ao encontrar o final da linha temos que adicionar a tag "wbr" e caso a página passe pela palavra ela será dividida.</p>
+
+                        <p>Teste alterando o tamanho da página para ver a seguinte plavra sendo dividida: "pneumoultramicroscopicossili<wbr>covulcanoconiótico"</p>
+                    </div>
+
+                    <h3>Tag pre</h3>
+                    
+                    <div>
+                        <p>No código html podemos dar vários espaços, enters, tabs mas se as tags estiverem com sua abertura e fechamento corretas o texto sempre ficará formatado para ser uma linha inteira com quebras de linha automaticas e espaços únicos entre as palavras.</p>
+
+                        <p>Porém com a tag pre o html passa a interpretar o que escrevemos como literal, então quebras de linha, espaços, tabs e enters são tudo manual, não existe nem quebra de linha automatica.</p>
+
+                        <pre>Texto de exemplo:
+Exemplo com quebra de linha
+                        Exemplo com         tab
+Exemplo com           espaços          a    mais
+Se o texto estiver muito grande ele não irá quebrar de linha, ao invés disso ele criará uma rolagem inferior na página, caso não esteja conseguindo ver o efeito descrito, diminua o tamanho da página.
+                        </pre>
+
+                        <p>Segue imagem de como o código foi escrito:</p>
+
+                        <img src="../midia/image/page_texto/explicacao_da_tag_pre_no_html.png" alt="Explicação da tag pre no html" class="w_md_50" width="715" height="284">
+
+                    </div>
+
+                    <h3>Tag hr</h3>
+                    
+                    <div>
+                        <p>Cria uma linha, serve para separar os conteúdos</p>
+
+                        <hr>
+
+                        <p>Utilizada quando a página é cortada e muda de tópico</p>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

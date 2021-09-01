@@ -1,0 +1,1110 @@
+
+
+----------SELECT FROM----------
+
+Para ver todos os cadastros e colunas de uma tabela:
+    /* select * from paises */
+
+    - select - indica que irá selecionar para visualização alguma coisa
+
+    - * - pega todas as colunas de uma tabela
+
+    - from - indica que irá pegar as colunas de uma tabela
+
+    - paises - Valor mutável, indica qual a tabela que deve ser apresentada
+
+Para ver só uma coluna específica de uma tabela:
+    /* select nome_coluna_1 from nome_da_tabela */
+
+Para ver algumas colunas específicas
+    /* select nome_coluna_1, nome_coluna_2, nome_coluna_3 from nome_da_tabela */
+
+    Para ver algumas colunas específicas em uma ordem diferente
+        /* select nome_coluna_2, nome_coluna_3, nome_coluna_1 from nome_da_tabela */
+
+Para ver a mesma coluna mais de uma vez:
+    /* select nome_coluna_1, nome_coluna_1, nome_coluna_1 from nome_da_tabela */
+
+Para ver todas as combinações entre cadastros de diferentes tabelas:
+    /*
+        create database teste_banco;
+        use teste_banco;
+        create table camisa ( estilo varchar(50) );
+        create table cor ( pigmento varchar(50) );
+        insert into camisa (estilo) values ('Regata'), ('Manga Comprida');
+        insert into cor (pigmento) values ('Azul'), ('Amarelo');
+
+        select * from camisa, cor;
+    */
+
+-------------------------------
+
+
+
+
+-------------AS---------
+
+Para ver uma coluna de determinado nome, com outro nome (efeito só visual não afeta a coluna):
+    /* select nome_coluna_1, nome_coluna_1 as nome_coluna_2 from nome_da_tabela */
+
+Cuidado colunas que possuem espaços devem ser chamadas entre aspas simples:
+    /* select nome_coluna_1, 'nome coluna 2', 'nome coluna_3' from nome_da_tabela */
+
+Ver um cálculo em uma coluna e o nome da coluna como outra coisa sem ser o nome próprio:
+    /* select 10+20 as calculo; */
+
+-------------------------
+
+
+
+---------------WHERE, OR, AND, NOT----------
+
+Para ver colunas onde um cadastro possui um determinado valor:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600);
+
+        select * from paises 
+        where pais = 'Brasil';
+    */
+
+    - where - onde, solicita uma operação lógica onde com base nos cadastros da tabela a informação tem que ser verdadeira
+
+    - pais = 'Brasil' - valor mutável, neste exemplo pedimos que seja verificado na coluna pais todos os cadastros onde o valor armazenado é uma string de nome Brasil
+
+Para ver colunas onde um cadastro possui um conjunto de valores:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises 
+        where pais = 'Brasil' and capital = 'Ottawa' or ano_descobrimento = 1389;
+    */
+
+    O where solicita os cadastros onde a próxima operação lógica for verdadeira
+
+    Se na tabela não possuir nenhum dado compatível a tabela retorna vazia com somente os nomes das colunas pedidas após o select
+
+Para ver colunas onde um cadastro não tem um valor específico:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises 
+        where not pais = 'Brasil' and capital = 'Ottawa' or ano_descobrimento = 1389;
+    */
+
+    O not inverte o que deveria ser mostrado
+
+-------------------------------------------
+
+
+
+
+-------BETWEEN AND, IN, NOT IN---------
+
+Para ver colunas com cadastro entre 2 valores:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises 
+        where ano_descobrimento between 600 and 1554;
+    */
+
+    - between and - entre e, serve para procurar cadastros entre dois valores, basicamente age como um menor igual e maior igual, o primeiro valor tem que ser menor que o segundo para conseguir pesquisar
+
+Para ver colunas entre 2 datas de nascimento:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento date
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500-09-01),
+        ('Egito', 'Cairo', 0-01-01),
+        ('Canada', 'Ottawa', 1554-12-15),
+        ('Brasil', 'Ottawa', 1554-09-13),
+        ('canada', 'Ottawa', 600-02-23),
+        ('Brasil', 'Rio de Janeiro', 1389-04-04),
+        ('Croacia', 'Pernambuco', 1205-03-01),
+        ('Etiopia', 'Paris', 50-10-25);
+
+        select * from paises between 600-02-23 and 1554-09-13;
+    */
+
+Para ver colunas entre 2 nomes:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where pais between 'Ba' and 'Capadocia';
+    */
+
+    Pega pelos caracteres então o que estiver entre Ba e Capadocia em questão de ordem de caracter irá aparecer, então Brasil pode ser visto pois é maior ou igual em ordem de caracter que o - a - do Ba
+
+Para ver cadastros com valores específicos:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1),
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where id in (1, 3, 7);
+    */
+
+    - in - seleciona valores dos parênteses para comparar com a coluna, nos seus parênteses deve ser informado o valor que deseja buscar, caso aja mais de um coloque vírgula e acrescente o valor que procura
+
+Para NÃO ver cadastros com valores específicos:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1),
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where id not in (1, 3, 7);
+    */
+
+----------------------------------------
+
+
+
+
+-------------DISTINCT------------
+
+Para ver, SEM REPETIR, todos os valores cadastrados de uma coluna:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select distinct pais from paises;
+    */
+    
+    Então será mostrado todos os paises cadastrados, retornando assim Brasil, Canada e Egito
+
+---------------------------------
+
+
+
+--------------ORDER BY, ASC, DESC-----------------
+
+Para organizar a visualização dos cadastros por ordem alfabética:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises order by pais;
+    */
+
+    - order by - organizar por, indica uma organização numérica/alfabética da coluna que for usada de modelo para organizar, o order by deve ficar após toda a lógica de pesquisa
+
+Para organizar a visualização dos cadastros de determinadas colunas:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises order by pais, ano_descobrimento;
+    */
+
+    Caso tenha 2 nomes na coluna pais iguais, o próximo critério de organização será o ano_descobrimento
+
+Para organizar a visualização dos cadastros por ordem ascendente:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises order by pais asc;
+    */
+
+Para organizar a visualização dos cadastros por ordem decrescente:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises order by pais desc;
+    */
+
+Para organizar a visualização de colunas por ordem ascendente e se empatar decrescente:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('Canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389);
+
+        select * from paises order by pais asc, ano_descobrimento desc;
+    */
+
+---------------------------------------------------------
+
+
+
+----------------LIKE-------------
+
+Para procurar em uma coluna cadastros que comecem por determinados caracteres:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1201);
+
+        select * from paises where pais like 'C%';
+    */
+
+    - like - Destrava opções de procurar de determinados conjuntos de caracteres
+
+    - '' - Deve ser definido no interior das aspas simples o código referente ao que deve ser buscado nos cadastros da coluna especificada
+
+    Neste exemplo é procurado cadastros na coluna pais que comecem pela letra C não diferenciando a maiúcula da letra minuscula
+
+    Se fosse definido após o like 'Ca%' procuraria na coluna pais os cadastros que comecem pelas letras Ca
+
+Para procurar em uma coluna cadastros que terminem por determinados caracteres:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1201),
+        ('Etiopia', 'Paris', 0);
+
+        select * from paises where pais like '%ia';
+    */
+
+    - % - o que estiver antes do % será procurado como o que inicia por aquilo, o que após o % será procurado pelo que termina com aquilo
+
+Para procurar em uma coluna cadastros que comecem por determinados caracteres e terminem por determinados caracteres:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1201),
+        ('Etiopia', 'Paris', 0);
+
+        select * from paises where pais like 'C%ia';
+    */
+
+Para procurar em uma coluna cadastros que contenham determinados caracteres:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where ano_descobrimento like '%5%';
+    */
+
+    Perceba que ele procura o que contenha 5, para o sistema 1500, 1554, 1205 e 50 são válidos
+
+Para procurar em uma coluna cadastros que tenham em uma posição específica um caracter:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where ano_descobrimento like '1_5%';
+    */
+
+    - _ - indica que aceita qualquer caracter
+
+Para procurar cadastros em uma coluna que não tenham um caracter:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select * from paises where ano_descobrimento not like '%5%';
+    */
+
+-----------------------------------
+
+
+
+
+
+---------------TOP--------------
+
+Para visualizar um determinado número de linhas:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select top 4 * from paises;
+    */
+
+    - top - Indica um limite para a visualização da pesquisa
+
+    - 4 - Valor mutável, indica o número de linhas que poderão ser visualizadas
+
+---------------------------------------
+
+
+
+-------------COUNT---------------
+
+Para ver a quantidade de linhas de uma tabela/coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select count(pais) from paises;
+    */
+
+    - count() - conta a quantidade de linhas na coluna informada dentro de seu parênteses
+
+Para ver a quantidade de linhas de várias colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select count(pais), count(ano_descobrimento) from paises;
+    */
+
+----------------------------------
+
+
+
+
+
+
+
+----------Conceito Aliases--------------
+
+O que fazer quando seleciono duas tabelas mas ambas possuem uma coluna de mesmo nome:
+    /*
+        create database teste_banco;
+        use teste_banco;
+        create table pessoas (
+            id int not null identity(1,1) primary key,
+            nome varchar(255)
+        );
+        insert into pessoas (nome) values ('Pessoa 1'), ('Pessoa 2'), ('Pessoa 3');
+        create table empresas (
+            id int not null identity(1,1) primary key,
+            nome varchar(255)
+        );
+        insert into empresas (nome) values ('Empresa 1'), ('Empresa 2'), ('Empresa 3');
+
+        select pessoas.id, empresas.nome from pessoas, empresas;
+    */
+
+    Não possuimos colunas chamadas pessoas.id e nem empresas.nome o que ocorre é que é especificado que na tabela pessoas queremos a coluna chamada id, por isso ficou - pessoas.id - não pode se colocar direto o nome id neste caso pois como chamamos a tabela empresas que tbm possui uma coluna chamada id, fica ambiguá a informação que deve ser retornada
+
+    Ao usarmos mais de uma tabela durante uma configuração devemos explicar o caminho com o efeito de aliases colocando o nome_da_tabela ponto final e nome_da_coluna (nome_da_tabela.nome_da_coluna)
+
+-----------------------------------------
+
+
+
+
+-----------GROUP BY, HAVING------------
+
+Para ver quantas vezes os cadastros tiveram um mesmo valor em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1) primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select count(id), pais from paises
+        group by pais;
+    */
+
+    - group by - agrupar por, pega todos os valores da coluna e retorna como apenas um cadastro
+
+    @@@@@ Como funciona:
+        No - select - presisamos definir a coluna que estará sendo organizada no - group by - se colocarmos qualquer outra coluna sendo pedida para visualizar, dará erro. Não é necessário o - count(id) - mas caso não o houvessemos pedido só apareceria a coluna, informando os valores distintos dos cadastros (o código que estou a explicar: select pais from paises group by pais;), e como queremos saber a quantidade desses distintos colocamos um - count() - para descobrirmos quantas linhas foram mescladas
+
+Para ver quantos cadastros tiveram um conjunto de diversos valores iguais nas colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1) primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50),
+        ('Brasil', 'Barcelona', 1554);
+
+        select count(id), pais, ano_descobrimento from paises
+        group by pais, ano_descobrimento;
+    */
+
+Para agruparmos dados de cadastros de 2 ou mais tabelas:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null
+        );
+        insert into compras (id_da_pessoa, id_do_produto) values (1,1),(1,1),(1,3),(2,4),(2,2),(1,1),(2,2),(3,1),(4,5),(1,5),(3,2),(1,4),(2,4),(3,5);
+
+        --Quantas vezes a pessoa efetuou uma compra
+        select compras.id_da_pessoa, count(compras.id_da_pessoa) as quantas_vezes_comprou
+        from compras
+        group by compras.id_da_pessoa
+        order by compras.id_da_pessoa asc;
+
+        --Quanto a pessoa já gastou
+        select compras.id_da_pessoa, sum(produtos.custo) as gasto_total_neste_produto
+        from compras, produtos
+        where compras.id_do_produto = produtos.id
+        group by compras.id_da_pessoa
+        order by compras.id_da_pessoa asc;
+
+        --Quantas vezes a pessoa efetuou uma compra de um determinado produto
+        select compras.id_da_pessoa, compras.id_do_produto, count(compras.id_da_pessoa) as quantas_vezes_comprou_o_produto
+        from compras
+        group by compras.id_da_pessoa, compras.id_do_produto
+        order by compras.id_da_pessoa asc;
+
+        --Quanto a pessoa gastou em cada produto
+        select compras.id_da_pessoa, compras.id_do_produto, count(compras.id_da_pessoa) as quantas_vezes_comprou_o_produto, sum(produtos.custo) as gasto_total_neste_produto
+        from compras, produtos
+        where compras.id_do_produto = produtos.id
+        group by compras.id_da_pessoa, compras.id_do_produto
+        order by compras.id_da_pessoa asc;
+
+        --Trazer lista de compras de apenas um indivíduo
+        select compras.id_da_pessoa, clientes.nome, count(id_da_pessoa) as quantas_vezes_comprou, produtos.nome, sum(produtos.custo) as gasto_total
+        from compras, produtos, clientes
+        where compras.id_do_produto = produtos.id and compras.id_da_pessoa = clientes.id
+        group by compras.id_da_pessoa, clientes.nome, produtos.nome
+        having compras.id_da_pessoa = 1
+        order by compras.id_da_pessoa asc;
+    */
+
+    O - where - serve para validar cadastros entre tabelas, ele "escolhe" os dados que devem possuir a tabela
+
+    O - having - é que faz o papel de definir quais dados devem ser aparecer, ele é o "filtro" da seleção
+
+-------------------------------
+
+
+
+------------INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN-----------
+
+Para combinar linhas de duas tabelas, com base em uma coluna relacionada entre elas:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from clientes where id = 2;
+
+        delete from compras where id_da_pessoa = 4;
+
+        select * from clientes
+        inner join compras on clientes.id = compras.id_da_pessoa
+        where compras.id_do_produto = 1 or clientes.id = 3
+        order by clientes.id asc;
+    */
+
+    É retornado somente onde o id em clientes bate com o id_da_pessoa em compras, e vice-versa, quer dizer que só irá ser mostrado uma tabela com todas as colunas de ambas as tabelas e que os cadastros que irão aparecer serão aqueles que verificando as duas tabelas possuem os filtros (neste exemplo id e id_da_pessoa)
+
+    - inner join nome_da_tabela on condição - iniciar junção em, funde a tabela colocada após o from com a tabela que for escrita após o inner join e retorna cadastros que atendam ao que for pedido no on, o on passar a ser a seleção de tabela e se tiver um where ele se torna um filtro
+
+Para combinar três ou mais tabelas, com base em uma tabela que tem ao menos uma coluna em comum com cada uma:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from clientes where id = 2;
+
+        delete from compras where id_da_pessoa = 4;
+
+        select *
+        from ((clientes inner join compras on clientes.id = compras.id_da_pessoa) inner join produtos on produtos.id = compras.id_do_produto);
+    */
+
+Para retornar todos os registros correspondentes de ambas as tabelas e mostrar todos os cadastros de uma das tabelas:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from clientes where id = 2;
+
+        delete from compras where id_da_pessoa = 4;
+
+        select *
+        from clientes
+        left join compras on clientes.id = compras.id_da_pessoa;
+
+        select *
+        from clientes
+        right join compras on clientes.id = compras.id_da_pessoa;
+    */
+
+    - left join - permite-nos ver a tabela que foi escrita antes desse comando por completa e ainda ver os cadastros que batem com a regra do - on -
+
+    - right join - permite-nos ver a tabela que foi escrita depois desse comando, por completa, e ainda ver os cadastros que batem com a regra do - on -
+
+    Na prática o que ocorre: vai ser feito a leitura dos cadastros das tabelas, neste exemplo a clientes e a compras, então será feita uma tabela juntando as colunas das duas, onde o cadastro seguir a regra após o - on - será colocado esse cadastro na tabela de apresentação, até aqui seria o que o - inner join - faria, mas o left nos permite ver o resto da tabela clientes, então mesmo que não siga a regra após o - on - com o left indicamos que é importante a presença daqueles cadastros na tabela, se colocassemos o right ao invés do left teriamos o mesmo efeito só que com a tabela compras sendo prioridade a aparecer
+
+Para retornar todos os registros correspondentes de ambas as tabelas e mostrar todos os cadastros de ambas as tabelas:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int not null identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from clientes where id = 2;
+
+        delete from compras where id_da_pessoa = 4;
+
+        select *
+        from clientes
+        full join compras on clientes.id = compras.id_da_pessoa;
+    */
+
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+------------UNION, UNION ALL------------
+
+Para usar dois ou mais select que trazem as mesmas colunas mas cadastros diferentes:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from compras where id_da_pessoa = 4;
+
+        select * from compras where id_da_pessoa >= 2 union
+        select * from compras where id_da_pessoa = 3
+    */
+
+Para usar dois ou mais select que trazem as mesmas colunas, podendo ter cadastros iguais:
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando date
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        delete from compras where id_da_pessoa = 4;
+
+        select * from compras where id_da_pessoa >= 2 union all
+        select * from compras where id_da_pessoa = 3
+    */
+
+--------------------------------------------
+
+
+
+
+
+
+@@@@@Para ver qual foi o último cadastro inserido:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 12345);
+        select * from cadastros where id = SCOPE_IDENTITY();
+    */
+
+    - SCOPE_IDENTITY() - serve para ver qual foi o último registro inserido naquele momento, só funciona se estiver acompanhado de um insert
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

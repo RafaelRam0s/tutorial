@@ -1,0 +1,107 @@
+
+
+------------USE----------
+
+Selecionar banco de dados:
+
+    /*
+        create database nome_do_banco;
+        
+        // use nome_do_banco; 
+    */
+
+    Em um banco de dados, quando você for acessar um banco de dados específico, para começar a criação de tabelas, é importante especificar para qual banco de dados será criada a tabela.
+
+    - use - usar, informa que a partir de agora seus próximos comandos serão refentes a um banco de dados
+
+    - nome_do_banco - valor mutável ao qual deve ser informado o nome do banco que você deseja usar
+
+-------------------------
+
+
+
+---------VIEW---------
+
+Para usar uma view:
+    /*
+        create database dbteste;
+        use dbteste;
+        create table pessoa (id int primary key identity(1,1));
+
+        go
+        create view teste_de_view
+        as 
+        select * from pessoa
+        go
+
+        select * from teste_de_view;
+    */
+
+-----------------------
+
+
+
+
+-----------PROCEDURE------------
+
+Para usar uma procedure:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+
+        go
+        create procedure selecionar_pais
+        @este varchar(255)
+        as
+        select * from paises
+        where pais = @este;
+        go
+
+        execute selecionar_pais @este = 'Brasil'
+    */
+
+---------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

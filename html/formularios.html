@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Formulários em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Formulários</h1>
+            
+                <div>
+                    <p>Quando queremos preencher uma ficha ou captar uma resposta do usuário podemos fazer isso utilizando de várias formas com um formulário</p>
+
+                    <h3>Tag form</h3>
+
+                    <div>
+                        <p>A tag form é reponsavel por captar os dados preenchidos em um campo de pergunta e enviá-los para uma outra página onde esses dados poderão ser tratados</p>
+
+                        <p>Quando formos enviar um formulário temos que pensar de qual forma queremos mandar os dados captados e para onde, podemos por exemplo querer mandar para a própria página, para isso colocamos um atributo "action" com o valor nulo "" na tag "form", ou se quisermos podemos colocar para outras páginas para isso mude o valor do action com o caminho de arquivo ou com a url</p>
+
+                        <p>Também é preciso informar qual o método do envio se vai ser por GET ou POST, o método GET faz com que o envio do formulário apareça no caminho da url as informações (cuidado com o GET, pois; dados sigilosos não devem ser passados por ele, a url possui uma limitação de caracteres logo se tiver muita informação sendo passada os dados podem se perder), já o método POST passa somente internamente os dados, não sendo visível suas informações</p>
+
+                        <details>
+                            <summary>Exemplo de mensagem para a própria página:</summary>
+
+                            <form action="" method="GET">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_1" id="id_nome_1">
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </details>
+
+                        <details>
+                            <summary>Exemplo de mensagem para outra página do site:</summary>
+
+                            <form action="../index.html" method="GET">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_2" id="id_nome_2">
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </details>
+
+                        <details>
+                            <summary>Exemplo de mensagem para outro site:</summary>
+
+                            <form action="https://www.google.com.br/" method="GET">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_3" id="id_nome_3">
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </details>
+
+                        <p>Podemos deixar a opção dos campos do formulário se auto preencherem, pense que você realizou um formulário e vai querer enviar outros que se baseiam no mesmo mundando somente uma ou outra informação, para isso podemos deixar ele ser autocompletavel</p>
+
+                        <p>Preencha e envie o formulário, recarregue a página, comece a preencher o formulário novamente e veja como o preenchimento automático funciona.</p>
+
+                        <details>
+                            <summary>Exemplo de formulario autocompletável:</summary>
+
+                            <form action="" method="GET" autocomplete="on">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_4" id="id_nome_4">
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </details>
+
+                        <details>
+                            <summary>Exemplo de formulario não autocompletável:</summary>
+
+                            <form action="" method="GET" autocomplete="off">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_5" id="id_nome_5">
+
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </details>
+
+                        <p>Quando temos um campo de resposta fora do form podemos ainda sim associa-lo ao formulário, se o formulário possuir um id e se o elemento tiver o atributo form com o valor do id</p>
+
+                        <details>
+                            <summary>Exemplo:</summary>
+
+                            <form id="form_1" action="" method="GET">
+
+                                <p>Qual o seu nome?</p>
+
+                                <input type="text" name="name_nome_6" id="id_nome_6">
+                            </form>
+
+                            <p>O botão a seguir está fora do elemento form mas ainda participa dele, pois está associado</p>
+
+                            <input type="submit" value="Enviar" form="form_1">
+                        </details>
+
+                    </div>
+
+                    <h3>Tag button</h3>
+
+                    <div>
+                        <p>Um botão possui diversas funcionalidades, algumas só funcionam com formulários e outros são simples botões que não possuem efeito.</p>
+
+                        <p>Botão simples que é o recomendado para ativar eventos javascript</p>
+
+                        <button type="button" onclick="window.alert('Você testou o botão')">Botão simples</button>
+
+                        <p>Botão que faz o papel de enviar um formulário</p>
+
+                        <form action="" method="GET">
+
+                            <p>Qual o seu nome?</p>
+
+                            <input type="text" name="name_nome_7" id="id_nome_7">
+
+                            <button type="submit">Botão para envio de formulário</button>
+                        </form>
+
+                        <p>Botão para resetar o formulário, comece a preencher e depois clique no botão para ver o efeito</p>
+
+                        <form action="" method="GET">
+
+                            <p>Qual o seu nome?</p>
+
+                            <input type="text" name="name_nome_8" id="id_nome_8">
+
+                            <button type="reset">Botão para resetar o que foi preenchido no formulário</button>
+                        </form>
+
+                        <button type="menu">Botão menu</button>
+                    </div>
+
+                    <h3>Tag datalist</h3>
+
+                    <div>
+                        <p>Gera uma lista de opções em um elemento input com tipo text, logo ao ser preenchido o campo de reposta opções para completar o campo aparecerão</p>
+
+                        <p>Após criar uma tag datalist com um id e dentro elementos filhos do tipo option, é preciso definir no campo input o atributo list passando o id do datalist que você quer usar</p>
+
+                        <form action="" method="GET">
+
+                            <p>Qual o seu nome?</p>
+
+                            <input list="nomes" type="text" name="name_nome_9" id="id_nome_9">
+
+                            <datalist id="nomes">
+                                <option value="Aline">
+                                <option value="Bruno">
+                                <option value="Carla">
+                                <option value="Dio">
+                                <option value="Ete Bilu">
+                            </datalist>
+                        </form>
+                        
+                    </div>
+
+                    <h3>Tag input</h3>
+                    
+                    <div>
+                        <p>Campos de perguntas que podem ser preenchidos</p>
+
+                        <p>O tipo checkbox representa uma caixa que pode ser selecionada, se quiser deixar a caixa por padrão já selecionada use o atributo checked</p>
+
+                        <form action="" method="GET">
+                            <p>Marque a seguir os esportes que você já jogou:</p>
+
+                            <input type="checkbox" id="id_esporte_futebol_1" name="name_esporte_futebol_1" value="Futebol" checked>
+                            <label for="id_esporte_futebol_1">Futebol</label>
+
+                            <input type="checkbox" id="id_esporte_basquete_1" name="name_esporte_basquete_1" value="Basquete">
+                            <label for="id_esporte_basquete_1">Basquete</label>
+
+                            <input type="checkbox" id="id_esporte_volei_1" name="name_esporte_volei_1" value="Vôlei">
+                            <label for="id_esporte_volei_1">Vôlei</label>
+
+                            <input type="checkbox" id="id_esporte_ping_pong_1" name="name_esporte_ping_pong_1" value="Ping pong">
+                            <label for="id_esporte_ping_pong_1">Ping pong</label>
+
+                            <input type="checkbox" id="id_esporte_rugby_1" name="name_esporte_rugby_1" value="Rugby">
+                            <label for="id_esporte_rugby_1">Rugby</label>
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo color serve para colocar uma cor o value é passado como código hex, se o campo value não for definido a cor padrão é preto #000000</p>
+
+                        <form action="" method="GET">
+                            <label for="id_cor_preferida_1">Selecione sua cor predileta:</label>
+                            <input type="color" name="name_cor_preferida_1" id="id_cor_preferida_1" value="#ffffff">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo date permite inserir uma data e seu valor deve ser passado como: ano-mês-dia, por exemplo 1998-12-30</p>
+
+                        <form action="" method="GET">
+                            <label for="id_data_de_nascimento_1">Qual a sua data de nascimento?</label>
+                            <input type="date" id="id_data_de_nascimento_1" name="name_data_de_nascimento_1">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+                        
+                        <p>O tipo datetime-local permite inserir uma data juntamente do horário e seu value é informado como: ano-mês-diaThora:minutos, por exemplo: 1998-12-30T22:59</p>
+
+                        <form action="" method="GET">
+                            <label for="id_data_de_nascimento_2">Qual a sua data de nascimento e o horário de nascimento?</label>
+                            <input type="datetime-local" id="id_data_de_nascimento_2" name="name_data_de_nascimento_2">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo email permite enviar o nome do seu email, como existem algumas regras para formar um email como a presença do @ essa tag surgiu</p>
+
+                        <form action="" method="GET">
+                            <label for="id_email_1">Qual o seu e-mail?</label>
+                            <input type="email" id="id_email_1" name="name_email_1">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+                        
+                        <p>O tipo file permite passar um arquivo, para passar vários arquivos utilize o atributo multiple, é possível adicionar o atributo accept para informar quais são os únicos tipos de arquivos permitidos (apenas imagens: image/*, apenas audio/*, apenas video/*, apenas imagens e videos: image/*,video/*, apenas de extensão webp: .webp)</p>
+                        
+                        <form action="" method="GET">
+                            <label for="id_arquivo_1">Passe um arquivo:</label>
+                            <input type="file" id="id_arquivo_1" name="name_arquivo_1">
+
+                            <label for="id_arquivo_2">Passe vários arquivos:</label>
+                            <input type="file" id="id_arquivo_2" name="name_arquivo_2" multiple>
+
+                            <label for="id_arquivo_3">Passe apenas arquivo do tipo imagem:</label>
+                            <input type="file" id="id_arquivo_3" name="name_arquivo_3" accept="image/*">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo hidden serve para definir um value qualquer, utilizado para quando por exemplo queremos fazer uma tag que o form não lê como possível de ser passado, imagine que exista uma div e ao selecionar ela por script mudamos o valor do input hidden, assim quando enviarmos o formulário o que foi selecionado na div é passado pelo hidden</p>
+
+                        <form action="" method="GET">
+                            <div>
+                                <p style="padding: 10px; background-color: aqua;" onclick="document.getElementById('id_div_selecionada_1').value = 'Paragrafo clicado e formulario enviado', this.style.backgroundColor = 'red'">Clique aqui e depois clique em enviar.</p>
+                            </div>
+                            
+                            <input type="hidden" id="id_div_selecionada_1" name="name_div_selecionada_1">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo image realiza o mesmo papel que o tipo submit, só que ao invés de só mandar o formulário também é informado onde na imagem foi clicado, em um esquema de coordenada XY. Deve ter os mesmos cuidados como se fosse a tag img.</p>
+
+                        <form action="" method="GET">
+                            <p>Envie o formulário clicando na imagem a seguir:</p>
+
+                            <input type="image" src="../midia/image/page_formulario/aviao_de_papel.webp" alt="Enviar" width="110" height="110">
+                        </form>
+
+                        <p>O tipo number permite apenas utilizar números e expressões matemáticas</p>
+
+                        <form action="" method="GET">
+                            <label for="id_idade_1">Qual a sua idade?</label>
+                            <input type="number" id="id_idade_1" name="name_idade_1">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo password realiza o mesmo papel que o text, mas quando for preenchido aparece visualmente para o usuário como um bando de bolinhas</p>
+
+                        <form action="" method="GET">
+                            <label for="id_senha_1">Crie uma senha:</label>
+                            <input type="password" id="id_senha_1" name="name_senha_1">
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo radio permite assim como o checkbox selecionar uma opção só que essa opção possui uma associação a uma pergunta podendo fazer esquemas como por exemplo uma pergunta de prova com 5 alternativas.</p>
+
+                        <p>Para associar os campos de resposta, todos devem possuir o mesmo name, lembrando que assim que for marcado não poderá ser desmarcado a menos que faça um script passando o atributo checked como false ou um botão reset</p>
+
+                        <form action="" method="GET">
+                            <p>Na sua opnião qual conteúdo está sendo mais fácil de aprender?</p>
+
+                            <input type="radio" id="id_html_1" name="name_linguagem_favorita_1" value="HTML">
+                            <label for="id_html_1">HTML</label>
+    
+                            <input type="radio" id="id_css_1" name="name_linguagem_favorita_1" value="CSS">
+                            <label for="id_css_1">CSS</label>
+    
+                            <input type="radio" id="id_javascript_1" name="name_linguagem_favorita_1" value="JavaScript">
+                            <label for="id_javascript_1">JavaScript</label>    
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo range pode definir um valor entre dois extremos com um clique, é preciso definir os atributos min e max</p>
+
+                        <form action="" method="GET">
+                            <p>De 0 a 10 qual o seu número predileto?</p>
+
+                            <span>0</span>
+                            <input type="range" min="0" max="10" value="5" id="id_numero_favorito_1" name="name_numero_favorito_1" onmousemove="this.nextSibling.textContent = this.value">
+                            <span></span>
+
+                            <button type="submit">Enviar</button>
+                        </form>
+
+                        <p>O tipo reset limpa todos os campos de formulário que foram preenchidos</p>
+
+                        <form action="" method="GET">
+                            <label for="id_idade_2">Qual a sua idade?</label>
+                            <input type="number" id="id_idade_2" name="name_idade_2">
+
+                            <input type="reset" value="Resetar">
+                        </form>
+                        
+                        <p>O tipo submit envia o formulário</p>
+
+                        <input type="submit">
+
+                        <p>O tipo tel permite passar o número de telefone/celular</p>
+
+                        <input type="tel">
+
+                        <p>O tipo text te permite passar quaquel texto de apenas 1 parágrafo</p>
+
+                        <input type="text">
+
+                        <p>O tipo time permite captar as horas e minutos de um evento</p>
+
+                        <input type="time">
+
+                    </div>
+
+                    <h3>Tag label</h3>
+                    
+                    <div>
+                        <p>Cria um título para um campo de resposta, a dúvida ou texto relacionado ao campo de resposta poderá ser clicado para redirecionar o usuário a preencher com uma resposta</p>
+                    </div>
+
+                    <h3>Tag select, optgroup, option</h3>
+                    
+                    <div>
+                        <p>Cria um campo de resposta com uma lista de opções</p>
+
+                        <form action="" method="GET">
+                            <label for="id_estado_em_que_vive_1">Em qual estado você mora?</label>
+                            <select name="name_estado_em_que_vive_1" id="id_estado_em_que_vive_1">
+                                <option value="AM">Amazonas</option>
+                                <option value="RR">Roraima</option>
+                                <option value="AP">Amapá</option>
+                                <option value="PA">Pará</option>
+                                <option value="TO">Tocantins</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="AC">Acre</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="PI">Piauí</option>
+                                <option value="CE">Ceará</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="GO">Goiás</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PR">Paraná</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="SC">Santa Catarina</option>
+                            </select>
+                            
+                            <input type="submit" value="Enviar">
+                        </form>
+                
+                        <p>Parâmetro - multiple - nos permite selecionar mais de um item das opções, porém só clicando não tem efeito, precisa segurar o CTRL e então clicar com o botão esquerdo para funcionar.</p>
+                
+                        <p>Atributo - size - permite visualizar uma quantidade de linhas das opções</p>
+                
+                        <p>Parâmetro - selected no option permite já começar selecionável o item</p>
+                
+                        <label for="id_modelo_de_carro_1">Escolha um modelo de carro:</label>
+                        <select id="id_modelo_de_carro_1" name="name_modelo_de_carro_1" size="4" multiple="">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab" selected="">Saab</option>
+                            <option value="fiat" selected="">Fiat</option>
+                            <option value="audi">Audi</option>
+                            <option value="uno">Uno</option>
+                            <option value="chevrolet">Chevrolet</option>
+                            <option value="ford">Ford</option>
+                        </select>
+                
+                        <p>Dentro do select podemos agrupar os tipos de opções, ao agrupalos podemos colocar como se fosse um título não selecionável dentro do select</p>
+                
+                        <form action="">
+                            <label for="id_estado_em_que_vive_2">Em qual estado você mora?</label>
+                            <select name="id_estado_em_que_vive_2" id="name_estado_em_que_vive_2">
+                                <optgroup label="Brasil">
+                                    <optgroup label="Norte">
+                                        <option value="AM">Amazonas</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="TO">Tocantins</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="AC">Acre</option>
+                                    </optgroup>
+                                    <optgroup label="Nordeste">
+                                        <option value="MA">Maranhão</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="BA">Bahia</option>
+                                    </optgroup>
+                                    <optgroup label="Centro-Oeste">
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="GO">Goiás</option>
+                                    </optgroup>
+                                    <optgroup label="Sudeste">
+                                        <option value="SP">São Paulo</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="MG">Minas Gerais</option>
+                                    </optgroup>
+                                    <optgroup label="Sul">
+                                        <option value="PR">Paraná</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="SC">Santa Catarina</option>
+                                    </optgroup>
+                                </optgroup>
+                            </select>
+
+                            <input type="submit" value="Enviar">
+                        </form>
+                
+                    </div>
+                    
+                    <h3>Tag textarea</h3>
+                    
+                    <div>
+                        <p>Cria um grande campo de resposta para captar textos mais desenvolvidos</p>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

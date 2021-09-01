@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Tabelas em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Tabelas</h1>
+
+                <div>
+                    <h3>Tag table, tbody, td, tfoot, th, tr, thead</h3>
+
+                    <div>
+                        <p>Tabela simples, para montarmos uma tabela começamos com a tag table, após isso pense em quantas linhas a sua tabela deve ter, para cada linha é preciso adicionar uma nova tag tr, agora pense em quantas colunas deverá ter a sua tabela, de acordo com a quantidade de colunas adicione a tag td dentro da tag tr:</p>
+
+                        <table>
+                            <tr>
+                                <td>Conteudo de tabela 1</td>
+                                <td>Conteudo de tabela 2</td>
+                            </tr>
+                            <tr>
+                                <td>Conteudo de tabela 3</td>
+                                <td>Conteudo de tabela 4</td>
+                            </tr>
+                        </table>
+
+                        <p>Tabela com título, os títulos da tabela normalmente ficam na primeira linha da tabela ou na primeira coluna, para fazer estes efeitos utilize a tag th no lugar da td, veja alguns exemplos:</p>
+
+                        <table>
+                            <tr>
+                                <th>Título de tabela 1</th>
+                                <th>Título de tabela 2</th>
+                            </tr>
+                            <tr>
+                                <td>Conteudo de tabela 1</td>
+                                <td>Conteudo de tabela 2</td>
+                            </tr>
+                        </table>
+
+                        <table>
+                            <tr>
+                                <th>Título de tabela 1</th>
+                                <td>Conteudo de tabela 1</td>
+                            </tr>
+                            <tr>
+                                <th>Título de tabela 2</th>
+                                <td>Conteudo de tabela 2</td>
+                            </tr>
+                        </table>
+
+                        <p>Tabela bem segmentada, é constituída de um thead que armazenará uma linha de títulos, caso a sua tabela tenha a linha de títulos no topo, também terá um tbody que armazenará os dados da tabela e um tfoot caso a sua tabela tenha uma linha para resumir o conteúdo da tabela:</p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Título de tabela 1</th>
+                                    <th>Título de tabela 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Conteudo de tabela 1</td>
+                                    <td>Conteudo de tabela 2</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Resumo das categorias:</th>
+                                    <td>Conteudo de tabela 3</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <p>Atributos que podem ser inseridos na tag th, td:</p>
+    
+                        <ul>
+                            <li>colspan - número de colunas que apenas uma cédula ocupa</li>
+                            <li>rowspan - número de linhas que apenas uma cédula ocupa</li>
+                        </ul>
+
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">Com rowspan a cédula ocupa 2 linhas</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                </tr>
+                                <tr>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                </tr>
+                                <tr>
+                                    <td>Texto exemplo</td>
+                                    <td colspan="2">Com colspan a cédula passa a ocupar 2 linhas</td>
+                                    <td>Texto exemplo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <h3>Tag caption</h3>
+                    
+                    <div>
+                        <p>Adicionar um título na tabela, precisa colocar o caption logo depois da tag table</p>
+
+                        <table>
+                            <caption>Título de tabela</caption>
+                            <tr>
+                                <td>Conteudo de tabela 1</td>
+                                <td>Conteudo de tabela 2</td>
+                            </tr>
+                            <tr>
+                                <td>Conteudo de tabela 3</td>
+                                <td>Conteudo de tabela 4</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>Tag colgroup e col</h3>
+                    
+                    <div>
+                        <p>Quando precisa estilizar uma coluna podemos configurar ela sem precisar fazer a alteração em cada td e th. Para isso criamos dentro da tabela uma categoria de "colgroup" e dentro definimos os "col", na ordem que for escrito os col eles irão ocupando as colunas da tabela, dentro de cada col definimos quantas colunas iremos querer aplicar a alteração com o atributo span, o qual só aceita números naturais</p>
+
+                        <table>
+                            <caption>Tabela teste</caption>
+                            <colgroup>
+                                <col span="1" style="background-color: rgb(207, 20, 20);">
+                                <col span="2" style="background-color: aqua;">
+                                <col span="1" style="background-color: seagreen;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                    <th>Texto exemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                </tr>
+                                <tr>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                    <td>Texto exemplo</td>
+                                </tr>
+                            </tbody>
+                            <tfoot></tfoot>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

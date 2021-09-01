@@ -1,0 +1,221 @@
+
+
+------------@@@@@EXEC SP_RENAME-------------
+
+Para modificar o nome de uma coluna:
+    /* exec sp_rename 'NomeTabela.[nomeCampo]', 'NovoNomeCampo', 'column'; */
+    /*
+        create database Teste;
+        use Teste;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        exec sp_rename 'paises.[pais]', 'nome_do_pais', 'column'
+    */
+
+    - exec sp_rename - ordem para executar uma renomeação
+
+    - 'paises.[pais]', -No primeiro valor será colocado a qual tabela se refere ponto final e entre colchetes o nome da coluna que deseja alterar
+
+    - 'nome_do_pais', - No segundo valor deve ser informardo o nome que deseja que fique ao renomeação
+
+    - 'column' - No terceiro valor é informado onde a alteração será feita
+
+---------------------------------------------
+
+
+
+-------------ALTER COLUMN----------------
+
+@@@@@ Verificar se ao alterar a coluna é perdido as especificações após o tipo primitivo
+
+Para modificar o tipo primitivo de uma coluna já existente de uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+        alter table paises
+        add moeda_oficial varchar(100);
+
+        alter table paises
+        alter column moeda_oficial varchar(255);
+    */
+
+    - alter - alterar, indica que algo será alterado
+
+    - table - define que o que deve ser alterado é uma tabela
+
+    - paises - valor mutável, define que a tabela com este nome é quem deve ser modificada
+
+    - alter - define que será alterado um dado da tabela
+
+    - column - define que o que será alterado é uma coluna
+
+    - moeda_oficial - Define qual o nome da coluna que deve ser modificada
+    
+    - varchar(255) - altera seu tipo primitivo e suas características
+
+    Obs: Se você modificar para ter um valor - not null - e tiver um nulo cadastrado dá problema
+
+------------------------------------------
+
+
+
+@@@@@Para modificar a restrição de uma coluna já existente de uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+        alter table paises
+        add moeda_oficial varchar(100);
+
+        alter table paises
+        alter constraint moeda_oficial unique not null;
+    */
+
+
+
+--------------UPDATE SET---------------
+
+Alterando todos os valores de uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Canada', 'Quebec', 1900);
+
+        update paises
+        set pais = 'Canadá';
+    */
+    
+    - update - indica que uma tabela irá receber uma atualização
+
+    - paises - valor mutável, indica qual a tabela que deve receber uma atualização
+
+    - set - seleciona pelo que deverá ser alterado
+
+    - pais = 'Canadá' - indicamos que a coluna - pais - deve receber o valor string Canadá
+
+Alterar todos os valores de uma coluna que possuam um determinado valor em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Canada', 'Quebec', 1900);
+
+        update paises
+        set pais = 'Canadá'
+        where pais = 'Canada';
+    */
+
+Alterar varios campos que possuem várias especificações:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1900),
+        ('Canada', 'Quebec', 1600);
+
+        update paises
+        set pais = 'Canadá', ano_descobrimento = '1554'
+        where pais = 'Canada' and capital = 'Ottawa';
+    */
+
+    A vírgula na linha do set configura uma nova modificação a ser feita
+
+    O and na linha do where serve para falar uma nova pesquisa e solicitar que seja verdadeira para o bloco executar
+
+    /*
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1900),
+        ('Canada', 'Quebec', 1600);
+
+        update paises
+        set pais = 'Canadá', ano_descobrimento = '1554'
+        where capital = 'Ottawa' or ano_descobrimento = 1900;
+    */
+
+    Na linha do where também poderíamos inserir o - or - que pede que entre duas coisas se houver uma verdadeira a pesquisa será verdadeira
+
+---------------------------------------
+
+
+
+
+
+
+
+Para modificar uma procedure
+
+    go
+    alter procedure cadastros_nome
+    @nome varchar(255),
+    @sobrenome varchar(255)
+    as
+    select * from cadastros
+    where nome like ''+@nome+'%'+@sobrenome;
+
+
+

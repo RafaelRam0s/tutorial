@@ -1,0 +1,351 @@
+
+
+
+
+------------CREATE DATABASE/TABLE------------
+
+Criar um banco de dados:
+    /* create database nome_do_banco; */
+
+    - create - indica que algo será criado
+
+    - database - informa que deve ser criado um banco de dados
+
+    - nome_do_banco - valor mutável, que serve para indicar um nome para o banco de dados
+
+    O banco de dados é criado como uma pasta de arquivos, e por isso deve seguir regras de pastas, como:
+        - Valor não nulo
+        - Não pode ter um mesmo nome de outros Bancos
+        - Deve seguir as regras de sinais que podem ter uma pasta
+
+@@@@@ Criar um banco de dados configurado com linguagem utf8:
+
+Criar uma tabela:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+
+        create table nome_da_tabela ( id int );
+    */
+
+    - create - indica que algo será criado
+
+    - table - informa que deve ser criada uma tabela
+
+    - nome_da_tabela - valor mutável, que serve para indicar um nome para uma tabela 
+
+    - ( ) - O que estiver dentro do parênteses será usado de coluna para um registro
+
+    - id - valor mutável, agrega um nome para a coluna da tabela
+
+    - int - tipo primitivo que os campos da coluna id irão ter
+
+    A tabela é criada como uma pasta de arquivos, e por isso deve seguir regras de pastas, como:
+            - Valor não nulo
+            - Não pode ter um mesmo nome de outros Bancos
+            - Deve seguir as regras de sinais que podem ter uma pasta
+
+@@@@@ Criar uma tabela configurada com linguagem utf8:
+
+Criar uma tabela a partir de outra tabela:
+    /* 
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table nome_da_tabela ( id int );
+        insert into nome_da_tabela values (1),(23),(409),(5);
+
+        select *
+        into nome_da_tabela_2
+        from nome_da_tabela;
+    */
+
+    Observação: Algumas restrições não são herdadas nessa cópia, tal como a primary key.
+
+------------------------------------------------
+
+
+
+@@@@@Para criar uma constraint:
+    /*
+       create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+
+            constraint nao_nulo unique (pais, capital)
+        )
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+        --Dará erro pois a coluna pais não possui cadastros únicos
+        
+    */ 
+
+    - constraint  nome_para_a_restricao nome_da_restricao (coluna_afetada) - 
+
+@@@@@ Criar uma restrição em uma tabela já criada:
+    Para criar chave-primária
+        /*
+            create database Clientes;
+            create table cadastros {id int};
+            add constraint Clientes_cadastros_id primary key clustered (id);
+        */
+
+
+
+
+
+
+------------INSERT INTO () VALUES ()---------
+
+Criar um cadastro em uma tabela já criada:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises (
+            int not null identity(1,1) primary key,
+            pais varchar not null,
+            capital_pais varchar not null,
+            quando_descoberto int
+        );
+
+        insert into paises
+        (pais, quando_descoberto, capital_pais)
+        values
+        ('Brasil', 1500, 'Brasília');
+    */
+
+    - inser into - inserir em, informa que informações serão inseridas em uma tabela
+
+    - paises - valor mutável, é respectivo ao nome da tabela que deverá receber um cadastro
+
+    - () values () - 
+    °No primeiro parênteses deve ser informado o nome de uma coluna da tabela, a qual você deseja inserir um cadastro.
+    °Caso deseje inserir em mais colunas um cadastro, ao final do nome da coluna insira uma vírgula - , - isso indica que você deseja informar outra coluna para ter um inserimento.
+    °Obs: Não é necessário colocar o nome de todas as colunas, mas se atente nas colunas que não aceitam nulo, pois seu cadastro não poderá ser efetuado se essa coluna não for preenchida já que este é o papel do - not null - né.
+    °O values faz a ligação do primeiro parênteses com o próximo parênteses
+    °No segundo parênteses deve ser informados os valores que irão preencher um cadastro da tabela, ao colocar a vírgula - , - após um valor, poderá adicionar um outro valor em outra coluna.
+    °Os dados são preenchidos respectivamente ao do primeiro parênteses, temos a coluna pais no primeiro parênteses, logo o primeiro valor do segundo parênteses será armazenado naquela coluna
+
+    Colocar diversos cadastros em uma tabela já criada:
+        /*
+            create database nome_do_banco;
+            use nome_do_banco;
+            create table paises (
+                int not null identity(1,1) primary key,
+                pais varchar not null,
+                capital_pais varchar not null,
+                quando_descoberto int
+            );
+
+            insert into paises
+            (pais, quando_descoberto, capital_pais)
+            values
+            ('Brasil', 1500, 'Brasília'),
+            ('Egito', 0, 'Cairo'),
+            ('Canada', 1554, 'Ottawa');
+        */
+    Só precisaremos acrescentar uma vírgula ao final de um parenteses secundário, logo no exemplo acima possuimos 3 parenteses secundários, e dentro cada valor faz conexão com uma coluna da tabela
+
+    Obs: Para cadastrar um tipo string use aspas simples - '' -
+    Obs: Para cadastrar um numeral basta escrever o número - 1234567890 -
+    Obs: Para cadastrar um booleano escreva - true - ou - false -
+    Obs: Para cadastrar como nulo escreva - null -
+
+----------------------------------------------
+
+
+
+----------ADD/ADD COLUMN---------------
+
+Criar uma coluna em uma tabela existente:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        alter table paises
+        add moeda_oficial varchar(255);
+    */
+
+    - alter - alterar, indica que algo será alterado
+
+    - table - define que o que deve ser alterado é uma tabela
+
+    - paises - valor mutável, define que a tabela com este nome é quem deve ser modificada
+
+    - add - define que será acrescentado uma coluna na tabela
+
+    - moeda_oficial varchar(255) - Define qual o nome da coluna, seu tipo primitivo e suas características
+
+    Obs: Se você criar uma coluna para ter um valor - not null - dará problema, pois por padrão já é definido null quando criamos uma nova coluna para os cadastros anteirores.
+
+@@@@@ Criar uma coluna em uma posição específica de uma tabela existente:
+
+Criar uma coluna com espaço entre as palavras:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            "ano descobrimento" int
+        );
+        insert into paises
+        (pais, capital, "ano descobrimento")
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        alter table paises
+        add "moeda oficial" varchar(255);
+    */
+
+----------------------------------------
+
+
+
+
+
+
+---------VIEW---------
+
+Para criar uma view:
+    /*
+        create database dbteste;
+        use dbteste;
+        create table pessoa (id int primary key identity(1,1));
+
+        go
+        create view teste_de_view
+        as 
+        select * from pessoa
+        go
+    */
+
+-----------------------
+
+
+
+
+
+-----------PROCEDURE------------
+
+Para criar uma procedure:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+
+        go
+        create procedure selecionar_pais
+        @este varchar(255)
+        as
+        select * from paises
+        where pais = @este;
+        go
+    */
+
+---------------------------------
+
+
+
+
+
+
+----------BACKUP, TO DISK------------
+
+Para criar um backup do banco de dados:
+    /*
+        create database dbteste;
+        use dbteste;
+
+        backup database dbteste
+        to disk = 'C:\';
+    */
+
+Para salvar somente o que foi alterado do último backup do banco para o mais recente
+    /*
+        create database dbteste;
+        use dbteste;
+
+        backup database dbteste
+        to disk = 'C:\'
+        with differential;
+    */
+
+---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+@@@@@Para criar uma variavel:
+    declare @nome_variavel tipo_primitivo = valor
+    declare @nome varchar(255) = 'Rafael'
+
+
+
+
+
+
+
+
+
+
+
+
+

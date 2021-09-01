@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Iframes</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Iframe</h1>
+            
+                <div>
+                    <p>Um iframe é basicamente um jeito de acessar conteudos de outros sites, por exemplo quando trazemos um vídeo do youtube ou quando queremos utilizar uma página externa dentro da sua página.</p>
+
+                    <h3>Tag iframe</h3>
+
+                    <div>
+                        <p>Atributos que podem ser inseridos na tag:</p>
+    
+                        <ul>
+                            <li>src</li>
+                            <li>title - recomendado para leitores de tela entenderem do que se trata o iframe representado</li>
+                            <li>frameborder - o valor padrão é 1, isso acaba por adicionar uma borda no iframe, mas você pode retira-lo com esse atributo</li>
+                            <li>sandbox
+                                <ul>
+                                    <li>(sem valor) - O sandbox atributo ativa um conjunto extra de restrições para o conteúdo no iframe, quando ele estiver presente sem valor ele executará e a cada valor adicionado ele irá remover uma dessas ações:
+                                        <ul>
+                                            <li>Bloquear o envio do formulário</li>
+                                            <li>Bloquear a execução do script</li>
+
+                                            <li>Trate o conteúdo como sendo de uma origem única</li>
+                                            <li>Desativar APIs</li>
+                                            <li>Evita que os links tenham como alvo outros contextos de navegação</li>
+                                            <li>Conteúdo impedem de utilizar encaixes (através de "embed", "object", "applet", ou outro)</li>
+                                            <li>Evita que o conteúdo navegue em seu contexto de navegação de nível superior</li>
+                                            <li>Bloquear recursos acionados automaticamente (como a reprodução automática de um vídeo ou o foco automático de um controle de formulário)</li>
+                                        </ul>
+                                    </li>
+                                    <li>allow-forms - Permitir envios de formulários</li>
+                                    <li>allow-scripts - Permitir a execução de scripts</li>
+
+                                    <li>@@@ allow-modals</li>
+                                    <li>@@@ allow-orientation-lock</li>
+                                    <li>@@@ allow-pointer-lock</li>
+                                    <li>@@@ allow-popups</li>
+                                    <li>@@@ allow-popups-to-escape-sandbox</li>
+                                    <li>@@@ allow-presentation</li>
+                                    <li>@@@ allow-same-origin</li>
+                                    <li>@@@ allow-top-navigation</li>
+                                    <li>@@@ allow-top-navigation-by-user-activation</li>
+                                </ul>
+                            </li>
+                            <li>@@@ referrerpolicy</li>
+                        </ul>
+
+                        <p>Caso o navegador da pessoa não carregue o iframe o que estiver escrito dentro da tag iframe aparecerá, exemplo:</p>
+
+                        <iframe src="iframe.html" frameborder="0">
+                            <p>Seu navegador não suporta o iframe</p>
+                        </iframe>
+
+                        <p>No exemplo a seguir o src está errado para que possa ser visualizado o texto que é gerado:</p>
+
+                        <iframe src="iframe.htm" frameborder="0">
+                            <p>Seu navegador não suporta o iframe</p>
+                        </iframe>
+
+                        <p>Se você utilizar um iframe em uma página que tem um iframe incorporado, esse segundo iframe não aparecerá:</p>
+
+                        <iframe src="iframe.html" frameborder="0"></iframe>
+
+                        <p>Algumas páginas não permitem que suas páginas sejam representadas em iframes externos, como na página iframe_js.html para estes casos é possível utilizar o atributo sandbox para inviabilizar alguns métodos, por exemplo caso esteja tentando de barrar por javascript, você pode bloquear que o script do iframe seja carregado, mas lembre-se que algumas páginas dependem do javascript para funcionar a maior parte de suas funcionalidades, então esteja ciente ao usa-lo:</p>
+
+                        <p> @@@ o código para carregar o iframe foi comentado pois estou indo atrás de uma solução para de forma alguma a sua página ser pega em um iframe</p>
+
+                        <!-- <iframe src="iframe_js.html" frameborder="0" sandbox=""></iframe> -->
+
+                        <!-- <iframe src="iframe_js.html" frameborder="0" sandbox="allow-scripts allow-forms"></iframe> -->
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Imagens</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Imagens</h1>
+            
+                <div>
+                    <p>Podemos colocar imagens na página de uma forma bem simples, devido aos vários exemplos que terão que ser dados os guardamos dentro de vários details, se quiser ver como funcionam adicione o atributo open no details</p>
+
+                    <h3>Tag img</h3>
+
+                    <div>
+                        <p>Para colocarmos uma imagem no site precisamos da tag img e definir o atributo src</p>
+
+                        <p>
+                            Atributos como src, alt, width e height são atributos essenciais para se colocar na tag. 
+                            <br> O src é quem vai carregar o arquivo, referenciando o local do arquivo sendo armazenado localmente ou em site externo, se tiver uma imagem em base64 (código de diversos dígitos que transformam uma imagem em texto) você pode colocar o código também.
+                            <br> O atributo alt é um texto que só aparecerá caso ocorra algum problema no carregamento do arquivo da imagem, mas esse atributo além de aparecer como texto quando dá problema no carregamento da imagem ele também é um texto alternativo que é lido para deficientes visuais, então é recomendável que no alt esteja escrito o que a imagem representa.
+                            <br> Os atributos width e height são importantes de serem definidos, pois antes da imagem ser carregada o elemento só ocupa uma linha, e quando a imagem é processada pelo site ela altera a posição dos elementos seguintes, mas se definir uma altura e largura fixa o espaço já fica reservado.
+                        </p>
+
+                        <p>Tome cuidado com o peso de arquivo da imagem, por exemplo pense que temos uma imagem que pesa 5 megabytes, está na extensão png e possui dimensões 2400X1200, quando a sua página for carregada a imagem será baixada, 5 megas é muita coisa para uma imagem em sites na web e pode causar uma demora no carregamento da página, algumas maneiras de diminuir o peso da imagem é; utilizando compressores de arquivo, diminuir as dimensões da imagem e mudar a extensão, para por exemplo webp, lembrando que esses métodos podem fazer a qualidade da imagem decair. Além do peso do arquivo é preciso ficar de olho nas dimensões da imagem, se você for utilizar uma imagem de 2400 por 1200 em um bloco de 200 por 100, altere as dimensões do arquivo para que seja processado adequadamente</p>
+
+                        <details>
+                            <summary>Exemplos:</summary>
+
+                            <p>Imagem original png, 4200X1200 de 4,62MB:</p>
+
+                            <img src="../midia/image/tecnologia/programando.png" alt="Tela com códigos" width="4200" height="1200">
+
+                            <p>Imagem adequada webp, 1200X343 de 16,3Kb:</p>
+
+                            <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos" width="1200" height="343">
+
+                            <p>Imagem com caminho de arquivo errado, seja pela imagem não existir ou ter tido problema na hora de baixar:</p>
+
+                            <img src="../midia/image/tecnologia/programando_.webp" alt="Tela com códigos" width="1200" height="343">
+
+                            <p>Imagem sem width e height definidos, atualize a página para ver como os elementos inferiores vão se deslocar:</p>
+
+                            <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos">
+
+                            <p>Imagem em base64, abra o código para ver um texto louco no src que acaba por gerar imagem através de código, cuidado, muitas vezes o texto em base64 demora mais para ser processado do que a própria imagem tendo que ser baixada:</p>
+
+                            <img src='data:image/webp;base64,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' alt="Tela com código" width="1200" height="343"/>
+
+                        </details>
+                        
+                        <p>As imagens interferem muito no carregamento da página, pensando nisso podemos ajustar através do atributo "loading" quando a imagem será carregada, O loading atributo especifica se um navegador deve carregar uma imagem imediatamente (eager) ou adiar o carregamento de imagens fora da tela até que, por exemplo, o usuário role para perto delas (lazy).</p>
+
+                        <details>
+                            <summary>Exemplos com atributo loading</summary>
+
+                            <p>Por padrão vem a imagem em eager, exemplo:</p>
+
+                            <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos" width="1200" height="343" loading="eager">
+
+                            <p>Exemplo com o loading lazy:</p>
+
+                            <img src="../midia/image/tecnologia/programando_2.webp" alt="Tela com códigos" width="1200" height="343" loading="lazy">
+                        </details>
+
+                        <p>Além de imagens estáticas é possível colocarmos gifs:</p>
+
+                        <details>
+                            <summary>Exemplos com imagens gif</summary>
+
+                            <img id="agenda" src="../midia/image/page_imagens/gato_no_computador.gif" alt="Meme gato digitando no notebook" width="300" height="300" class="w_auto">
+                        </details>
+
+                    </div>
+
+                    <h3>Tag figure e figcaption</h3>
+
+                    <div>
+                        <p>Para colocarmos uma imagem com legenda, existe os atributos figure e figcaption que os definem, primeiro fazemos a tag figure e dentro dela colocamos a imagem e o figcaption dentro do figcaption coloca-se um texto</p>
+
+                        <details>
+                            <summary>Exemplos</summary>
+
+                            <p>Exemplo 1:</p>
+
+                            <figure>
+                                <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos" width="1200" height="343">
+
+                                <figcaption>Este texto está dentro de um figcaption e seria uma descrição da imagem à cima</figcaption>
+                            </figure>
+
+                            <p>Exemplo 2, passe o mouse sobre a imagem para ver a legenda:</p>
+                            
+                            <style>
+                                .imagem_com_texto_dentro {
+                                    position: relative;
+                                }
+
+                                .imagem_com_texto_dentro:hover {
+                                    background-color: rgba(197, 197, 197, 0.6);
+                                }
+
+                                .imagem_com_texto_dentro:hover img {
+                                    opacity: 0.2;
+                                }
+
+                                .imagem_com_texto_dentro:hover figcaption {
+                                    opacity: 1;
+                                }
+
+                                .imagem_com_texto_dentro figcaption {
+                                    position: absolute;
+                                    top: 0px;
+                                    left: 0px;
+                                    color: var(--preto);
+                                    opacity: 0;
+                                }
+                            </style>
+
+                            <figure class="imagem_com_texto_dentro">
+                                <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos" width="1200" height="343">
+
+                                <figcaption>A imagem representa uma tela cheia de códigos retirada do site Pexels</figcaption>
+                            </figure>
+                        </details>
+
+                    </div>
+
+                    <h3>Tag picture e source</h3>
+
+                    <div>
+                        <p>Muitas vezes é preciso para que em tamanhos de telas diferentes coloquemos imagens mais adequadas para as dimensões da tela do aparelho, por exemplo, um celular tem uma tela de 400px e o notebook uma tela de 1200, uma imagem de 1000 de largura serve perfeitamente para o computador, mas para o celular fica muito pesada, sendo que poderia ser otimizada, e para trazermos a imagem correta de acordo com o tamanho de tela utilizamos os elementos picture e source</p>
+
+                        <p>Com o picture criamos um elemento que armazenará vários elementos source e 1 elemento img, no img colocamos a imagem que será para a menor tela ou para a maior tela</p>
+
+                        <p>Nos elementos source informamos 2 atributos essenciais, o media e o srcset. O srcset é o link, caminho ou código em base64 alternativo, que substituirá o src do elemento img. O media serve para falar a partir de que tamanho de tela a imagem que está no srcset deverá ser carregada e substituir o elemento img.</p>
+
+                        <p>Quando utilizamos este tipo de forma responsiva para alterarmos o tamanho da imagem, devemos sempre pensar se queremos usar como base a tela do celular com uns 400px ou a tela de um computador com uns 1600px, a escolha de um deles mudará a forma com a qual ajustamos os elementos source. Se for com base no computador, escrevemos primeiro o menor source até o maior, colocando dentro do atributo media o valor "(max-width: px;)" e antes de px inserimos o tamanho da tela. Se for com base no celular, escrevemos primeiro o maior source até o menor, colocando dentro do atributo media o valor "(min-width: px;)" e antes de px inserimos o tamanho da tela.</p>
+
+                        <details>
+                            <summary>Altere o tamanho da tela para ver os efeitos</summary>
+                                
+                            <p>Com base no computador:</p>
+
+                            <picture>
+                                <source media="(max-width:576px)" srcset="../midia/image/tecnologia/programando_3.webp">
+                                <source media="(max-width:768px)" srcset="../midia/image/tecnologia/programando_2.webp">
+                                <img src="../midia/image/tecnologia/programando.webp" alt="Tela com códigos" width="1200" height="343">
+                            </picture>
+
+                            <p>Com base no celular:</p>
+
+                            <picture>
+                                <source media="(min-width:768px)" srcset="../midia/image/tecnologia/programando.webp">
+                                <source media="(min-width:576px)" srcset="../midia/image/tecnologia/programando_2.webp">
+                                <img src="../midia/image/tecnologia/programando_3.webp" alt="Tela com códigos" width="1200" height="343">
+                            </picture>
+
+                        </details>
+
+                    </div>
+
+                    <h3 id="tag_map_area">Tag map e area</h3>
+                    
+                    <div>
+                        <p>Algumas vezes queremos que uma parte da imagem seja clicável, para que possamos interagir com a imagem, seja redirecionando ou utilizando conjuntamente com um evento javascript, diferente de utilizar o elemento "a" para criar um hyperlink em toda a imagem é possível que somente um elemento visual da imagem seja acessado.</p>
+
+                        <p>
+                            Como fazer: 
+                            <br> 1° Crie a imagem que você usará como base, faça ela padrão com o src, alt, width, height e os outros atributos que você precisa configurar.
+                            <br> 2° Crie um elemento "map" 
+                            <br> 3° Adicione no elemento "map" o atributo "name", o valor deve ser um nome único na página
+                            <br> 4° Dentro do elemento map adicione elementos area
+                            <br> 5° No elemento area é preciso adicionar atributos como, shape, coords
+                            <br> O shape definirá como devem ser escritas as coordenadas, por padrão recomendo utilizar apenas 2 valores, o circle (círculo) e o poly (polígono), o círculo você precisa indicar o ponto do centro do círculo e depois o raio, para o polígono você vai precisar indicar uma coordenada para cada vez que o traço da figura mudar de direção.
+                        </p>
+
+                        <p>Apesar de com esses elementos ser possível fazer uma área da imagem ser clicada, ele não é responsivo, logo, só funciona com imagens que na página estão com seus width e height fixos</p>
+                            
+                        <div class="overflow_auto">
+                            <img src="../midia/image/page_imagens/mesa_de_trabalho.jpg" alt="Mesa de trabalho com caderno, notebook, celular e xícara de café" width="600" height="400" class="w_auto" usemap="#mesa_de_trabalho">
+                        </div>
+
+                        <map name="mesa_de_trabalho">
+
+                            <area shape="rect" coords="441, 181, 490, 261" href="../midia/image/page_imagens/celular.png" alt="Celular" download="celular-teste-download" />
+            
+                            <area shape="circle" coords="492, 318, 48" href="#cafe" alt="Café" target="_blank" />
+            
+                            <area shape="poly" coords="111, 361, 11, 317, 10, 306, 78, 197, 173, 233" alt="Agenda" style="cursor: pointer;" onclick="window.alert('Você clicou na agenda')" />
+            
+                            <area shape="poly" coords="170, 42, 427, 42, 419, 199, 426, 364, 420, 370, 174, 368, 170, 360, 181, 202" href="#notebook" alt="Laptop">
+
+                        </map>
+
+                        <p>A seguir estão algumas imagens que estão para exemplificar os efeitos do map e area</p>
+
+                        <div class="row">
+                            <div id="agenda" class="col_12 col_md_6">
+                                <img src="../midia/image/page_imagens/caderno_com_lapis.jpg" alt="Caderno com caneta em cima" width="300" height="181" class="w_auto">
+                            </div>
+                            <div class="col_12 col_md_6">
+                                <img src="../midia/image/page_imagens/celular.png" alt="Celular" width="100" height="200" class="w_auto">
+                            </div>
+                            <div id="notebook" class="col_12 col_md_6">
+                                <img src="../midia/image/page_imagens/laptop.jpg" alt="Notebook" width="400" height="266" class="w_auto">
+                            </div>
+                            <div id="cafe" class="col_12 col_md_6">
+                                <img src="../midia/image/page_imagens/copo_de_cafe.jpg" alt="Xícara de café" width="200" height="200" class="w_auto">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>
