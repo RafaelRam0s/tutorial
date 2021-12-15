@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Vídeo em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Vídeos</h1>
+            
+                <div>
+                    <p>Vídeos são normalmente arquivos bem pesados, salva-los em seu servidor consome uma boa parte do espaço de memória disponível, por isso é conveniente utilizar links externos ao invés de inserir o local do arquivo.</p>
+
+                    <h3>Tag video e source</h3>
+
+                    <div>
+                        <p>Assim como imagens sempre que trazer um vídeo é indicado informar uma altura e largura para a página já separar o espaço do elemento evitando reajustes da página ao carregar</p>
+                        
+                        <details class="overflow_auto">
+                            <summary>Tipos de vídeos</summary>
+
+                            <p>Vídeo padrão:</p>
+        
+                            <video width="320" height="176" controls>
+                                <source src="../midia/video/mov_bbb.mp4" type="video/mp4">
+                                <source src="../midia/video/mov_bbb.ogv" type="video/ogg">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                            <p>Vídeo inicializando automaticamente ao elemento ser processado</p>
+
+                            <video width="320" height="176" controls autoplay>
+                                <source src="../midia/video/mov_bbb.mp4" type="video/mp4">
+                                <source src="../midia/video/mov_bbb.ogv" type="video/ogg">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                            <p>Vídeo com loop, ao terminar ele reinicia</p>
+
+                            <video width="320" height="176" controls loop>
+                                <source src="../midia/video/mov_bbb.mp4" type="video/mp4">
+                                <source src="../midia/video/mov_bbb.ogv" type="video/ogg">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                            <p>Vídeo começa com volume 0</p>
+
+                            <video width="320" height="176" controls muted>
+                                <source src="../midia/video/mov_bbb.mp4" type="video/mp4">
+                                <source src="../midia/video/mov_bbb.ogv" type="video/ogg">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                            <p>Imagem da capa de vídeo modificada</p>
+
+                            <video width="320" height="176" controls poster="../midia/image/logo_r.png">
+                                <source src="../midia/video/mov_bbb.mp4" type="video/mp4">
+                                <source src="../midia/video/mov_bbb.ogv" type="video/ogg">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                            <p>Vídeo do curso em vídeo</p>
+
+                            <video controls>
+                                <source src="../midia/video/seja-apoiador-e-receba-recompensas.mp4" type="video/mp4">
+                                O vídeo não pôde ser reproduzido
+                            </video>
+
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

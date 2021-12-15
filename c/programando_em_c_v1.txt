@@ -1,0 +1,691 @@
+
+Programando em C:
+
+Bibliotecas (#include<>):
+    Em C todos os códigos e comandos surgem a partir de "bibliotecas", contudo elas não são ativadas automaticamente, precisamos chamar elas com o código a seguir:
+
+    #include </*nome_da_biblioteca*/>
+
+    Desta forma estamos pedindo para o programa incluir uma biblioteca e trazer suas regras e funções para o código.
+
+    Bibliotecas mais utilizadas:
+        stdio.h (printf scanf)
+        stdbool.h (bool true false)
+        stdmath.h (pow floor ceil)
+        
+Comentários (// /**/):
+    Comentário em linha //
+    Comentário em bloco /* */
+
+Como iniciar (int main() {return 0;}):
+    ----------------
+    int main() {
+        /* código */
+        return 0;
+    }
+    ----------------
+
+    A função main é chamada assim que compilamos o código, é ela quem irá armazenar a maior parte do seu código
+
+Como escrever uma mensagem (printf):
+    No printf o que for escrito entre aspas duplas aparecerá na tela:
+
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+        printf("Hello World!");
+        // A tela retorna: Hello World!
+
+        return 0;
+    }
+    ----------------
+
+
+    Como utilizar variáveis na mensagem? Para isso precisamos dos códigos de formatação ao qual quando chamados se atribuem na variável.
+
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+        char letra = 'B';
+        char texto[100] = "Hello World!";
+        int numero_inteiro = 1;
+        float numero_com_casas_decimais = 0.1;
+
+        printf("Codigo de formatacao para caracter: %c", letra);
+        printf("Codigo de formatacao para string: %s", texto);
+        printf("Codigo de formatacao para numeros inteiros: %d", numero_inteiro);
+        printf("Codigo de formatacao para numeros com casas decimais: %f", numero_com_casas_decimais);
+
+        // Para colocar varias variáveis dentro de um único texto acrescete os códigos de formatação e escreva respectivamente as variaveis a qual devem ser aclopados, separando-as por vírgulas
+
+        printf("Caracter: %c, Numero: %d, Numero novamente para exemplo: %d", letra, numero_inteiro, numero_inteiro);
+
+        return 0;
+    }
+    ----------------
+
+Caracteres de controle (\a \n \t \"):
+    \a – alerta (sai um de beep do computador)
+    \n – nova linha (quebra a linha atual)
+    \r – Insert (em um printf o que for escrito antes é substituido pelo que for escrito depois do \r, exemplo: printf("Teste \r Feito modificacao"); terá como saída: " Feito modificacao", outro exemplo: printf("Testando \rok"); terá como saída: "okstando")
+    \t – tabulação (tab)
+    \b – retrocesso (coloca o cursor uma posição antes do \b)
+    \" – aspas
+    \\ - contra-barra
+    \0 - nulo @@@
+
+    Os caracteres de controle são utilizados no meio de strings e acabam por modifica-la
+
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+
+        // Habilite o som do computador para ouvir o beep
+            printf("Hello World!\a");
+        
+        // Criar nova linha
+            printf("Nova \n Linha");
+            /*
+                Retorno:
+                "Nova "
+                " Linha"
+            */
+
+        // Como funciona o Insert
+            printf("Utilizando o \rInsert");
+            /*
+                Retorno:
+                "Insertando o "
+            */
+            printf("Utilizando o \rInsert para testes");
+            /*
+                Retorno:
+                "Insert para testes"
+            */
+            printf("Utilizando o \r Insert para testes");
+            /*
+                Retorno:
+                "Utilizando o Insert para testes"
+            */
+            printf("Utilizando o \rInsert");
+            printf("Frase teste");
+            /*
+                Retorno:
+                "InsertFrase teste"
+            */
+
+        // Como usar tab
+            printf("\tNovo paragrafo");
+            /*
+                Retorno:
+                "   Novo parágrafo"
+            */
+
+        // Como mover um cursor uma posição antes
+            printf("Apagando\b uma letra");
+            /*
+                Retorno:
+                "Apagand uma letra"
+            */
+            printf("Frase teste");
+            printf("\bApagando uma letra");
+            /*
+                Retorno:
+                "Frase testApagando uma letra"
+            */
+
+        return 0;
+    }
+    ----------------
+
+Utilizando variaveis:
+    Para se criar uma variável é necessário declarar o tipo primitivo e um nome para ser associado
+
+    [tipo primitivo] [nome_de_variavel];
+
+    Os tipos primitivos base que o C suporta são:
+        Tipo - Bits - Formato - Início - Fim
+        char - 8 - %c - -128 - 127
+        unsigned char - 8 - %c - 0 - 255
+        int - 32 - %d - -2.147.483.648 - 2.147.483.647
+        unsigned int - 32 - %u - 0 - 4.294.967.295
+        long int - 32 - %li - -2.147.483.648 - 2.147.483.647
+        unsigned long int - 32 - %lu - 0 - 4.294.967.295
+        short int - 16 - %hi - -32.768 - 32.767
+        unsigned short int - 16 - %hu - 0 - 65.535
+        float - 32 - %f - (+/−)10−38 - (+/−)1038
+        double - 64 - %lf - (+/−)10−308 - (+/−)10308
+    
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+        char letra;
+        char texto[100];
+        int numero_inteiro;
+        float numero_com_casas_decimais;
+        double float_com_mais_armazenamento;
+
+        return 0;
+    }
+    ----------------
+
+    Aclopadores de variável permitem-nos ajustar o espaçamento de memória dos tipos primitivos, o unsigned retira o espaço de memória para número negativos, porém aumenta a possibilidade de um número positivo.
+
+    Para se associar um valor colocamos o sinal de igual na frente do nome da variável, podemos passar o valor assim que ela é declarada ou depois
+
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+        // Atribuindo valores nas variáveis assim que definidas
+        char letra = 'B';
+        char texto[100] = "Hello World!";
+        int numero_inteiro = 1;
+        float numero_com_casas_decimais = 0.1;
+        double float_com_mais_armazenamento;
+
+        // Atribuindo valores nas variáveis/Substituindo os valores das variáveis
+        letra = 'A';
+        // @@@ texto = "Teste";
+        numero_inteiro = 6;
+        numero_com_casas_decimais = 12.34;
+
+        return 0;
+    }
+    ----------------
+
+Códigos de formatação (%c %s %d %i %f):
+    %c - Caracter: 'a', 'M', 'p'
+    %d ou %i - Inteiro: 10, -763
+    %f - Ponto flutuante – real 1.56, -9.3
+    %e - Notação científica
+    %s - Cadeia de caracteres "joaquim"
+    %p - hexadecimais
+
+Operações matemáticas(+ - * / %):
+    Para somar: +
+    // 5 + 2 = 7
+    Para subtrair: -
+    // 5 - 2 = 3
+    Para multiplicar: *
+    // 5 * 2 = 10
+    Para dividir: /
+    // 5 / 2 = 2.5
+    Para obter o resto de uma divisão: %
+    // 5 % 2 = 1
+
+Captar mensagem (scanf):
+    scanf("[codigo_de_formatacao]", &[nome_da_variavel])
+
+    Quando queremos que o usuário digite uma mensagem utilizamos o scanf para captar a mensagem e atribuir o valor em uma variável.
+
+    No scanf antes do nome da variável é preciso colocar o "e comercial" (&) para informar que você deseja associar o que o usuario digitou na memória da variável. Salvo exceções como em strings o & não deve ser utilizado
+
+    ----------------
+    #include<stdio.h>
+
+    int main() {
+        int numero_teste;
+        printf("Digite um numero: ");
+        scanf("%d", &numero_teste);
+
+        char texto[100];
+        printf("Digite uma letra: ");
+        scanf("%s", texto);
+
+        int num1, num2;
+        scanf("%d %d", &num1, &num2);
+        printf("Hello World %d %d", num1, num2);
+
+        return 0;
+    }
+    ----------------
+
+Estrutura de repetição:
+    for ([tipo_primitivo] [nome_de_variavel] = [dado]; [condicao verdadeira]; [uma_acao_que_acontecera]) {
+        /*código*/
+    }
+
+        ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            for (int x = 0; x > 2; x++) {
+                printf("Teste %d", x);
+            }
+
+            return 0;
+        }
+        ----------------
+
+    while ([condicao verdadeira]) {}
+
+        ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            int x = 0;
+
+            while (x > 2) {
+                printf("Teste %d", x);
+                x++;
+            }
+
+            return 0;
+        }
+        ----------------
+
+    do {} while ([condicao verdadeira]);
+
+        ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            int x = 0;
+
+            do {
+                printf("Teste %d", x);
+                x++;
+            } while (x > 2);
+
+            return 0;
+        }
+        ----------------
+
+Condicionais:
+    if ([condicao verdadeira]) {}
+
+    if ([condicao verdadeira]) {} else {}
+
+    if ([condicao verdadeira]) {} else if() {}
+
+    switch ([variavel]) {
+        case [valor_possivel_da_variavel]:
+            /*codigo*/
+            break;
+        case [valor_possivel_da_variavel]:
+            /*codigo*/
+            break;
+        default:
+            /*codigo*/
+            break;
+    }
+
+    Operador condicional:
+        [condicao] ? [codigo de verdade] : [codigo se mentira]
+
+Constante:
+    #define [nome_da_variavel] [valor_que_armazenara]
+
+    ----------------
+    #include<stdio.h>
+
+    #define nome "Rafael"
+    #define idade 19
+
+    int main() {
+
+        printf("Seu nome e %s e sua idade e %d", nome, idade);
+
+        return 0;
+    }
+    ----------------
+
+Vetor:
+    [tipo_primitivo] [nome_da_variavel][[quantidade_de_informacoes_que_podem_ser_adcionadas]];
+
+    float nota[5];
+
+    // Para associar um valor em um vetor [nome_da_variavel][[numero_em_que_o_elemento_estara_armazenado]];
+    nota[0] = 12.34;
+    nota[1] = 1.2;
+
+    float nota_1[5] = {12.34, 1.2};
+
+Matriz:
+    int matriz[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int matriz[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    // Para acessar um elemento da matriz
+    printf("Elemento da matriz: %d", matriz[0][0])
+
+Fazer função:
+
+    ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            void imprimaMensagem(void);
+            imprimaMensagem();
+
+            return 0;
+        }
+
+        void imprimaMensagem(void) {
+            printf("Teste");
+        }
+    ----------------
+
+    ----------------
+        #include<stdio.h>
+
+        void imprimaMensagem(void) {
+            printf("Teste");
+        }
+
+        int main() {
+
+            imprimaMensagem();
+
+            return 0;
+        }        
+    ----------------
+
+    ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            void imprimaNumero(int num1);
+            imprimaNumero(5);
+
+            return 0;
+        }
+
+        void imprimaNumero(int num1) {
+            printf("%d", num1);
+        }
+    ----------------
+
+    ----------------
+        #include<stdio.h>
+
+        int main() {
+
+            int imprimaNumero(int num1);
+            int num_teste_1 = imprimaNumero(5);
+
+            return 0;
+        }
+
+        int imprimaNumero(int num1) {
+            return num1;
+        }
+    ----------------
+
+Variavel local automatica e estática;
+
+    Automatica:
+        
+        ----------------
+            #include<stdio.h>
+
+            int main() {
+
+                void imprimaNumero(void);
+                imprimaNumero(); // sempre retorna o número 1 quando chamado
+                imprimaNumero(); // sempre retorna o número 1 quando chamado
+                
+                return 0;
+            }
+
+            void imprimaNumero(void) {
+                int num1 = 0;
+                num1 = num1 + 1;
+
+                printf("%d\n", num1);
+            }
+        ----------------
+
+    Estatica:
+        ----------------
+            #include<stdio.h>
+
+            int main() {
+
+                void imprimaNumero(void);
+                imprimaNumero(); // retorna 1
+                imprimaNumero(); // retorna 2
+                
+                return 0;
+            }
+
+            void imprimaNumero(void) {
+                static int num1 = 0;
+                num1 = num1 + 1;
+
+                printf("%d\n", num1);
+            }
+        ----------------
+
+@@@ Estrutura:
+    struct horario
+    {
+        int horas;
+        int minutos;
+        int seguundos;
+    }
+
+    struct horario data_atual;
+
+    data_atual.horas = 15;
+    data_atual.minutos = 16;
+    data_atual.seguundos = 17;
+
+Pausar sistema
+    system("pause");
+
+    Utilizado normalmente antes do return 0;
+    Na maior parte dos compiladores o console se mantem aberto mesmo quando o programa finaliza, então esse código nao é necessário, porém existem programas que ao terminar de ler as linhas ele fecha o console, o system("pause") serve para falar para o programa ficar parado
+
+    Esse código funciona apenas em windows que utiliza o "DOS"
+
+    Ao invés de usar esse código utilize o getchar()
+
+    É uma boa prática não utilizar o system("pause")
+
+    O comando system() ativa o prompt de comando do sistema operacional
+
+Biblioteca math.h:
+    #include <stdio.h>
+    #include <conio.h>
+    #include <math.h>//necessária para usar as funções matemáticas
+    int main (void)
+    {
+        double x = 9.75;
+        
+        double arredonda_pbaixo = 0.0;
+        double arredonda_pcima = 0.0;
+        double raiz_quadrada = 0.0;
+        double potencia = 0;
+        
+        double seno = 0;
+        double cosseno = 0;
+        double tangente = 0;
+        
+        double logaritmo_natural = 0;
+        double logaritmo_xbase10 = 0;
+        
+        printf("\n********* Utilizando a biblioteca math.h ***********\n\n");
+        
+        printf("\nFuncoes de arredondamento\n\n");
+        printf("Valor original de x = %f\n",x);
+        
+        arredonda_pbaixo = floor(x);
+        printf("Valor aproximado para baixo %f \n", arredonda_pbaixo );
+        
+        arredonda_pcima = ceil(x);
+        printf("Valor aproximado para cima %f \n", arredonda_pcima);
+        
+        printf("\n----------------------------------------------------\n\n");
+        
+        printf("\nFuncoes de raiz e potenciacao \n\n");
+        printf("Valor original de x = %lf\n",x);
+        raiz_quadrada = sqrt(x);
+        printf("Valor da raiz quadrada %f \n",raiz_quadrada);
+        
+        x = ceil(x); //arredondando o x para cima, x passa a valer 10
+        
+        potencia = pow(x,2); //elevando o valor de x ao quadrado
+        printf("Valor de %.2lf ao quadrado %.2f \n",x,potencia);
+        
+        printf("\n----------------------------------------------------\n\n");
+        
+        printf("\nFuncoes trigonometricas\n\n");
+        
+        x = 0; //atribuindo zero em x para fazer os cálculos trigonométricos
+        
+        seno = sin(x);
+        printf("Valor de seno de %.2f = %.2f \n",x,seno);
+        
+        cosseno = cos(x);
+        printf("Valor de cosseno de %.2f = %.2f \n",x,cosseno);
+        
+        tangente = tan(x);
+        printf("Valor de tangente de %.2f = %.2f \n\n",x,tangente);
+        
+        printf("\n----------------------------------------------------\n\n");
+        
+        printf("\nFuncoes logaritmicas\n\n");
+        
+        x = 2.718282;
+        logaritmo_natural = log(x);
+        printf("Logaritmo natural de x %.2f = %.2f \n",x,logaritmo_natural);
+        
+        x = 10;
+        logaritmo_xbase10 = log10(x);
+        printf("Logaritmo de x na base 10 %.2f = %.2f \n",x,logaritmo_xbase10);
+        printf("\n----------------------------------------------------\n\n");
+        
+        getch();
+        return(0);
+    }
+
+Break Continue Goto:
+    O break para e sai da estrutura
+
+    O continue para e entra novamente na estrutura
+
+    O goto faz parar e então acessa uma estrutura que vc específicou. Para fazer isso, vc precisa colocar um nome como se fosse uma variavel antes da estrutura e onde vc ativar o goto passar o nome:
+        int i=0;
+        teste_com_goto: while(i < 3) {
+            i++;
+            printf("\nTeste");
+            goto teste_com_goto;
+            printf("Este texto nunca aparecera por causa do goto");
+        }
+
+@@@ Ponteiros:
+    /*
+        #include <stdio.h>
+
+        int main() {
+
+            int x;
+            x = 10;
+
+            int *ponteiro;
+            ponteiro = &x;
+
+            printf("Valor de x: %d", x);
+            printf("Valor de x: %p", &x);
+            printf("Valor de ponteiro: %i", *ponteiro);
+            printf("Valor de ponteiro: %p", ponteiro);
+
+            return 0;
+        }
+    */
+
+    Ponteiro é onde na memória a variável foi armazenada
+    
+@@@ Captar mensagem para strings:
+    @@@ scanf("%[^\n]", variavel_string) // outra forma de captar uma mensagem até o usuário quebrar a linha
+
+    // O mais indicado é o fgets, pois o /* scanf("%[^\n]", variavel_string) */ armazena mensagens que ultrapassem o tamanho do vetor, já o fgets armazena a quantidade que você informou
+
+    /*
+        char nome_da_variavel[numero_de_espacos_na_memoria_que_ocupa];
+        fgets(nome_da_variavel, numero_de_espacos_na_memoria_que_ocupa, stdin);
+        // O stdin capta entradas vindas do teclado, existem outras entradas, como de mouse, código de barras e tantas outras
+    */
+    
+    /*
+        #include <stdio.h>
+        
+        int main() {
+
+            char palavras[50] = {"Oi. Vamos aprender a programar com a linguagem C?"};
+
+            printf("Digite seu nome: ");
+            fgets(palavras, 50, stdin);// file
+
+            printf("%s\n\n", palavras);
+
+            return 0;
+        }
+    */
+
+@@@ Fazendo estruturas:
+    /*
+        #include <stdio.h>
+
+        int main() {
+
+            struct pessoa {
+                char nome[100];
+                int idade;
+                float altura;
+            };
+
+            struct pessoa usuario;
+
+            printf("Nome: ");
+            fgets(usuario.nome, 100, stdin);
+
+            printf("Idade: ");
+            scanf("%d", &usuario.idade);
+            printf("Altura: ");
+            scanf("%f", &usuario.altura);
+            
+            printf("Ola %s, de idade %d, com altura %f", usuario.nome, usuario.idade, usuario.altura);
+
+            return 0;
+        }
+    */
+    
+    Estruturas são blocos com variáveis feitas para organizar a criação de conjuntos de dados
+
+@@@ Descobrir quantos bits uma variavel ocupa:
+    /*
+        int x = 123;
+        int num = sizeof(x);
+    */
+
+@@@ Biblioteca string.h:
+    Copiar uma string para outra: strcpy(texto, variavel_em_que_quer_armazenar);
+
+@@@ Biblioteca time.h:
+    Gerar um número aleatório: 
+    /*
+        #include <stdio.h>
+        #include <time.h>
+        #include <stdlib.h>
+
+        int main()
+        {
+            int x; 
+            srand(time(NULL));
+            x = rand() % 10; /* x vai receber um valor entre 0 e 9 */
+            printf("%d", x);
+
+            return 0;
+        }
+    */

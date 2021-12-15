@@ -1,0 +1,520 @@
+
+
+
+
+
+
+
+
+
+
+
+
+-----CONCAT, CONCAT_WS----
+
+Para concatenar valores com o +:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, ( 1 + 2 + 'teste' + 1 + 2 + ' ' + 'deu' + ' certo' + pais) as concatenacao from paises
+    */
+
+    Obs: Para concatenar números tem que ter strings antes da soma
+
+Para concatenar valores:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, concat(pais, id) as pais_mais_id from paises
+    */
+
+    No parenteses do concat vc pode simplesmente unir strings ou colunas ou string com coluna e vice-versa
+        select *, concat('teste', ' unindo ', 'strings') as frase_montada from paises
+        select *, concat(pais, ano_descobrimento, id) as pais_mais_id_mais_ano_descobrimento from paises
+        select *, concat(pais, 'teste') as pais_mais_string from paises
+
+    Pode concatenar quantos valores desejar, só precisa acrescentar uma vírgula e informar o que deve ser juntado
+
+Para concatenar valores e configurar um valor que irá sempre se repetir no meio das junções:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, concat_ws(' + ', pais, 'teste', 1) as concatenacao from paises;
+    */
+
+---------------
+
+
+
+
+
+-------UPPER, LOWER-----
+
+Para ver uma string com todos os caracteres maiusulos:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, upper(pais) as pais_maiusculo from paises
+    */
+
+Para ver uma string com todos os caracteres minusculos:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, lower(pais) as pais_minusculo from paises
+    */
+
+-------------------------
+
+
+
+
+-----------LEN, DATALENGTH-----------
+
+Para ver quantos caracteres tem um valor:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+
+        select *, len(pais)
+        from paises;
+    */
+
+Para ver quantos bytes de caracteres tem um valor:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0);
+    
+        select *, datalength(pais) as pais_caracteres from paises;
+    */
+    
+-------------------------------
+
+
+
+
+
+-------------REPLACE---------
+
+Para achar um valor e substituir por outro finitas vezes:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+
+        select *, replace(paises.pais, 'Br', 'texto modificado ')
+        from paises;
+    */
+
+    - replace(valor, valor_a_encontrar, valor_a_substituir) - o primeiro parâmetro deve ser informado qual o valor que será lido, no segundo deve ser informado o que deve ser procurado no primeiro parâmetro e o terceiro indica pelo que deve ser substituído
+
+Para achar um valor e excluir finitas vezes:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+
+        select *, replace(paises.pais, 15, '')
+        from paises;
+    */
+
+------------------------------
+
+
+
+
+
+
+--------------CHARINDEX------------------
+
+Para achar a posição da primeira ocorrência de um valor em uma string:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+
+        select *, charindex('br', pais)
+        from paises;
+    */
+
+    - charindex(string, valor) - O primeiro parâmetro indica o que deve ser procurado e o segundo parâmetro indica onde deve ser buscado
+
+    Obs: caso não tenha uma ocorrência é retornado o valor zero
+
+------------------------------------------
+
+
+
+
+
+-------------STUFF-------------
+
+Para indicar que a partir de uma quantidade de caracteres, o texto deve ser substituido
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+
+        select *, stuff(pais, 2, 1, '(...)')
+        from paises;
+    */
+
+    - stuff(valor, natural, natural, valor) - o primeiro parâmetro informa o valor que deve ser lido, o segundo parâmetro informa a partir de quantos caracteres deve ocorrer o efeito stuff, o terceiro parâmetro informa quantos caracteres devem desaparecer, o quarto parâmetro informa o que deve ser colocado na posição indicada pelo segundo parâmetro
+
+    Obs: se o segundo parâmetro do stuff for maior que a quantidade de caracteres do primeiro valor será retornado um valor null
+
+-------------------------------
+
+
+
+
+
+--------------RIGHT, LEFT---------------
+
+Para pegar uma quantia de caracteres da esquerda para a direita:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+
+        select *, left(pais, 3)
+        from paises;
+    */
+
+Para pegar uma quantia de caracteres da direita para a esquerda:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+
+        select *, right(pais, 3)
+        from paises;
+    */
+
+-----------------------------------------
+
+
+
+
+
+
+------------REPLICATE--------------
+
+Para repetir um valor por uma determinada quantia de vezes:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+      
+        select *, replicate(pais, 5)
+        from paises;
+    */
+
+    - replicate(valor, natural) - o primeiro parâmetro informa o que deve ser repetido, e o segundo a quantidade de vezes que deve ser repetido
+
+-----------------------------------
+
+
+
+
+
+
+----------REVERSE-------------
+
+Para inverter a ordem dos caracteres, o último sendo o primeiro o segundo penúltimo e assim por diante:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300);
+      
+        select *, reverse(pais)
+        from paises;
+    */
+
+------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

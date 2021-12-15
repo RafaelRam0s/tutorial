@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Áudios em HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Áudios</h1>
+            
+                <div>
+                    <p>Cada navegador apresenta o áudio em um formato diferente, mas as ferramentas que podem ser inseridas no som são gerais</p>
+
+                    <h3>Tag audio e source</h3>
+                    
+                    <div>
+                        <p>
+                            Como colocar som no html:
+                            <br> 1° Abra a tag audio
+                            <br> 2° Defina os atributos que o audio terá, como controls, autoplay, loop, muted e preload
+                            <br> 3° Dentro da tag audio adicione a tag source com atributos como, src e type
+                        </p>
+
+                        <p>Pode-se criar mais de um source como vias alternativas de som para caso o primeiro source não funcione ou caso o navegador da pessoa não suporte o tipo de arquivo. Recomendo por padrão utilizar arquivos de áudio em ogg por ser mais leve o arquivo</p>
+
+                        <p>Atributo controls é essencial para o sistema poder apresentar o audio, pois é ele quem adicionará opções para o usuário interagir e rodar o som</p>
+
+                        <audio controls>
+                            <source src="../midia/audio/musica_de_jogo.mp3" type="audio/mpeg">
+                            <source src="../midia/audio/musica_de_jogo.ogg" type="audio/ogg">
+                            O controle de áudio não pôde ser gerado
+                        </audio>
+
+                        <p>Atributo autoplay Faz que o player seja iniciado assim que a página processar o elemento</p>
+
+                        <audio controls autoplay>
+                            <source src="../midia/audio/musica_de_jogo.mp3" type="audio/mpeg">
+                            <source src="../midia/audio/musica_de_jogo.ogg" type="audio/ogg">
+                            O controle de áudio não pôde ser gerado
+                        </audio>
+
+                        <p>Atributo muted faz com que quando iniciado o som ele começará no volume 0</p>
+
+                        <audio controls muted>
+                            <source src="../midia/audio/musica_de_jogo.mp3" type="audio/mpeg">
+                            <source src="../midia/audio/musica_de_jogo.ogg" type="audio/ogg">
+                            O controle de áudio não pôde ser gerado
+                        </audio>
+
+                        <p>Atributo loop faz com que ao som chegar ao final ele irá reiniciar</p>
+
+                        <audio controls loop>
+                            <source src="../midia/audio/musica_de_jogo.mp3" type="audio/mpeg">
+                            <source src="../midia/audio/musica_de_jogo.ogg" type="audio/ogg">
+                            O controle de áudio não pôde ser gerado
+                        </audio>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

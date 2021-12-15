@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <!-- <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" /> -->
+
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Estrutura HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Puzzles</h1>
+            
+                <div>
+                    <h3>Dia 1</h3>
+
+                    <div>
+                        <p>Por favor selecione o arquivo que será lido:</p>
+                        <input type="file" id="txtfiletoread" />
+                        <p>Conteúdo do arquivo:</p>
+                        <p id="filecontents" style="overflow: auto; max-height: 200px;">
+                        </p>
+                        <button onclick="respostaDesafio1()">Gerar resposta</button>
+                        <p id="desafio-1">Resposta: </p>
+
+                        
+                        <script>
+
+                            function respostaDesafio1() {
+                                let valor_do_sonar = document.getElementById('filecontents').innerText;
+                                let vetor_do_sonar = valor_do_sonar.split("\n");
+
+                                // document.getElementById('desafio-1').innerHTML = vetor_do_sonar[1];
+
+                                let quantidade_de_vezes_que_emergiu = 0;
+                                let profundidadeAtual = parseInt(vetor_do_sonar[0]);
+
+                                for (let contador = 1; vetor_do_sonar[contador] != undefined; contador++) {
+                                    if (profundidadeAtual < vetor_do_sonar[contador]) {
+                                        quantidade_de_vezes_que_emergiu++;
+                                    }
+                                    profundidadeAtual = vetor_do_sonar[contador];
+                                }
+
+                                document.getElementById('desafio-1').innerText = 'Resposta: ' + quantidade_de_vezes_que_emergiu;
+
+                            }
+
+                            function respostaDesafio1Parte2() {
+                                /*
+                                    1
+                                    2
+                                    3
+                                    4
+
+                                */
+                                let valor_do_sonar = document.getElementById('filecontents').innerText;
+                                let lista_de_valores_do_sonar = valor_do_sonar.split("\n");
+
+                                let lista_da_soma_de_profundidades = [];
+
+                                for (let contador = 0; contador < lista_de_valores_do_sonar.length - 2; contador++) {
+                                    for (let contador_2 = 0; contador_2 < 3; contador_2++) {
+
+                                        if (lista_da_soma_de_profundidades[contador] == undefined) {
+                                            lista_da_soma_de_profundidades.push(parseInt(lista_de_valores_do_sonar[contador + contador_2]));
+                                        } else {
+                                            lista_da_soma_de_profundidades[contador] += parseInt(lista_de_valores_do_sonar[contador + contador_2]);
+                                        }
+                                        
+                                    }
+                                }
+
+                                let quantidade_de_vezes_que_a_soma_superou = 0;
+                                let somaDaProfundidadeAtual = parseInt(lista_da_soma_de_profundidades[0]);
+
+                                for (let contador = 1; lista_da_soma_de_profundidades[contador] != undefined; contador++) {
+                                    if (somaDaProfundidadeAtual < lista_da_soma_de_profundidades[contador]) {
+                                        quantidade_de_vezes_que_a_soma_superou++;
+                                    }
+                                    somaDaProfundidadeAtual = lista_da_soma_de_profundidades[contador];
+                                }
+
+
+                                document.getElementById('desafio-1').innerText = 'Resposta: ' + quantidade_de_vezes_que_a_soma_superou;
+                            }
+
+                            window.onload = function () {
+                                //Check the support for the File API support
+                                if (window.File && window.FileReader && window.FileList && window.Blob) {
+                                    var fileSelected = document.getElementById('txtfiletoread');
+                                    fileSelected.addEventListener('change', function (e) {
+                                        //Set the extension for the file
+                                        var fileExtension = /text.*/;
+                                        //Get the file object
+                                        var fileTobeRead = fileSelected.files[0];
+                                        //Check of the extension match
+                                        if (fileTobeRead.type.match(fileExtension)) {
+                                            //Initialize the FileReader object to read the 2file
+                                            var fileReader = new FileReader();
+                                            fileReader.onload = function (e) {
+                                                var fileContents = document.getElementById('filecontents');
+                                                fileContents.innerText = fileReader.result;
+                                            }
+                                            fileReader.readAsText(fileTobeRead);
+                                        }
+                                        else {
+                                            alert("Por favor selecione arquivo texto");
+                                        }
+
+                                    }, false);
+                                }
+                                else {
+                                    alert("Arquivo(s) não suportado(s)");
+                                }
+                            }
+
+                        </script>
+
+                        <script>
+
+                            
+
+                        </script>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

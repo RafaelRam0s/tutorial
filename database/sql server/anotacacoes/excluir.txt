@@ -1,0 +1,249 @@
+
+
+--------------DROP TABLE/DATABASE--------------
+
+Excluir um banco de dados:
+    /* 
+        create database nome_do_banco
+        drop database nome_do_banco; 
+    */
+
+    - drop - largar, executa a ação de excluir alguma coisa
+
+    - database - banco de dados, especifica para o drop que deverá ser excluido um banco de dados
+
+    - nome_do_banco - valor mutável, especifica exatamente qual banco de dados deve ser excluido
+
+Excluir uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table nome_da_tabela ( id int );
+        
+        // drop table nome_da_tabela;
+    */
+    
+    - drop - largar, executa a ação de excluir alguma coisa
+
+    - table - tabela, especifica para o drop que deverá ser excluido uma tabela
+
+    - nome_da_tabela - valor mutável, especifica exatamente qual tabela deve ser excluida
+
+------------------------------------------------
+
+
+
+
+----------------DELETE FROM, TRUNCATE--------------
+
+Excluir todos os cadastros de uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        delete from paises;
+    */
+
+    - delete from - deletar tudo de algum lugar
+
+    - paises - valor mutável que indicou que o que deveria ser exluido são os cadastros da tabela paises
+
+Excluir um cadastro de uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int identity(1,1) not null primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        delete from paises
+        where id = 2;
+    */
+
+    - delete from - deletar tudo de algum lugar
+
+    - paises - valor mutável que indicou que o que deveria ser excluido são os cadastros da tabela paises
+
+    @@@@@- where - falou que deve ser modificado onde for indicado como true
+
+    - id = 2 - valor mutável que indica qual a condição que o cadastro tem que ter para ser excluído
+
+Resetar uma tabela (primary key sendo resetado na contagem):
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int identity(1,1) not null primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        truncate table paises;
+    */
+
+    - truncate - apaga a existência de informações como se nunca houvessem existido o determinado cadastro
+
+@@@@@ Resetar um cadastro de uma tabela:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int identity(1,1) not null primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+
+        truncate paises
+        @@@@@where id = 2;
+    */
+
+------------------------------------------
+
+
+
+
+
+--------------DROP COLUMN--------------
+
+Excluir uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554);
+        alter table paises
+        add moeda_oficial varchar(255);
+
+        alter table paises
+        drop column moeda_oficial;
+    */
+
+    - alter - alterar, indica que algo será alterado
+
+    - table - define que o que deve ser alterado é uma tabela
+
+    - paises - valor mutável, define que a tabela com este nome é quem deve ser modificada
+
+    - drop - define que será excluida algo na tabela
+
+    - column - define que será excluida uma coluna da tabela
+
+    - moeda_oficial - Define qual o nome da coluna a qual deve ser excluida
+
+---------------------------------------
+
+
+
+---------VIEW---------
+
+Para excluir uma view:
+    /*
+        create database dbteste;
+        use dbteste;
+        create table pessoa (id int primary key identity(1,1));
+        create view teste_de_view
+        as 
+        select * from pessoa
+
+        drop view teste_de_view;
+    */
+
+----------------------
+
+
+
+
+
+
+
+    
+-----------PROCEDURE------------
+
+Para excluir uma procedure:
+    /*
+        create table dbtestes;
+        use dbtestes;
+        create table paises (
+            id primary key identity(1,1) not null,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        )
+
+        insert into paises
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Canada', 'Ottawa', 1594),
+        ('Canada', 'Quebec', 1600),
+        ('Brasil', 'Acre', 100),
+        ('Canada', 'Montreal', 1324),
+        ('Japão', 'Tóquio', 1200),
+        ('Mexico', 'Taco', 1800),
+        ('Capadocia', 'Cacapadocia', 0),
+        ('Nova Zelândia', 'Parana Pi Acaba', 1300),
+        ('teste Brasil com br no meio', '', 123),
+        ('Teste com br no fim Brasil', 'alguma capital louca', 321),
+        ('Teste com letras para pesquisa em partes barril', 'nenhuma', 9289);
+
+        go
+        create procedure selecionar_pais
+        @este varchar(255)
+        as
+        select * from paises
+        where pais = @este;
+        go
+
+        drop procedure nome_da_procedure;
+    */
+
+---------------------------------
+
+
+
+
+
+
+

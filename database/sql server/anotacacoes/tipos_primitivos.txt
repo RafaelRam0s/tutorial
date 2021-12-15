@@ -1,0 +1,143 @@
+
+
+
+Tipos existentes:
+    bigint
+    binary(50)
+    bit
+    char(10)
+    date
+    datetime
+    datetime2(7)
+    datetimeoffset(7)
+    decimal(18, 0)
+    float
+    geography
+    geometry
+    hierarchyind
+    image 
+    int
+    money
+    nchar(10)
+    ntext
+    numeric(18, 0)
+    nvarchar(50)
+    nvarchar(MAX)
+    real
+    smalldatetime
+    smallint
+    smallmoney
+    sql_variant
+    text
+    time(7)
+    timestamp
+    tinyint
+    uniqueidentifier
+    varbinary(50)
+    varbinary(MAX)
+    varchar(50)
+    varchar(MAX)
+    xml
+
+
+
+
+
+-----------Numericos----------
+    
+    O que for somente número - 1234567890 - é considerado numerico
+    
+    Quando o banco de dados armazena um numérico se começar com 0 ele desconsidera o 0, logo valor 01 é para ele somente 1, 001 tbm é somente 1, mas 10 ele considera como 10 e 100 considera como 100
+
+    @@@@@- Smallint – Aceita valores entre -32768 até 32767 e ocupa 2 bytes.
+
+    - Tinyint – Os valores aceitos aqui variam entre 0 e 255, ocupa apenas 1 byte.
+        Exemplo de uso:
+            DDD int
+
+    - Int – Os valores aceitos aqui variam entre -2^31 (-2147483648) a 2^31-1 (2147483647). Ocupa 4 bytes.
+        Exemplo de uso:
+            CEP int
+
+    @@@@@- Bigint – Aceita valores entre -2^63 e 2^63-1, sendo que esse datatype ocupa 8 bytes.
+
+    @@@@@- Decimal(P,S) – Os valores aceitos variam entre -10^38-1 e 10^38-1, sendo que o espaço ocupado varia de acordo com a precisão. Se a precisão for de 1 a 9, o espaço ocupado é de 5 bytes. Se a precisão é de 10 a 19, o espaço ocupado é de 9 bytes, já se a precisão for de 20 a 28, o espaço ocupado é de 13 bytes, e se a precisão for de 29 a 38, o espaço ocupado é de 17 bytes.
+
+    @@@@@- Numeric(P,S) – Considerado um sinônimo do datatype decimal, o númerico também permite valores entre -10^38-1 e 10^38-1 e o espaço ocupado é o mesmo do anterior.
+
+    @@@@@- Float[(n)] – O mesmo que double precision quando o valor de n é 53, este datatype aceita valores entre -1.79E + 308 e 1.79E + 308. O espaço ocupado varia de acordo com o valor de n. Se esse valor estiver entre 1 e 24, a precisão será de 7 dígitos, sendo que o espaço ocupado será de 4 bytes. Se o valor de n estiver entre 25 e 53, sua precisão será de 15 dígitos, assim sendo o espaço ocupado será de 8 bytes.
+
+    @@@@@- Real – Este datatype é similar ao float(n) quando o valor de n é 24. Os valores aceitos variam entre -3.40E + 38 e 3.40E + 38. Esse datatype ocupa 4 bytes.
+
+    @@@@@- Money – Este datatype aceita valores entre -2^63 e 2^63-1, sendo que 8 bytes são ocupados.
+
+    @@@@@- Smallmoney – É possível usar valores entre -2^31 e 2^31-1, sendo que 4 bytes são ocupados.
+------------------------------
+
+
+
+
+
+
+-------------Textuais------------
+
+    Tudo que estiver entre aspas simples - '' - é considerado um tipo texto
+
+    - Char(n) – aceita até 8 mil dígitos, ocupa no disco um dígito por caracter. O valor inserido entre seu parenteses é fixo, logo se falarmos que é char(10) ele vai ocupar 10 dígitos na memória, mesmo que só preenchamos 6 dígitos. @@@@@ Obs 1: não aceita todos os caracteres, como por exemplo o - é -. Obs 2: Aceita valores cadastrados como numéricos
+        Exemplo de uso:
+            @@@@@ CPF char(11)
+            
+
+    - Varchar(n) - aceita até 8 mil dígitos, ocupa no disco um dígito por caracter. O valor inserido entre seu parenteses é variavel, logo se falarmos que é varchar(10) e cadastrarmos 6 dígitos só serão armazendos 6 dígitos.
+        Exemplo de uso:
+            Nome varchar(255)
+
+    @@@@@ - Text – Qualquer dígito pode ser usado neste datatype, sendo ocupado 1 byte por caractere, o equivalente a 2.147.483.647 bytes.
+        Exemplo de uso:
+            Redacao text
+            Depoimento text
+            Biografia text
+
+    @@@@@- Nchar(n) – Neste datatype, pode usar qualquer dígito, sendo ocupados 2 bytes a cada caractere. É possível usar até 8 mil bytes.
+
+    @@@@@- Nvarchar(n) – Neste datatype, pode usar qualquer dígito, sendo ocupados 2 bytes a cada caractere. É possível usar até 8 mil bytes.
+
+    @@@@@- Ntext – Também aceita qualquer digito, 2 bytes são ocupados a cada caractere. Podem ser usados até 1.073.741.823 bytes.
+---------------------------------
+
+
+
+
+
+
+
+------------Booleanos-----------
+    @@@@@- Bit – É um tipo de dado inteiro (conhecido também como booleano), cujo valor pode corresponder a NULL, 0 ou 1. Podemos converter valores de string TRUE e FALSE em valores de bit, sendo que TRUE corresponde a 1 e FALSE a 0.
+        Exemplo de uso:
+            Termos_de_uso_aceito bit
+---------------------------------
+
+
+
+
+
+
+
+------------Temporal-------------
+    @@@@@- Datetime – Permite o uso de valores entre 1/1/1753 e 31/12/9999. Este datatype ocupa 8 bytes e sua precisão atinge 3.33 milisegundos.
+
+    @@@@@- Smalldatetime – Aceita o uso de valores entre 1/1/1900 e 06/06/2079, sendo que sua precisão é de 1 minuto e ocupa 4 bytes em disco.
+---------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

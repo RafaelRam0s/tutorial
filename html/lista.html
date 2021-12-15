@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Lista</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Listas</h1>
+            
+                <div>
+                    <p>Quando queremos enunciar uma série de itens utilizamos uma lista</p>
+
+                    <h3>Tags ul, ol, li</h3>
+
+                    <div>
+                        <p>Para criarmos uma lista primeiro precisamos informar se ela será uma lista ordenada ou desordenada, uma lista ordenada é aquela que queremos numerar a quantidade de itens que estão presentes, já uma lista desordenada é aquela que só precisamos colocar os itens</p>
+
+                        <p>Exemplo de lista desordenada - Lista de mercado</p>
+
+                        <ul style="list-style-type: circle;">
+                            <li>Pão</li>
+                            <li>Manteiga</li>
+                            <li>Suco de laranja</li>
+                        </ul>
+
+                        <p>Exemplo de lista ordenada - Tarefas realizadas no dia</p>
+
+                        <ol style="list-style-type: decimal;">
+                            <li>Acordou</li>
+                            <li>Comeu</li>
+                            <li>Dormiu</li>
+                        </ol>
+
+                        <p>Nas listas temos os símbolos antes do conteúdo, se quiser podemos trocar para diversos outros estilos, aqui vão exemplos:</p>
+
+                        <p>Tipos de item de lista desordenada</p>
+                        
+                        <ul>
+                            <li>Item de lista desordenada</li>
+                            <li style="list-style-type: circle;">Item de lista desordenada circle</li>
+                            <li style="list-style-type: disc;">Item de lista desordenada disc</li>
+                            <li style="list-style-type: none;">Item de lista desordenada none</li>
+                            <li style="list-style-type: square;">Item de lista desordenada square</li>
+                            <li style="list-style-type: disclosure-open;">Item de lista desordenada disclosure-open</li>
+                            <li style="list-style-type: disclosure-closed;">Item de lista desordenada disclosure-closed</li>
+                        </ul>
+
+                        <p>Tipos de item de lista ordenada</p>
+
+                        <ol>
+                            <li>Item de lista ordenada</li>
+                            <li style="list-style-type: armenian;">Item de lista ordenada armenian </li>
+                            <li style="list-style-type: cjk-ideographic;">Item de lista ordenada cjk-ideographic </li>
+                            <li style="list-style-type: decimal;">Item de lista ordenada decimal </li>
+                            <li style="list-style-type: decimal-leading-zero;">Item de lista ordenada decimal-leading-zero </li>
+                            <li style="list-style-type: georgian;">Item de lista ordenada georgian </li>
+                            <li style="list-style-type: hebrew;">Item de lista ordenada hebrew </li>
+                            <li style="list-style-type: hiragana;">Item de lista ordenada hiragana </li>
+                            <li style="list-style-type: hiragana-iroha;">Item de lista ordenada hiragana-iroha </li>
+                            <li style="list-style-type: katakana;">Item de lista ordenada katakana </li>
+                            <li style="list-style-type: katakana-iroha;">Item de lista ordenada katakana-iroha </li>
+                            <li style="list-style-type: lower-alpha;">Item de lista ordenada lower-alpha </li>
+                            <li style="list-style-type: lower-greek;">Item de lista ordenada lower-greek </li>
+                            <li style="list-style-type: lower-latin;">Item de lista ordenada lower-latin </li>
+                            <li style="list-style-type: lower-roman;">Item de lista ordenada lower-roman </li>
+                            <li style="list-style-type: upper-alpha;">Item de lista ordenada upper-alpha </li>
+                            <li style="list-style-type: upper-latin;">Item de lista ordenada upper-latin </li>
+                            <li style="list-style-type: upper-roman;">Item de lista ordenada upper-roman </li>
+                            <li style="list-style-type: none;">Item de lista ordenada none </li>
+                        </ol>
+
+                        <p>Atributos que podem ser inseridos na tag li quando em uma lista ordenada:</p>
+    
+                        <ul>
+                            <li>value - define o número do item, por exemplo temos os itens: 1, 2 e 3, no item 2 podemos no elemento li definir o valor para 5, isso fará com que a partir daquele ponto os próximos itens sejam enumerados a partir do cinco, logo nessa lista exemplo ficaria com os itens: 1, 5 e 6
+                                <ul>
+                                    <li>Número</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <p>Item de lista com value:</p>
+                        
+                        <ol>
+                            <li>Lorem</li>
+                            <li value="5">Lorem</li>
+                            <li>Lorem</li>
+                        </ol>
+
+                        <p>Atributos que podem ser inseridos na tag ol:</p>
+
+                        <ul>
+                            <li>start - define a partir de que número deve começar a contagem dos itens de lista
+                                <ul>
+                                    <li>Número</li>
+                                </ul>
+                            </li>
+                            <li>reversed - Faz com que a contagem seja feita do último item até o primeiro</li>
+                        </ul>
+
+                        <p>Lista com start no 10:</p>
+                        
+                        <ol start="10">
+                            <li>Texto exemplo</li>
+                            <li>Texto exemplo</li>
+                            <li>Texto exemplo</li>
+                        </ol>
+
+                        <p>Lista com reversed:</p>
+
+                        <ol reversed>
+                            <li>Texto exemplo</li>
+                            <li>Texto exemplo</li>
+                            <li>Texto exemplo</li>
+                        </ol>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

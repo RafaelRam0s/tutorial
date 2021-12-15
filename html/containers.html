@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Containers HTML</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Container</h1>
+            
+                <div>
+                    <p>No HTML precisamos dividir os conteúdos que são escritos</p>
+
+                    <h3>Tag article</h3>
+                    <!-- Artigo -->
+
+                    <div>
+                        <p>Artigo</p>
+                    </div>
+
+                    <h3>Tag aside</h3>
+
+                    <div>
+                        <p>Conteudo adicional que foge do assunto principal</p>
+                    </div>
+
+                    <h3>Tag canvas</h3>
+
+                    <div>
+                        <p>Utilizado para desenhar gráficos através de scripts, o que for escrito dentro só aparecerá caso o navegador não tenha suporte para a tag.</p>
+
+                        <canvas id="myCanvas">Seu navegador não suporta a tag canvas.</canvas>
+
+                        <script>
+                            var c = document.getElementById("myCanvas");
+                            var ctx = c.getContext("2d");
+                            ctx.fillStyle = "#FF0000";
+                            ctx.fillRect(0, 0, 80, 100);
+                        </script>
+                    </div>
+
+                    <h3>Tag details e summary</h3>
+
+                    <div>
+                        <p>Cria uma informação que pode ser minimizada ou aberta para mais detalhes</p>
+
+                        <p>Passo a passo para funcionar: Precisamos abrir a tag details e dentro abrimos logo em seguida a tag summary, o que for escrito dentro de summary será o título que pode ser clicado para abrir ou fechar o conteúdo que for escrito dentro de details, mas fora de summary</p>
+
+                        <details>
+                            <summary>Título do detalhe</summary>
+
+                            <p>Conteúdo</p>
+                        </details>
+
+                        <details open>
+                            <summary>Clique em mim</summary>
+
+                            <p>Com o atributo "open" os detalhes começam aberto, clique no elemento para fechar.</p>
+                        </details>
+                    </div>
+
+                    <h3>Tag div</h3>
+
+                    <div>
+                        <p>Container qualquer, serve para simplesmente agrupar informações</p>
+                    </div>
+
+                    <h3>Tag footer</h3>
+
+                    <div>
+                        <p>Rodapé</p>
+                    </div>
+
+                    <h3>Tag main</h3>
+
+                    <div>
+                        <p>Indica o conteudo principal da página</p>
+                    </div>
+
+                    <h3>Tag meter</h3>
+
+                    <div>
+                        <p>Uma barra de medição escalar dentro de uma faixa conhecida ou um valor fracionário. Isso também é conhecido como medidor.</p>
+
+                        <meter min="0" max="10" low="5" high="8" value="10" optimum="9">2 out of 10</meter><br>
+
+                        <p>Atributos que podem ser inseridos na tag meter:</p>
+
+                        <ul>
+                            <li>min - mínimo, junto do atributo max configura um alcance para o quanto deve ser preenchido ao informar um valor no atributo value</li>
+                            <li>max - máximo, junto do atributo min configura um alcance para o quanto deve ser preenchido ao informar um valor no atributo value</li>
+                            <li>low - baixo, caso o value esteja abaixo do valor informado neste atributo a cor mudará</li>
+                            <li>high - alto, caso o value esteja acima do valor informado neste atributo a cor mudará</li>
+                            <li>optimum - aumenta/diminui os graus de cores a partir do valor informado</li>
+                            <li>value - valor</li>
+                        </ul>
+                    </div>
+
+                    <h3>Tag nav</h3>
+
+                    <div>
+                        <p>Menu de navegação, abriga uma série de links</p>
+
+                        <nav>
+                            <p><a href="#">Link 1</a></p>
+                            <p><a href="#">Link 2</a></p>
+                        </nav>
+                    </div>
+
+                    <h3>Tag progress</h3>
+
+                    <div>
+                        <p>Barra de progresso</p>
+
+                        <progress value="32" max="100"></progress>
+
+                        <p>Atributos que podem ser inseridos na tag progress:</p>
+
+                        <ul>
+                            <li>max - máximo</li>
+                            <li>value - valor</li>
+                        </ul>
+                    </div>
+
+                    <h3>Tag span</h3>
+
+                    <div>
+                        <p>Container para <span>textos no</span> meio de textos</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

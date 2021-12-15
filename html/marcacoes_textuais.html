@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Marcações textuais</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Marcações textuais</h1>
+            
+                <div>
+                    <p>Dentro dos textos possuimos diversas formas de classificar uma palavra, por exemplo; às vezes ela se refere à um endereço ou um nome de uma marca.</p>
+
+                    <p>Além de classificar, às vezes queremos dar mais importância a uma palavra, por exemplo; deixando-a em negrito.<p>
+
+                    <h3>Tag b e strong</h3>
+
+                    <div>
+                        <p>Torna o texto em negrito, o "strong" além de deixar em negrito serve para indicar aos sistemas de busca que o conteúdo tem uma relevância maior</p>
+
+                        <p>
+                            <b>b</b>
+                            <br>
+                            <strong>strong</strong>
+                        </p>
+                    </div>
+
+                    <h3>Tag i e em</h3>
+
+                    <div>
+                        <p>Torna o texto em itálico, o "em" além de deixar em itálico serve para indicar aos sistemas de busca que o conteúdo tem uma relevância maior</p>
+
+                        <p>
+                            <i>i</i>
+                            <br>
+                            <em>em</em>
+                        </p>
+                    </div>
+
+                    <h3>Tag mark</h3>
+
+                    <div>
+                        <p>Deixa o texto <mark>grifado</mark></p>
+                    </div>
+
+                    <h3>Tag small</h3>
+
+                    <div>
+                        <p>Deixa o texto <small>pequeno</small></p>
+                    </div>
+
+                    <h3>Tag del e ins</h3>
+
+                    <div>
+                        <p>Deixa o texto com uma linha, uma linha no meio do texto significa que ele foi deletado, para esse caso usamos "del", uma linha em baixo do texto significaque ele foi inserido, para este caso usamos o "ins"</p>
+
+                        <p>Texto <del cite="www.url_de_um_site_que_explique_porque_esse_texto_teve_que_ser_removido.com" datetime="2020-04-16T18:46:50">delete</del> <ins cite="www.url_de_um_site_que_explique_porque_esse_texto_teve_que_ser_inserido.com" datetime="2020-04-16T08:48:12">deletado</ins> e inserido, usa-se o del para marcar textos que foram removidos, e ins para textos que foram inseridos, não os utilize simplesmente para colocar um traço nas palavras pois ambos possuem uma função para leitores de tela</p>
+
+                        <p>Atributos que podem ser inseridos na tag:</p>
+    
+                        <ul>
+                            <li>cite (cita uma url a qual deverá conter o motivo para tal texto ser removido ou inserido, por exemplo um site de dicionário)
+                                <ul>
+                                    <li>Url</li>
+                                </ul>
+                            </li>
+                            <li>datetime (marca a data de modificação @@@@@ verificar GMT)
+                                <ul>
+                                    <li>Valor YYYY-MM-DDThh:mm:ss:
+                                        <br/>YYYY-MM-DDThh:mm:ss
+                                        <br/>YYYY - define o ano
+                                        <br/>MM - define o mês
+                                        <br/>DD - define o dia
+                                        <br/>T - está sendo usado para separar informação, <br/>neste caso separa a data da hora
+                                        <br/>hh - define as horas
+                                        <br/>mm - define os minutos
+                                        <br/>ss - define os segundos</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <h3>Tag sub e sup</h3>
+
+                    <div>
+                        <p>Deixa o texto <sub>subscrito</sub> (sub) ou <sup>superescrito</sup> (sup), em ambos os casos o texto se torna menor, em uma ocasião ele fica mais para baixo e em outra mais para cima</p>
+                    </div>
+
+                    <h3>Tags q e blockquote</h3>
+
+                    <div>
+                        <p>Insere aspas em uma palavra, o q adiciona aspas, já o blockquote além de adicionar aspas ele destaca o texto.</p>
+
+                        <p>Exemplo da tag q: <q cite="https://www.w3schools.com/tags/tag_q.asp">Texto para demonstração</q></p>
+                        <p>Exemplo da tag blockquote: <blockquote cite="https://www.w3schools.com/tags/tag_blockquote.asp">Texto para demonstração</blockquote></p>
+
+                        <p>Atributos que podem ser inseridos na tag:</p>
+
+                        <ul>
+                            <li>cite - serve para citar a url de onde foi tirado o determinado trecho.
+                                <ul>
+                                    <li>Url</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3>Tag abbr</h3>
+
+                    <div>
+                        <p>Marca uma abreviação, por exemplo <abbr title="Hyper Text Markup Language">HTML</abbr> pode ser marcado, pois ele é uma abreviação de Hyper Text Markup Language</p>
+
+                        <p>Atributos que podem ser inseridos na tag:</p>
+
+                        <ul>
+                            <li>title - título como elemento, geralmente são mostradas como um texto de dica de ferramenta quando o mouse se move sobre o elemento, revelando assim uma pequena caixa de texto.</li>
+                        </ul>
+                    </div>
+
+                    <h3>Tag cite</h3>
+
+                    <div>
+                        <p>Marca algo como citado, algo famoso que possui um nome próprio, como por exemplo; a obra Monalisa ou a música Highway to Hell da banda AC/DC</p>
+                    </div>
+
+                    <h3>Tag code</h3>
+
+                    <div>
+                        <p>Marca um texto sendo escrito em código de computador, exemplo:</p>
+
+                        <code>
+                            var x = "Hello World"
+                            <br> window.alert(x)
+                        </code>
+                    </div>
+
+                    <h3>Tag kbd</h3>
+
+                    <div>
+                        <p>Marca uma keyboard, tecla de entrada, indica uma tecla que o usuário pode pressionar, por exemplo; clique a tecla "<kbd>t</kbd>"</p>
+                    </div>
+
+                    <h3>Tag var</h3>
+
+                    <div>
+                        <p>Marca uma variável de uma equação</p>
+
+                        <p>
+                            <var>x</var> + <var>y</var> = 2
+                            <br> <var>y</var> + <var>y</var> = 3
+                        </p>
+                    </div>
+
+                    <h3>Tag samp</h3>
+
+                    <div>
+                        <p>Indica uma mensagem de resposta de um programa, clique no botão abaixo para fazer o texto aparecer:</p>
+
+                        <button onclick="document.getElementById('samp_teste').style.display == 'none' ? document.getElementById('samp_teste').style.display = '' : document.getElementById('samp_teste').style.display = 'none'">Teste</button>
+
+                        <samp id="samp_teste" style="display: none;">Testando... clique no botão para esse texto sair</samp>
+                    </div>
+
+                    <h3>Tag bdo e bdi</h3>
+                    <!-- bdo faz o texto ficar no sentido contrário que está inserido, bdi padroniza um texto qualquer para ficar no padrão da página -->
+
+                    <div>
+                        <p>Modifica a direção textual</p>
+
+                        <p>Atributos que podem ser inseridos na tag bdo:</p>
+
+                        <ul>
+                            <li>dir 
+                                <ul>
+                                    <li>ltr</li>
+                                    <li>rtl</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3>Tag address</h3>
+
+                    <div>
+                        <p>Define as informações de contato (autor / proprietário) de um documento ou artigo.</p>
+
+                        <address>
+                            Escrito por: Rafael Ramos
+                            <br> Morador de: Brasil - SP
+                            <br> Conheça-o em: exemplo.com
+                        </address>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>

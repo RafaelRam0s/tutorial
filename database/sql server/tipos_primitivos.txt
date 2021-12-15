@@ -1,0 +1,99 @@
+
+@@@@@ Primary key - define um campo como chave primária, dentro do seu parênteses deve conter o nome de um campo
+    campo de uma tabela -> primary key(x)
+
+
+
+Tipo primitivos:
+
+    Numéricos
+        - Inteiro:
+            TinyInt - ocupa 3 byts
+                campo de uma tabela -> idade tinyint(3)
+                
+            SmallInt
+            Int - ocupa 11 byts
+            MediumInt
+            BigInt
+        
+        - Real
+            Decimal - no primeiro valor é definido a quantidade de espaços que um elemento irá ocupar, no segundo valor é definido quantos números ficarão apó a vírgula
+                campo de uma tabela -> altura decimal(3,2)
+            
+            Float - coloca um valor que o sistema decidir
+
+            Double
+            Real
+
+        - Lógico
+            Bit
+            Boolean
+
+    Data/Tempo
+        Date - pega ano-mês-dia
+            campo de uma tabela -> nascimento date
+        DateTime
+        TimeStamp
+        Time
+        Year
+            campo de uma tabela -> ano year
+
+    Literal
+        - Caractere (usa para guardar informações simples, que seja prático contar o número de caractéres)
+            Char - se indicar que um nome possui 30 letras, vão ser armazenados 30 espaços, mesmo que o nome só ocupe 2 espaços, tipo "Zé" apesar de ter 2 espaços seria armazenado com 30 espaços, @@@@@ testar se o nome tivesse mais de 30
+
+            VarChar - varchar coloca um limite, o nome vai ter até 30 letras, conforme preenche a é preenchido uma informação ele irá ocupando espaços, se o seu nome for Rafael ele vai preencher com somente 6 espaços e deixar o resto livre, @@@@@ se o nome tivesse mais de 30
+                campo de uma tabela -> nome varchar(30)
+
+        - Texto (usa para guardar longas cadeias de palavras)
+            TinyText
+
+            Text
+                campo de uma tabela -> descricao text
+
+            MediumText
+
+            LongText
+            
+        - Binário (permite guardar qualquer coisa em binério, por exemplo uma imagem)
+            TinyBlob
+            Blob
+            MediumBlob
+            LongBlob
+
+        - Coleção (configura quais são os valores permitidos)
+            Enum - 
+                campo de uma tabela -> sexo enum('M', 'F')
+            Set
+
+    Espacial
+        - Geometry
+
+        - Point
+
+        - Polygon
+
+        - MultiPolygon
+
+Acompanhamentos de tipos primitivos em uma tabela:
+    - not null: não nulo, o campo não pode ficar sem algum dado informado, caso fique, ele não será registrado
+        campo de uma tabela -> nome varchar(30) not null
+
+    - default 'x': define em caso do campo ficar nulo, isto é, o usuário não colocar nada no campo, coloque o que estiver entre aspas simples como valor (se for do tipo int coloque um número, se for do tipo varchar coloque alguma palavra...)
+        campo de uma tabela -> trabalho varchar(20) default 'desempregado'
+
+    - auto_increment: auto incremento, com base no último campo inserido é criado automaticamente um conjunto de símbolos para ir formando uma sequência a cada linha da tabela
+        campo de uma tabela -> id int not null auto_increment
+
+    - unique: único, @@@@@ avisa que não será permitido dois cadastros com este campo tendo o mesmo valor (exemplo se eu colocar que o nome do curso é mysql e depois for cadastrar outro curso com o mesmo valor o sistema irá negar essa possibilidade /* insert into cursos values (sql), (sql); */)
+        campo de uma tabela -> cpf varchar(30) not null unique
+
+    - unsigned: sem sinal, isto economiza 1 byte da aplicação pois ele não leva em consideração o sinal do número
+        campo de uma tabela -> valor_no_d20 tinyint unsigned
+
+    
+
+
+
+
+

@@ -1,0 +1,227 @@
+
+
+
+
+
+
+
+not null - não permite ter valor nulo cadastrado
+    /* 
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            nome varchar(255) not null
+        );
+
+        insert into pessoa values (null);
+        --O programa dará erro pois informamos que na coluna data_de_nascimento não será admitido valores nulos
+
+        insert into pessoa values ('null');
+        --Será cadastrado na tabela pessoa, um nome chamado null, pois como colocamos entre aspas se trata de uma string
+
+        insert into pessoa values ('');
+        --Será cadastrado na tabela pessoa, um nome vazio, pois nulo é diferente de vazio
+    */
+
+
+
+
+
+
+identity(int,int) - irá cadastrar automaticamente um valor, dento do parenteses o primeiro valor se refere a partir de qual numeral irá começar a contagem, e o segundo valor define de quanto em quanto deve ser acrescentado. Exemplo: identity(1,1) um primeiro registro terá 1 o segundo 2, mas se tivesse um identity(2, 3) nessa coluna, o primeiro cadastro seria 2 o segundo seria 5 e assim por diante
+    /*
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            numero_de_cadastro int identity(1,1),
+            nome varchar(255)
+        );
+
+        insert into pessoa (numero_de_cadastro, nome)
+        values (1, 'Jose')
+        --Dará problema, pois quando configuramos algo como identity não podemos interferir nos valores que serão agregados, pois eles já serão colocados automaticamente
+
+        insert into pessoa (nome)
+        values ('Jose')
+    */
+
+
+
+
+
+
+primary key - chave primária, em cada tabela só é possível uma coluna possuir esta restrição, o que ela faz é configurar a coluna para ser um indentificador tendo como restrições implícitas; não permitir valores nulos (not null) e permitir somente valores únicos, aqueles que nunca foram cadastrados antes naquela coluna.
+    /*
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            numero_de_cadastro int primary key,
+            nome varchar(255)
+        );
+
+        insert into pessoa (nome)
+        values ('Jose')
+        --Dará problema pois a primary key exige ser preenchida
+
+        insert into pessoa (numero_de_cadastro, nome)
+        values (2, 'Jose'), (2, 'Paulo');
+        --Dará problema pois a primary key não permite ser cadastrados valores iguais na mesma coluna
+
+        insert into pessoa (numero_de_cadastro, nome)
+        values (1, 'Jose'), (3, 'Paulo'), (2, 'Paulo'), (342, 'Maria');
+    */
+
+
+
+
+
+
+
+foreign key (nome_da_coluna_desta_tabela) references tabela_para_se_associar(nome_da_coluna_para_se_associar_da_outra_tabela) - chave estrangeira, serve para associar duas ou mais tabelas pegando a chave primaria das outras tabelas como base
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando_comprou date,
+
+            foreign key (id_da_pessoa) references clientes (id),
+            foreign key (id_do_produto) references produtos (id)
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando_comprou) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        
+        
+        insert into compras (id_da_pessoa, id_do_produto, quando_comprou) values (21, 1, '2010-11-23');
+        --Caso tente colocar em uma chave estrangeira um valor que não existe na tabela de associação é retornado um erro 
+
+        delete from clientes
+        where id = 2;
+        --Caso tente deletar um cadastro, que está sendo associado em outra tabela como chave estrangeira, dará erro. Para evitar que de esse erro verifique - on delete cascade -
+    */
+
+
+foreign key (column) references another_table (another_table.column_of_another_table) on delete cascade - quer dizer que se eu apagar uma tabela a qual tinha essa chave estrangeira relacionada os cadastros também serão apagados
+    /*
+        create database teste_mercado;
+        use teste_mercado;
+
+        create table clientes (
+            id int identity(1,1) primary key,
+            nome varchar(255) not null
+        );
+        insert into clientes (nome) values ('Bruno'),('Ana'),('Carlos'),('Daniel'),('Edgar');
+
+        create table produtos (
+            id int identity(1,1) primary key,
+            nome varchar(255) not null,
+            custo money not null
+        );
+        insert into produtos (nome, custo) values ('Bolacha', 2),('Refrigerante 2L', 4.50),('Pão 1Kg', 9.99),('Leite 1L', 3),('Salgadinho', 4);
+
+        create table compras (
+            id int not null identity(1,1) primary key,
+            id_da_pessoa int not null,
+            id_do_produto int not null,
+            quando_comprou date,
+
+            foreign key (id_da_pessoa) references clientes (id) on delete cascade,
+            foreign key (id_do_produto) references produtos (id) on delete cascade
+        );
+        insert into compras (id_da_pessoa, id_do_produto, quando_comprou) values (1,1,'2010-11-23'),(1,1,'2014-02-14'),(1,3,'2018-03-23'),(2,4,'2005-04-19'),(2,2,'2019-11-21'),(3,3,'2019-03-01'),(3,1,'2013-08-08'),(1,1,'2013-01-10'),(2,2,'2016-01-30'),(3,1,'2012-12-25'),(4,5,'2018-02-27'),(1,5,'2001-09-07'),(3,2,null),(1,4,'2010-10-15'),(2,4,'2014-12-02'),(3,5,'2010-11-23');
+
+        
+        delete from clientes
+        where id = 2;
+
+        select * from compras
+    */
+
+
+
+
+
+unique - não permite que um valor cadastrado seja repetido em uma coluna
+    /*
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            numero_de_cadastro int identity(1,1) primary key,
+            nome varchar(255) unique
+        );
+
+        insert into pessoa (nome)
+        values ('Jose'),('Rodolfo'),('Carla'),('Jose');
+        --Dará erro pois tem 2 valores Jose iguais na coluna nome 
+
+        insert into pessoa (nome)
+        values ('Jose'),('Rodolfo'),('Carla'),('José');
+    */
+
+
+
+
+
+check(regra) - checagem verifica quando for inserido um valor se bate com a regra que foi pedida para retornar true
+    /*
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            numero_de_cadastro int identity(1,1) primary key,
+            nome varchar(255) unique,
+            idade int check(idade >= 18)
+        );
+
+        insert into pessoa (nome, idade)
+        values ('Jose', 10),('Rodolfo', 18),('Carla', 31),('José', 20);
+        --Dará erro pois existe um cadastro que não seguiu a regra do check em idade
+
+        insert into pessoa (nome, idade)
+        values ('Jose', 20),('Rodolfo', 18),('Carla', 31),('José', 20);
+    */
+
+
+
+default 'valor_qualquer' - caso deixem o campo vazio será colocado no lugar o que estiver após o default e entre aspas simples, neste exemplo uma string chamada valor_qualquer
+    /*
+        create dbteste;
+        use dbteste;
+        create table pessoa (
+            numero_de_cadastro int identity(1,1) primary key,
+            nome varchar(255) default 'João'
+        );
+
+        insert into pessoa (nome)
+        values ('Jose'),('Rodolfo'),('Carla'),('José'),(default);
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

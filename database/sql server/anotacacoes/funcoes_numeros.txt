@@ -1,0 +1,370 @@
+
+
+
+
+
+
+
+-------POWER, SQRT--------
+
+Para fazer exponenciação:
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select *, power(2,3)
+        from numeros;
+    */
+    
+    - power(int, int) - o primeiro valor informa o número que deve ser exponenciado e o segundo indica por qual número deve ser exponenciado
+
+Para ver a raiz quadrada de um número:
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select *, sqrt(25)
+        from numeros;
+    */
+
+----------------------
+
+
+
+----------FLOOR---------
+
+Para pegar somente a parte inteira de um número (ignora o que estiver nas casas decimais):
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select numero, floor(numero)
+        from numeros
+        order by numero asc;
+    */
+
+------------------------
+
+
+
+
+--------CEILING------------
+
+Para somar mais um caso exista uma casa decimal:
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select *, ceiling(numero)
+        from numeros;
+    */
+
+---------------------------
+
+
+
+----------ROUND-----------
+
+Para arredondar números (se for >= 5 ganha mais 1, se for < 5 mantém):
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select numero, round(numero, 2)
+        from numeros
+        order by numero asc;
+    */
+
+    - round(valor, valor_int) - no round o primeiro parâmetro deve ser informado o que você está desejando arredondar, no segundo parâmetro deve ser informado até quantas casas decimais deseja arredondar
+
+    Se colocar valor negativo terá como base o início da esquerda para a direita de um número:
+
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select numero, round(numero, -2)
+        from numeros
+        order by numero asc;
+    */
+
+---------------------------
+
+
+
+
+--------------MIN, MAX---------------
+
+Para ver o menor valor cadastrado em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select min(ano_descobrimento) from paises;
+    */
+    
+    - min() - seleciona o minímo valor encontrado na coluna
+
+Para ver o menor valor cadastrado em várias colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select min(ano_descobrimento), min(pais) from paises;
+    */
+
+Para ver o maior valor cadastrado em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select max(ano_descobrimento) from paises;
+    */
+
+    - max() - encontra o máximo valor cadastrado na coluna
+
+Para ver o maior valor cadastrado em várias colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select max(ano_descobrimento), max(pais) from paises;
+    */
+
+-----------------------------------------
+
+
+
+
+
+
+------------AVG, SUM------------------
+
+Para ver a média dos valores cadastrados em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select avg(ano_descobrimento) from paises;
+    */
+
+    - avg() - faz a média simples dos valores informados na coluna, no caso ele soma todos os valores e depois divide pela quantidade de valores
+
+Para ver a média dos valores cadastrados em várias colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1) primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select avg(ano_descobrimento), avg(id) from paises;
+    */
+
+Para ver a soma dos valores cadastrados em uma coluna:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1) primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select sum(ano_descobrimento) from paises;
+    */
+
+    - sum() - faz a somatória de todos os valores da coluna
+
+Para ver a soma dos valores cadastrados em várias colunas:
+    /*
+        create database nome_do_banco;
+        use nome_do_banco;
+        create table paises ( 
+            id int not null identity(1,1) primary key,
+            pais varchar(255),
+            capital varchar(255),
+            ano_descobrimento int
+        );
+        insert into paises
+        (pais, capital, ano_descobrimento)
+        values
+        ('Brasil', 'Brasília', 1500),
+        ('Egito', 'Cairo', 0),
+        ('Canada', 'Ottawa', 1554),
+        ('Brasil', 'Ottawa', 1554),
+        ('canada', 'Ottawa', 600),
+        ('Brasil', 'Rio de Janeiro', 1389),
+        ('Croacia', 'Pernambuco', 1205),
+        ('Etiopia', 'Paris', 50);
+
+        select sum(ano_descobrimento), sum(id) from paises;
+    */
+
+---------------------------------------
+
+
+
+
+
+---------ABS---------
+
+Para pegar a parte absoluta (positiva) de um número:
+    /*
+        create database dbnum;
+        use dbnum;
+        create table numeros (numero float)
+        insert into numeros
+        values
+        (4),(9),(3),(1),(-1),(5.9),(-5),(12.5),(0.123456789),(12345.6789),(345),(23.00),(-34),(092),(15),(5.023),(5.025),(5.026),(5.021);
+
+        select *, abs(numero)
+        from numeros;
+    */
+
+---------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

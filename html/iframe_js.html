@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Tutorial do que aprendi em programação.">
+    <meta name="keywords" content="tutorial, html, css, javascript, dicas">
+    <meta name="author" content="Rafael Ramos">
+
+    <link rel="icon" type="image/ico" href="../midia/icon/logo_r.ico" />
+
+    <link rel="stylesheet" href="../style.css">
+    
+    <title>Iframes</title>
+</head>
+<body>
+
+    <div>
+        <div class="menu">
+            <p><a href="../index.html">Página principal</a></p>
+        </div>
+    
+        <div class="conteudo">
+            <div>
+                <h1>Iframe</h1>
+            
+                <div>
+                    <h3>Como impedir que sua página seja carregada em um iframe:</h3>
+
+                    <div>
+                        <p>Se desenvolvemos um projeto na internet, seja ele um blog, um diretório de imagens, uma lista telefônica online ou seu site pessoal, nós queremos ser reconhecidos por isso. Quando alguém coloca seu site em um iframe as pessoas que acessarem a página com o iframe podem não reconhecer que aquele conteúdo é do seu site e mesmo que reconheçam, o iframe “esconde” a URL do seu site, impedindo os leitores de encontrar seu conteúdo de forma direta.</p>
+
+                        <p>Como se não bastasse isso, se o iframe for em um site de grande visitação, cada vez que a página onde ele está for carregada o seu site pode ficar um pouco mais lento, pois ele estará consumindo recursos do seu servidor, mas sem lhe trazer benefício nenhum em troca!</p>
+
+                        <p>Código para caso alguém coloque a sua página em um iframe redirecionar a pessoa para a sua página (o código a seguir funciona, mas caso seja colocado o atributo sandbox ele pode inviabilizar esse script):</p>
+
+                        <p>@@@ Achar maneira de impedir que sua página seja colocada em um iframe</p>
+
+                        <script>
+                            if (self != top) { top.location.replace(window.location.href) } 
+
+                            // if (top.location.href != self.location.href) top.location.href = self.location.href;
+                        </script>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="rodape">
+            footer
+        </div>
+    </div>
+    
+</body>
+</html>
