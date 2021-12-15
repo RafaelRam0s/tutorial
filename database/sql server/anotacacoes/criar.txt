@@ -67,10 +67,10 @@ Criar uma tabela a partir de outra tabela:
 
 @@@@@Para criar uma constraint:
     /*
-       create table dbtestes;
+        create table dbtestes;
         use dbtestes;
         create table paises (
-            id primary key identity(1,1) not null,
+            id int primary key identity(1,1) not null,
             pais varchar(255),
             capital varchar(255),
             ano_descobrimento int
@@ -118,7 +118,7 @@ Criar um cadastro em uma tabela já criada:
         create database nome_do_banco;
         use nome_do_banco;
         create table paises (
-            int not null identity(1,1) primary key,
+            id int not null identity(1,1) primary key,
             pais varchar not null,
             capital_pais varchar not null,
             quando_descoberto int
@@ -147,7 +147,7 @@ Criar um cadastro em uma tabela já criada:
             create database nome_do_banco;
             use nome_do_banco;
             create table paises (
-                int not null identity(1,1) primary key,
+                id int not null identity(1,1) primary key,
                 pais varchar not null,
                 capital_pais varchar not null,
                 quando_descoberto int

@@ -37,15 +37,24 @@
                         <p>Atributos que podem ser inseridos na tag:</p>
     
                         <ul>
-                            <li>lang (idioma - informa o idioma da página para que sistemas de tradução possam automaticamente saber de qual idioma é baseado, assim quando um usuário pedir a tradução da página o mecanismo traduzirá com maior facilidade)
+                            <li>
+                                <p>lang (idioma - informa o idioma da página para que sistemas de tradução possam automaticamente saber de qual idioma é baseado, para que quando um usuário pedir a tradução da página o mecanismo traduza com maior facilidade)</p>
                                 <ul>
-                                    <li>Abreviações de idiomas (se a página é em portugues do Brasil colocamos o valor pt-br, se for em inglês colocamos en e assim por diante)</li>
+                                    <li>
+                                        <p><i>Abreviações de idiomas (se a página é em portugues do Brasil colocamos o valor "pt-br", se for em inglês colocamos "en" e assim por diante)</i></p>
+                                    </li>
                                 </ul>
                             </li>
-                            <li>dir (direção textual - informa qual a direção que os caracteres devem ser lidos)
+
+                            <li>
+                                <p>dir (direção textual - informa qual a direção que os caracteres devem ser lidos)</p>
                                 <ul>
-                                    <li>ltr (esquerda para direita: formato de leitura ocidental)</li>
-                                    <li>rtl (direita para esquerda: formato de leitura oriental)</li>
+                                    <li>
+                                        <p>ltr (esquerda para direita: formato de leitura ocidental)</p>
+                                    </li>
+                                    <li>
+                                        <p>rtl (direita para esquerda: formato de leitura oriental)</p>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -54,7 +63,7 @@
                     <h3>Tag head</h3>
 
                     <div>
-                        <p>Dentro dessa tag inserimos informações que serão aplicadas em toda a página e informações para sistemas de busca, como por exemplo o Google.</p>
+                        <p>Dentro dessa tag inserimos informações que serão aplicadas em toda a página e informações para sistemas de busca, como por exemplo; o Google.</p>
                     </div>
 
                     <h3>Tag meta</h3>
@@ -65,22 +74,71 @@
                         <p>Atributos que podem ser inseridos na tag:</p>
     
                         <ul>
-                            <li>charset (escolha de caracteres - informa quais caracteres serão lidos, se não informado caracteres especiais como cecedilha "ç" são substituídos por códigos)</li>
-                            <ul>
-                                <li>UTF-8</li>
-                            </ul>
-                            <li>http-equiv</li>
-                            <ul>
-                                <li>refresh (Atualizar - define em quantos segundos a página deve atualizar e define para qual página o usuário será redirecionado content="100 ../index.html")</li>
-                                <li>X-UA-Compatible (Informa compatibilidade com outros sistemas content="IE=edge")</li>
-                            </ul>
-                            <li>content (conteudo - a partir de atributos como name e http-equiv pode ter valores que realizem determinadas ações)</li>
-                            <li>name (nome - define informações para sistemas de busca e por leitores de telas)
+                            <li>
+                                <p>charset (escolha de caracteres - informa quais caracteres serão lidos, se não informado caracteres especiais, como cecedilha "ç", são substituídos por códigos não agradáveis)</p>
                                 <ul>
-                                    <li>viewport (Visualização da página - define no content qual o formato que a tela deve ser visualizada, normalmente queremos que em dispositivos menores continue com a proporção da tela de um pc então podemos escrever: content="width=device-width, initial-scale=1.0" se isso não for escrito alguns comportamentos de layout inesperados podem surgir)</li>
-                                    <li>author (autor - define quem escreveu a página)</li>
-                                    <li>description (descrição - quando pesquisamos por um site no Google podemos ter uma leitura prévia do conteúdo do site, assim que definimos este atributo mudamos o que pode ter na descrição)</li>
-                                    <li>keywords (palavra-chave - ao escrever palavras no content, separando cada palavra com vírgula, você ajuda a indexar melhor sua página em sistemas de busca)</li>
+                                    <li>
+                                        <p>UTF-8</p>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <p>http-equiv</p>
+                                <ul>
+                                    <li>
+                                        <p>refresh</p>
+                                    </li>
+                                    <li>
+                                        <p>X-UA-Compatible</p>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <p>content (conteúdo - a partir de atributos como "name" e "http-equiv" pode ter valores que realizem determinadas ações)</p>
+                                <ul>
+                                    <li>
+                                        <p><i>texto</i></p>
+                                        <ul>
+                                            <h6 class="margem_p">Tagname http-equiv</h6>
+                                            <li>
+                                                <p>Com valor refresh, faz com que o content possa definir em quantos segundos a página, deve atualizar ou enviar para outro site, exemplo; <i>content="100 ../index.html"</i></p>
+                                            </li>
+                                            <li>
+                                                <p>Com valor X-UA-Compatible, informa a compatibilidade com outros sistemas, exemplo; <i>content="IE=edge"</i></p>
+                                            </li>
+
+                                            <h6 class="margem_p">Tagname name</h6>
+                                            <li>
+                                                <p>Com valor viewport, definimos qual o formato que a tela deve ser visualizada, normalmente queremos que em dispositivos menores a tela continue na mesma proporção de tela que veríamos em um computador, então podemos utilizar o seguinte valor; <i>content="width=device-width, initial-scale=1.0"</i></p>
+                                            </li>
+                                            <li>
+                                                <p>Com valor author, no content podemos escrever o nome do autor da página html</p>
+                                            </li>
+                                            <li>
+                                                <p>Com valor description, informamos uma descrição do site que pode ser utilizada como meio de resumo das informações que serão apresentadas no site</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <p>name (nome - define informações para sistemas de busca e por leitores de telas)</p>
+                                <ul>
+                                    <li>
+                                        <p>viewport (Visualização da página - define no content qual o formato que a tela deve ser visualizada, normalmente queremos que em dispositivos menores continue com a proporção da tela de um pc então podemos escrever: content="width=device-width, initial-scale=1.0" se isso não for escrito alguns comportamentos de layout inesperados podem surgir)</p>
+                                    </li>
+                                    <li>
+                                        <p>author (autor - define quem escreveu a página)</p>
+                                    </li>
+                                    <li>
+                                        <p>description (descrição - quando pesquisamos por um site no Google podemos ter uma leitura prévia do conteúdo do site, assim que definimos este atributo mudamos o que pode ter na descrição)</p>
+                                    </li>
+                                    <li>
+                                        <p>keywords (palavra-chave - ao escrever palavras no content, separando cada palavra com vírgula, você ajuda a indexar melhor sua página em sistemas de busca)</p>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -89,27 +147,42 @@
                     <h3>Tag link</h3>
 
                     <div>
-                        <p>Importa arquivos externos para implementar no site. Traz icone para colocar no título do site, traz arquivos css</p>
+                        <p>Trazem arquivos de estilo, como por exemplo folhas de estilo e ícones</p>
 
                         <p>Atributos que podem ser inseridos na tag:</p>
 
                         <ul>
-                            <li>rel (relacionamento, avisa ao navegador como deve ser tratado o documento externo que será vinculado)
+                            <li>
+                                <p>rel (relacionamento, avisa ao navegador como deve ser tratado o documento externo que será vinculado)</p>
                                 <ul>
-                                    <li>icon (icone - adciona no título uma imagem)</li>
-                                    <li>stylesheet (folha de estilo - traz um arquivo css para a página)</li>
+                                    <li>
+                                        <p>icon (icone - adiciona no título uma imagem)</p>
+                                    </li>
+                                    <li>
+                                        <p>stylesheet (folha de estilo - traz um arquivo css para a página)</p>
+                                    </li>
                                 </ul>
                             </li>
-                            <li>type
+                            <li>
+                                <p>type (tipo, informa o formato em que o arquivo que está sendo trazido está)</p>
                                 <ul>
-                                    <li>text/css</li>
-                                    <li>image/png</li>
-                                    <li>image/jpeg</li>
+                                    <li>
+                                        <p>text/css</p>
+                                    </li>
+                                    <li>
+                                        <p>image/png</p>
+                                    </li>
+                                    <li>
+                                        <p>image/jpeg</p>
+                                    </li>
                                 </ul>
                             </li>
-                            <li>href
+                            <li>
+                                <p>href</p>
                                 <ul>
-                                    <li>url (caminho do site onde o arquivo está)</li>
+                                    <li>
+                                        <p><i>url</i></p>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -119,41 +192,58 @@
                     <h3>Tag base</h3>
 
                     <div>
-                        <p>Define um caminho de arquivo padrão por onde seus links irão começar, por exemplo as rotas são definidas a partir de onde o arquivo está armazenado, mas é possível definir a rota padrão para começar na raiz, por exemplo</p>
+                        <p>Define um caminho de arquivo padrão por onde seus links irão começar. Por exemplo, as rotas de arquivo são definidas a partir de onde o arquivo está armazenado, mas é possível definir a rota padrão para começar na raiz ou em outra pasta, por exemplo; <span class="tag_em_linha">base href="https://www.algum_dominio_que_possua.dominio/html/" target="_self"</span></p>
 
-                        <p><span class="tag_em_linha">base href="https://www.algum_dominio_que_possua.dominio/html/" target="_self"</span></p>
+                        <details>
+                            <summary>Demonstrações de funcionalidade:</summary>
 
-                        <p><span class="tag_aberta">base</span> - base, quando formos escrever algum href, src, url ou seja qualquer caminho de arquivo de nosso site, seja ele em html, css ou javascript ele terá o caminho iniciado pelo que for definido no href, deixei ele comentado pois o meu icone não ia aparecer pois não possuo domínio</p>
-
-                        <p>
-                            Exemplo:
+                            <p>Exemplo:</p>
                             <ul>
                                 <li><span class="tag_em_linha">base href="https://www.site_do_ramos.com/html/"</span></li>
                                 <li><span class="tag_em_linha">img src="_icone_r.ico"</span></li>
                                 <li>Então no src do img é como se estivesse escrito; https://www.site_do_ramos.com/html/_icone_r.ico</li>
                             </ul>
-                        </p>
-
-                        <p>
-                            Exemplo 2:
+                            
+                            <p>Exemplo 2:</p>
                             <ul>
                                 <li><span class="tag_em_linha">base href="https://www.site_do_ramos.com/html/"</span></li>
                                 <li><span class="tag_em_linha">link rel="stylesheet" href="../css/fundo.css"</span></li>
                                 <li>Ficaria https://www.site_do_ramos.com/css/fundo.css</li>
-                            </ul>
-                        </p>
-
+                            </ul>    
+                        </details>
+                        
                         <p>Atributos que podem ser inseridos na tag:</p>
 
                         <ul>
-                            <li>href (configura onde os atributos href das outras tagnames irão iniciar)</li>
-                            <li>target (configura como abrir os links)
+                            <li>
+                                <p>href (configura onde as urls irão usar o arquivo base para encontrar um item)</p>
+
                                 <ul>
-                                    <li>_blank</li>
-                                    <li>_parent</li>
-                                    <li>_self</li>
-                                    <li>_top</li>
-                                    <li>framename</li>
+                                    <li>
+                                        <p><i>url</i></p>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <p>target (configura como abrir os links)</p>
+
+                                <ul>
+                                    <li>
+                                        <p>_blank</p>
+                                    </li>
+                                    <li>
+                                        <p>_parent</p>
+                                    </li>
+                                    <li>
+                                        <p>_self</p>
+                                    </li>
+                                    <li>
+                                        <p>_top</p>
+                                    </li>
+                                    <li>
+                                        <p><i>framename</i></p>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -163,20 +253,23 @@
                     <h3>Tag style</h3>
 
                     <div>
-                        <p>O que for escrito dentro será lido em CSS</p>
+                        <p>O que for escrito dentro será lido em código CSS</p>
                     </div>
 
                     <h3>Tag script</h3>
 
                     <div>
-                        <p>O que for escrito dentro será lido em JavaScript</p>
+                        <p>O que for escrito dentro será lido em código JavaScript</p>
 
                         <p>Atributos que podem ser inseridos na tag:</p>
 
                         <ul>
-                            <li>src
+                            <li>
+                                <p>src</p>
                                 <ul>
-                                    <li>url</li>
+                                    <li>
+                                        <p><i>url</i></p>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
