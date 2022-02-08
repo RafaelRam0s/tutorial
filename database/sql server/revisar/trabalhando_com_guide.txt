@@ -1,0 +1,5 @@
+USE Teste
+
+ALTER TABLE Testando
+ALTER COLUMN IdTestando uniqueidentifier
+

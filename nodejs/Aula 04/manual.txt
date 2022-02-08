@@ -1,0 +1,3 @@
+1- No arquivo mat_1 podemos ver como faríamos um programa
+
+2- No arquivo mat_2 fizemos uma importação de módulos locais, com base nos programas presentes na pasta operacoes_matematicas
