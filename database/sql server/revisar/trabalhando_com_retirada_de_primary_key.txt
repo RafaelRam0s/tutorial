@@ -1,0 +1,79 @@
+
+-- Cria uma tabela com chave primária
+    CREATE TABLE PKTest ( ID INT PRIMARY KEY ) ;
+
+-- Tira a chave primária
+    DECLARE @SQL VARCHAR(4000)
+
+    -- OBS: Onde está escrito PKTEST troque pelo nome da sua tabela com todas as letras em maiúsculas
+    SET @SQL = 'ALTER TABLE PKTEST DROP CONSTRAINT |ConstraintName| '
+
+    -- OBS: Onde está escrito PKTest troque pelo nome da sua tabela
+    SET @SQL = REPLACE(@SQL, '|ConstraintName|', ( SELECT   name
+                                                FROM     sysobjects
+                                                WHERE    xtype = 'PK'
+                                                            AND parent_obj = OBJECT_ID('PKTest')
+                                                ))
+
+    EXEC (@SQL)
+
+-- Exclue a tabela
+    DROP TABLE PKTest
+
+
+-- Exemplo completo
+    CREATE DATABASE Testes_db
+    
+    USE Testes_db
+
+    CREATE TABLE TesteId ( IdTesteId INT PRIMARY KEY, Nome varchar(255)) ;
+
+    INSERT INTO TesteId
+    (IdTesteId, Nome)
+    VALUES
+    (1, 'Ramos'),
+    (2, 'Tete')
+
+    SELECT * FROM TesteId
+
+    DECLARE @SQL VARCHAR(4000)
+    SET @SQL = 'ALTER TABLE TESTEID DROP CONSTRAINT |ConstraintName| '
+    SET @SQL = REPLACE(@SQL, '|ConstraintName|', ( SELECT   name
+                                                FROM     sysobjects
+                                                WHERE    xtype = 'PK'
+                                                            AND parent_obj = OBJECT_ID('TesteId')
+                                                ))
+    EXEC (@SQL)
+
+    ALTER TABLE TesteId
+    ALTER COLUMN IdTesteId varchar(255) NOT NULL
+    GO
+
+    UPDATE TesteId
+    SET IdTesteId = NEWID()
+    GO
+
+    ALTER TABLE TesteId
+    ALTER COLUMN IdTesteId UNIQUEIDENTIFIER NOT NULL
+    GO
+
+    -- Adicionar chave primária
+        
+    ALTER TABLE TesteId
+    ADD CONSTRAINT [PK_TesteId] PRIMARY KEY (IdTesteId)
+    GO
+
+    DROP TABLE TesteId
+
+
+
+
+
+
+
+
+
+
+
+
+

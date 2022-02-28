@@ -613,8 +613,10 @@
                             <summary>Tipo file <input type="file">:</summary>
 
                             <p>O tipo file permite passar um arquivo, para passar vários arquivos utilize o atributo multiple, é possível adicionar o atributo accept para informar quais são os únicos tipos de arquivos permitidos (apenas imagens: image/*, apenas audio/*, apenas video/*, apenas imagens e videos: image/*,video/*, apenas de extensão webp: .webp)</p>
+
+                            <p>@@@ colocar no form o enctype para que o arquivo possa ser mandado</p>
                         
-                            <form action="" method="GET" class="borda-1">
+                            <form action="" method="GET" enctype="multipart/form-data" class="borda-1">
                                 <label for="id_arquivo_1">Passe um arquivo:</label>
                                 <input type="file" id="id_arquivo_1" name="name_arquivo_1">
     
