@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Rafael Ramos">
+    <meta name="keywords" content="front-end, html, elementos, tagname">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(6, 6, 7, 0.747);
+            margin: 5%;
+            color: rgba(255, 255, 240, 0.99);
+            font-size: 16px;
+        }
+        h1 {
+            text-decoration-line: underline;
+            font-size: 350%;
+        }
+        p {
+            font-size: 125%;
+        }
+        div {
+            margin: 50px;
+        }
+        div p {
+            margin-left: 20px;
+        }
+
+        .duvida {
+            background-color: #17a2b8;
+            display: inline-block;
+            padding: 10px;
+            font-size: 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+        }
+        .duvida:active {
+            border: 2px solid white;
+        }
+
+        .esconder {
+            display: none;
+        }
+
+    </style>
+
+    <title>Dobramento</title>
+</head>
+<body>
+
+    <h1>Abrir e fechar o elemento que eu selecionar</h1>
+
+    <p class="duvida" onclick="dobramento('resposta1', '', 'ramo2')">Regra 1</p>
+    <span id="resposta1" class="dobra esconder">
+        <div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni laudantium totam cum aut sed in repellendus harum voluptates quas expedita provident quam veritatis ipsam, aliquid accusantium iure ullam, temporibus cupiditate!</p>
+        </div>
+    </span>
+
+
+
+
+
+    <p class="duvida" onclick="dobramento('resposta2')">Regra 2</p>
+    <div id="resposta2" class="dobra esconder">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, repudiandae? Debitis quam, corrupti ut blanditiis corporis ratione dolorum ipsam dolorem dolore dolores doloremque neque atque quaerat at deleniti soluta necessitatibus.</p>
+    </div>
+
+
+
+
+    <p class="duvida" onclick="dobramento('resposta3')">Regra 3</p>
+    <div id="resposta3" class="dobra esconder ramo1 ramo2">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore laboriosam vitae optio possimus, consectetur numquam velit repellendus necessitatibus hic. Tempore fugiat laborum ullam officiis sapiente. Voluptatibus odio ex perspiciatis aut?</p>
+
+
+        <p class="duvida" onclick="dobramento('resposta4', 'ramo1')">Regra 4</p>
+
+        <div id="resposta4" class="dobra esconder">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ex nulla voluptate asperiores et maiores beatae. Eligendi odio officiis veniam rerum consequuntur, autem temporibus nostrum odit id ea sit doloremque?</p>
+        </div>
+
+
+        <p class="duvida" onclick="dobramento('resposta5', 'ramo1')">Regra 5</p>
+
+        <div id="resposta5" class="dobra esconder ramo2">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsa, iusto, aperiam accusantium mollitia accusamus, dolor architecto pariatur praesentium libero doloremque corrupti possimus! Eaque facilis veritatis placeat officiis perspiciatis deleniti?</p>
+
+            <p class="duvida" onclick="dobramento('resposta6', 'ramo2')">Regra 6</p>
+
+            <div id="resposta6" class="dobra esconder">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui porro odio, exercitationem dolorum totam veniam minima veritatis obcaecati natus perspiciatis aliquid, aperiam doloribus, possimus sunt. Dignissimos pariatur soluta perspiciatis veritatis.</p>
+            </div>
+
+            <p class="duvida" onclick="dobramento('resposta7', 'ramo2')">Regra 7</p>
+
+            <div id="resposta7" class="dobra esconder">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, iure et. Voluptatem neque quaerat magnam provident possimus aspernatur cum fugit ut voluptatibus maxime expedita sed eaque, odit pariatur soluta distinctio!</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function dobramento(escolhido, ramificacao, grupo) {
+
+            var dobraveis = document.getElementsByClassName('dobra')
+            var selecionado = document.getElementById(escolhido)
+            var selecionadoLista = selecionado.classList
+            var respondeJunto = document.getElementsByClassName(grupo)
+            
+            // selecione todos que são dobraveis
+            for (var z = 0; dobraveis[z] != null; z++) {
+
+                // Quem vai ganhar esconder?
+                // quem não for da minha ramificação e não tiver esconder
+                // ou quem foi escolhido e não tiver esconder
+                if (dobraveis[z].classList.contains('esconder') == false && dobraveis[z].classList.contains(ramificacao) == false || dobraveis[z].id == escolhido && selecionadoLista.contains('esconder') == false) {
+                    dobraveis[z].classList.add("esconder")
+                }
+
+                // Quem vai aparecer?
+                // quem for eu e tem esconder
+                // ou quem for da minha ramificação e tiver esconder
+                else if (dobraveis[z].id == escolhido && selecionadoLista.contains('esconder') == true || dobraveis[z].classList.contains(ramificacao, 'esconder') == true) {
+                    dobraveis[z].classList.remove("esconder")
+                }
+            }
+
+            // selecione todos do meu grupo
+            for (var z = 0; respondeJunto[z] != null; z++) {
+                // Quem do meu grupo ganha esconder?
+                // quem não tiver
+                // e se eu tiver
+                if ( selecionadoLista.contains('esconder') == true && respondeJunto[z].classList.contains('esconder') == false) {
+                    respondeJunto[z].classList.add('esconder')
+                } 
+                
+                // Quem deve perder o esconder?
+                // quem tiver ele
+                // e se eu não tiver
+                else if ( selecionadoLista.contains('esconder') == false && respondeJunto[z].classList.contains('esconder') == true) {
+                    respondeJunto[z].classList.remove('esconder')
+                }
+            }
+
+            // abre e fecha quem for selecionado
+
+            // abre e fecha quem for selecionado e fecha quem não foi
+
+            // abre a ramificação, abre e fecha o selecionado, e fecha todos os outros
+
+            // abre a ramificação, abre e fecha o selecionado e seu grupo, e fecha todos os outros
+
+
+            // Como usar?
+            // o elemento que quer esconder deve ter um id
+        }
+    </script>
+</body>
+</html>

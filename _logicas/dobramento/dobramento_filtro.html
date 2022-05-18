@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Rafael Ramos">
+    <meta name="keywords" content="front-end, html, elementos, tagname">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(6, 6, 7, 0.747);
+            margin: 5%;
+            color: rgba(255, 255, 240, 0.99);
+            font-size: 16px;
+        }
+        h1 {
+            text-decoration-line: underline;
+            font-size: 350%;
+        }
+        p {
+            font-size: 125%;
+        }
+        div {
+            margin: 50px;
+        }
+        div p {
+            margin-left: 20px;
+        }
+
+        .duvida {
+            background-color: #17a2b8;
+            display: inline-block;
+            padding: 10px;
+            font-size: 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+        }
+        .duvida:active {
+            border: 2px solid white;
+        }
+        .bloco {
+            display: block;
+        }
+
+        .esconder, .esconder_filtro {
+            display: none;
+        }
+
+    </style>
+
+    <title>Dobramento</title>
+</head>
+<body>
+
+    
+
+    <h1>Abrir e fechar o elemento que eu selecionar</h1>
+
+    <p class="duvida" onclick="dobramento('filtrotodos')">Todos</p>
+
+    <p class="duvida" onclick="dobramento('filtro1')">Filtro 1</p>
+    
+    <p class="duvida" onclick="dobramento('filtro2')">Filtro 2</p>
+
+
+    <p id="teste" class="filtrotodos dobra filtro1 filtro2 ramo duvida bloco" onclick="dobramento('resposta1', 'ramo')">Irei aparecer em todos</p>
+
+    <p id="resposta1" class="filtrotodos dobra filtro1 filtro2 esconder">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo obcaecati perspiciatis rem assumenda veritatis expedita aliquam asperiores, eius omnis sunt commodi dolore ullam. Minus in itaque debitis provident voluptatum.</p>
+
+    <p class="filtrotodos dobra ramo duvida bloco" onclick="dobramento('resposta2', 'ramo')">Somente para todos</p>
+
+    <p id="resposta2" class="filtrotodos dobra esconder">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima neque hic, dicta velit expedita at ullam sed temporibus dignissimos nobis magnam, ipsam atque vero nihil optio eaque consequatur delectus vitae!</p>
+
+    <p class="filtrotodos dobra filtro1 ramo duvida bloco" onclick="dobramento('resposta3', 'ramo')">Somente para o filtro 1 e todos</p>
+
+    <p id="resposta3" class="filtrotodos dobra filtro1 esconder">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis praesentium neque aperiam, ex recusandae aliquid suscipit ut obcaecati cum at sunt rem, ipsa blanditiis quaerat repellendus unde possimus reiciendis asperiores.</p>
+
+    <p  class="filtrotodos dobra filtro2 ramo duvida bloco" onclick="dobramento('resposta4', 'ramo')">Somente para o filtro 2 e todos</p>
+
+    <p id="resposta4" class="filtrotodos dobra filtro2 esconder">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, quibusdam eaque facere pariatur architecto labore asperiores illum commodi ipsum tempore cum, explicabo nesciunt minus. Omnis perspiciatis molestiae laboriosam dolorum reprehenderit!</p>
+
+
+    <script>
+        function dobramento(elemento_selecionado, ramificacao, grupo, filtro) {
+            
+            var dobravel = document.getElementsByClassName('dobra')
+            var selecionado = document.getElementById(elemento_selecionado)
+
+            if (selecionado != null) {
+
+                if (selecionado.classList.contains('esconder') == false) {
+                    selecionado.classList.add("esconder");
+                } else {
+                    selecionado.classList.remove("esconder")
+                }
+
+                for (var z = 0; dobravel[z] != null; z++) {
+                    
+                    // Eu ganho esconder se
+                    // eu não for ele
+                    // e eu não tiver esconder
+                    // e eu não for da mesma ramificação
+                    // e eu não for do grupo
+
+                    // ou se eu for do grupo dele
+                    // e ele tiver esconder
+                    // e eu não tiver esconder
+
+                    if (dobravel[z].id != elemento_selecionado && dobravel[z].classList.contains('esconder') == false && dobravel[z].classList.contains(ramificacao) == false && dobravel[z].classList.contains(grupo) == false || dobravel[z].classList.contains(grupo) == true && selecionado.classList.contains('esconder') == true && dobravel[z].classList.contains('esconder') == false) {
+                        dobravel[z].classList.add("esconder");
+                    }
+                    
+                    // Eu perco esconder se
+                    // eu for da mesma ramificação
+                    // e eu tiver esconder
+                    
+                    // ou se eu for do grupo dele
+                    // e ele não tiver esconder
+                    // e eu tiver esconder
+                    else if (dobravel[z].classList.contains(ramificacao, 'esconder') == true || dobravel[z].classList.contains(grupo) == true && selecionado.classList.contains('esconder') == false && dobravel[z].classList.contains('esconder') == true) {
+                        dobravel[z].classList.remove("esconder")
+                    }
+                }
+            } else {
+                selecionado = document.getElementsByClassName(elemento_selecionado)
+
+                // Eu ganho esconder_filtro se
+                // eu não tiver esconder_filtro
+                // e eu não for daquele filtro
+                for (var z = 0; dobravel[z] != null; z++) {
+                    if (dobravel[z].classList.contains('esconder_filtro') == false && dobravel[z].classList.contains(elemento_selecionado) == false) {
+                        dobravel[z].classList.add('esconder_filtro');
+                    }
+
+                    // Eu perco esconder_filtro se
+                    // eu tiver esconder_filtro
+                    // e eu for do mesmo filtro que o selecionado
+                    else if (dobravel[z].classList.contains(elemento_selecionado) == true && dobravel[z].classList.contains('esconder_filtro') == true) {
+                        dobravel[z].classList.remove('esconder_filtro')
+                    }
+                }
+            }
+        }
+        // Nível 5: abre e fecha filtros, abre e fecha um grupo de acordo com o selecionado, abre todos os parentes ancestrais, abre e fecha o selecionado e fecha todos os outros
+
+        // adiciona uma classe única a todos os elementos dobráveis que deseja que apareçam
+
+        // a classe escolhida não pode ter um id de mesmo nome
+
+        // essa classe é mencionada no primeiro parâmetro
+
+        // no segundo parâmetro, onde fica a ramificação é necessário falar para manter os filtros
+    </script>
+</body>
+</html>

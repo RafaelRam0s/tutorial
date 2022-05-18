@@ -1,0 +1,39 @@
+
+    <script>
+        function verificarCpf() {
+
+            var cpf_informado = "111.444.777-52"
+
+            // Deixa só número e pega os últimos 2 dígitos
+            while (cpf_informado.indexOf(".") != -1) {
+                cpf_informado = cpf_informado.replace(".", "")
+            }
+            cpf_informado = cpf_informado.replace("-", "")
+            
+            while (cpf_informado.length < 11) {
+                cpf_informado = "0" + cpf_informado
+            }
+
+            var equacao1 = 0
+            for (var x = 0; x != 9; x++) {
+                equacao1 += Number(cpf_informado.substr(x ,1)) * (10 - x)
+            }
+            var resto1 = equacao1 % 11
+            var digito1 = 0
+            if ( resto1 > 2 ) { digito1 = 11 - resto1}
+
+            var equacao2 = 0
+            for (var x = 0; x != 10; x++) {
+                equacao2 += Number((cpf_informado.substr(0, 9) + digito1).substr(x ,1)) * (11 - x)
+            }
+            var resto2 = equacao2 % 11
+            var digito2 = 0
+            if ( resto2 > 2 ) { digito2 = 11 - resto2}
+                        
+            if (cpf_informado.substr(9, 2) != "" + digito1 + digito2 ||cpf_informado.length > 11) {
+                 return window.alert("CPF inválido")
+            }
+
+            return window.alert("CPF Válido")
+        }
+    </script>

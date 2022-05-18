@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body style="margin: 0px;">
+
+    <div>
+        <header style="padding: 10px; border: 2px solid black; margin: 5px 0px;">
+            <h2>Cabeçalho da página</h2>
+        </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h3>Menu Simples:</h3>
+
+        <nav id="navegacao_menu">
+            <style>
+                #navegacao_menu {
+                    /* position: sticky; */
+                    top: 0px;
+                }
+
+                #navegacao_menu ul {
+                    list-style: none;
+                    margin: 0px;
+                    padding: 4px;
+                    background-color: rgb(88, 88, 88);
+                    word-spacing: -4px;
+                }
+                
+                #navegacao_menu ul li {
+                    margin: 0px;
+                    display: inline-block;
+                    padding: 0px;
+                    background-color: grey;
+                }
+
+                #navegacao_menu ul li > a {
+                    display: inline-block;
+                    border-right: 2px solid rgb(5, 5, 5);
+                    color: white;
+                    text-decoration: none;
+                    word-spacing: 4px;
+                    padding: 5px 8px;
+                    cursor: pointer;
+                }
+
+                #navegacao_menu ul li:hover {
+                    background-color: rgb(70, 70, 70);
+                }
+
+                #navegacao_menu ul li:hover > a {
+                    color: lightseagreen;
+                }
+
+                #navegacao_menu ul li .sub_menu {
+                    display: none;
+                    position: absolute;
+                    margin: 0px;
+                    padding: 0px;
+                    max-width: 200px;
+                }
+
+                /* @@@@@ Cuidado: Comentado pois em dispositivos touchscreen quando é clicado no menu pode acabar por ser ativado o link do sub_menu */
+                #navegacao_menu ul li:hover .sub_menu {
+                    display: block;
+                } 
+
+                #navegacao_menu ul li .sub_menu ul {
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #navegacao_menu ul li .sub_menu ul li {
+                    display: block;
+                }
+
+                #navegacao_menu ul li .sub_menu ul li a {
+                    border: 2px solid black;
+                    display: block;
+                }
+
+            </style>
+
+            <ul>
+                <li>
+                    <a>Menu 1</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu 1 com texto maior</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 2</a></li>
+                <li><a>Menu 3</a></li>
+                <li>
+                    <a>Menu 4</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu 1</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 5</a></li>
+                <li><a>Menu 6</a></li>
+                <li><a>Menu 7</a></li>
+                <li><a>Menu 8</a></li>
+                <li><a>Menu 9</a></li>
+                <li><a>Menu 10</a></li>
+                <li><a>Menu 11</a></li>
+                <li><a>Menu 12</a></li>
+                <li><a>Menu 13</a></li>
+                <li>
+                    <a>Testando tela 1200px</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu com texto grande para ver o que ocorre com a interação na lateral de 1200px</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 14</a></li>
+                <li><a>Menu 15</a></li>
+                <li><a>Menu 16</a></li>
+                <li><a>Menu 17</a></li>
+            </ul>
+        </nav>
+
+        <br /> <br /> <br /> <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h3>Menu com Flex e minimizador simples:</h3>
+
+        <button onclick="tirarElementoMenuSemCriarLinha()">Ajustar menu</button>
+
+        <nav id="navegacao_menu_flex">
+            <style>
+                /* #navegacao_menu_flex {
+                    position: sticky;
+                    top: 0px;
+                } */
+
+                #navegacao_menu_flex ul {
+                    list-style: none;
+                    margin: 0px;
+                    padding: 7px;
+                    background-color: rgb(25, 0, 167);
+                    color: white;
+                    display: flex;
+                    flex-wrap: wrap;
+                    
+                }
+
+                #navegacao_menu_flex ul li a {
+                    display: block;
+                    color: white;
+                    padding: 8px 7px;
+                    font-size: 18px;
+                    background-color: rgb(94, 155, 179);
+                    margin-right: 3px;
+                }
+
+                #navegacao_menu_flex ul li:hover > a {
+                    background-color: grey;
+                    cursor: pointer;
+                }
+
+                #navegacao_menu_flex ul li .sub_menu {
+                    margin: 0px;
+                    padding: 0px;
+                    position: absolute;
+                    display: none;
+                    max-width: 200px;
+                    border: 1px solid black;
+                    box-shadow: 5px 5px 10px black;
+                }
+
+                #navegacao_menu_flex > ul li:hover > .sub_menu {
+                    display: block;
+                }
+
+                #navegacao_menu_flex ul li .sub_menu ul {
+                    flex-direction: column;
+                    margin: 0px;
+                    padding: 0px;
+                }
+
+                #navegacao_menu_flex ul li .sub_menu ul li a {
+                    margin: 0px;
+                }               
+
+                #navegacao_menu_flex .sub_menu .sub_menu {
+                    position: static;
+                }
+
+                #navegacao_menu_flex #menu_minimizador {
+                    margin-left: auto;
+                }
+
+                #navegacao_menu_flex #menu_minimizador > .sub_menu {
+                    max-width: none;
+                    left: 0px;
+                    width: 100%;
+                    background-color: rgb(25, 0, 167);
+                    box-sizing: border-box;
+                    overflow: auto;
+                }
+
+                #navegacao_menu_flex #menu_minimizador .sub_menu ul li a {
+                    border: 1px solid black;
+                }
+
+            </style>
+
+            <ul>
+                <li>
+                    <a>Menu 1</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu 1</a></li>
+                            <li><a href="#">Sub-menu 2 com texto maior</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                        
+                    </div>
+                </li>
+                <li><a href="#">Menu 2</a></li>
+                <li><a>Menu 3</a></li>
+                <li>
+                    <a>Menu 4</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu 1</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 5</a></li>
+                <li><a>Menu 6</a></li>
+                <li><a>Menu 7</a></li>
+                <li><a>Menu 8</a></li>
+                <li><a>Menu 9</a></li>
+                <li><a>Menu 10</a></li>
+                <li><a>Menu 11</a></li>
+                <li><a>Menu 12</a></li>
+                <li><a>Menu 13</a></li>
+                <li>
+                    <a>Testando tela 1200px</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu com texto grande para ver o que ocorre com a interação na lateral de 1200px</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 14</a></li>
+                <li><a>Menu 15</a></li>
+                <li><a>Menu 16</a></li>
+                <li><a>Menu 17</a></li>
+                <li><a>Menu 18</a></li>
+                <li><a>Menu 19</a></li>
+                <li><a>Menu 20</a></li>
+                <li><a>Menu 21</a></li>
+                <li>
+                    <a>Menu 22</a>
+                    <div class="sub_menu">
+                        <ul>
+                            <li><a href="#">Sub-menu com texto grande para ver o que ocorre com a interação na lateral de 1200px</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a>Menu 23</a></li>
+                <li><a>Menu 24</a></li>
+
+                <li id="menu_minimizador">
+                    <a onclick="abreFechaMinimizador()">Menu minimizador</a>
+                    <div class="sub_menu" style="display: none;">
+                        <ul>
+                            <li><a href="#">Sub-menu com texto grande para ver o que ocorre com a interação na lateral de 1200px</a></li>
+                            <li><a href="#">Sub-menu 2</a></li>
+                            <li><a href="#">Sub-menu 3</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+            <script>
+
+                function abreFechaMinimizador() {
+
+                    if (document.getElementById("menu_minimizador").lastElementChild.style.display != "none") {
+                        document.getElementById("menu_minimizador").lastElementChild.style.display = "none"
+                    } else {
+                        document.getElementById("menu_minimizador").lastElementChild.style.display = "block"
+                    }
+
+                }
+
+                // Para guardar elementos do menu que acabam por gerar outras linhas
+                function verTamanhoMenu() {
+                    // Verifica o tamanho que o elemento deve ter quando possui apenas uma linha de elementos dentro, para isso recriei o elemento
+                    var elemento_simulado = document.createElement("nav")
+
+                    elemento_simulado.id = "navegacao_menu_flex"
+                    elemento_simulado.innerHTML = "<ul><li><a>Teste</a></li></ul>"
+                    document.body.appendChild(elemento_simulado)
+
+                    var tamanho_menu = elemento_simulado.clientHeight
+
+                    elemento_simulado.remove()
+                    // Fim verifica o tamanho...
+
+                    return tamanho_menu
+                }
+
+                function guardarElementoMenu() {
+
+                    // Guarda os elementos que causam aumento no tamanho do conteiner de id navegacao_menu_flex
+                    while (document.getElementById("navegacao_menu_flex").clientHeight != verTamanhoMenu()) {
+
+                        var elemento_criando_linha = document.getElementById("menu_minimizador").previousElementSibling
+
+                        var conteudo_elemento_criando_linha = elemento_criando_linha.cloneNode(true)
+
+                        elemento_criando_linha.remove()
+
+                        var lista_minimizador = document.querySelector("#menu_minimizador > .sub_menu > ul")
+
+                        var conteudo_lista_minimizador = lista_minimizador.innerHTML
+
+                        lista_minimizador.innerHTML = ""
+
+                        lista_minimizador.appendChild(conteudo_elemento_criando_linha)
+
+                        lista_minimizador.innerHTML += conteudo_lista_minimizador
+                    }
+                    // Fim guarda os...
+                }
+
+                function tirarElementoMenuSemCriarLinha() {
+
+                    while (document.getElementById("navegacao_menu_flex").clientHeight == verTamanhoMenu()) {
+
+                        var elemento_minimizado = document.querySelector("#menu_minimizador > .sub_menu > ul > li")
+
+                        var conteudo_elemento_minimizado = elemento_minimizado.cloneNode(true)
+                        
+                        elemento_minimizado.remove()
+
+                        var menu_minimizador = document.querySelector("#menu_minimizador")
+
+                        var conteudo_menu_minimizador = menu_minimizador.cloneNode(true)
+
+                        menu_minimizador.remove()
+
+                        document.querySelector("#navegacao_menu_flex > ul").appendChild(conteudo_elemento_minimizado)
+
+                        document.querySelector("#navegacao_menu_flex > ul").appendChild(conteudo_menu_minimizador)
+                    }
+
+                    guardarElementoMenu()
+                }
+                
+                window.onresize = tirarElementoMenuSemCriarLinha;
+            </script>
+        </nav>
+
+        <button onclick="tirarElementoMenuSemCriarLinha()">Ajustar menu</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h3>@@@@@ Menu Completo</h3>
+
+        <p>Deverá ter uma lista de escolhas, uma ao lado da outra</p>
+
+        <p>Algumas dessas listas de escolhas deverão conter outra lista de opções, que deverá aparecer ao ser posicionado o mouse em cima</p>
+
+        <p>Uma dessas listas de escolhas, deverá ser um conteiner das listas de escolhas que acabem por criar uma segunda linha de elementos no menu, deve ficar posicionado no canto direito, este elemento deverá ser clicável, quando clicado deve ocupar toda a tela e apresentar todos as escolhas do menu</p>
+
+        <p>Caso a página diminua ou aumente o menu deve continuar com uma linha e as escolhas que acabem por criar outra linha no menu devem ser alocadas dentro do conteiner de listas na seguinte ordem, o elemento mais a direita na linha de menu deverá ficar por último na lista do conteiner</p>
+
+        <p>A escolha que tiver uma lista de opções, caso passe para dentro do conteiner, deverá ser clicável para visualizar as opções, e se clicar de novo as feche</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <div style="padding: 10px; border: 2px solid black; margin: 5px 0px;">
+            <h2>Conteúdo da página</h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis molestiae tempora adipisci dignissimos unde dolorum nostrum impedit. Placeat velit, tempore debitis repudiandae, magnam cum ad nemo ratione dolor, reprehenderit tenetur!</p>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

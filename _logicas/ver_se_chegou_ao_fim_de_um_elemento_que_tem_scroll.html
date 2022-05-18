@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Rafael Ramos">
+    <meta name="keywords" content="javascript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="shortcut icon" href="images/torre.ico"> -->
+
+    <style>
+        :root {
+            --paleta_preta: rgba(6, 6, 7, 0.747);
+            --paleta_branca: white;
+            --paleta_azul_claro: aqua;
+            --paleta_amarelo: gold;
+            --paleta_cinza: rgb(95, 95, 95);
+            --paleta_button_branco: rgb(239, 239, 239);
+            --paleta_button_preto: rgb(0, 0, 0);
+        }
+
+        body {
+            background-color: var(--paleta_preta);
+            color: var(--paleta_branca);
+            font-family: serif;
+            font-size: 20px;
+            margin: 0px;
+        }
+
+        h1 {
+            text-decoration-line: underline;
+            font-size: 40px;
+        }
+        h1, h2, h3, h4, h5, h6 {font-weight: 900;}
+        h2 {font-size: 35px;}
+        h3 {font-size: 30px;}
+        h4 {font-size: 27px;}
+        h5 {font-size: 24px;}
+        h6 {font-size: 12px;}
+        p {font-size: 22px;}
+
+        a {color: var(--paleta_azul_claro);}
+            a:hover {color: var(--paleta_amarelo);}
+
+        code {
+            white-space: pre-line;
+            display: block;
+            margin: 20px 0px;
+        }
+
+        table, tr, th, td, caption {
+            border: 1px solid var(--paleta_branca);
+            border-collapse: collapse;
+        }
+
+        table {
+            margin: 20px 0px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        textarea {
+            display: block;
+        }
+
+        select {
+            max-width: 300px;
+        }
+
+        input {
+            background-color: var(--paleta_cinza);
+            color: var(--paleta_branca);
+            font-size: 15px;
+            font-weight: 100;
+            padding: 5px 7px 3px;
+            margin: 1px 0px;
+        }
+
+        input[type="button"], input[type="reset"], input[type="submit"] {
+            background-color: var(--paleta_button_branco);
+            color: var(--paleta_button_preto);
+            padding: 1px 6px;
+        }
+
+        input[type="image"] {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+    </style>
+    
+    <title>Teste</title>
+</head>
+<body>
+
+    <div style="margin: 20px 50px;">
+        <div>
+            <h2>Teste de título</h2>
+           
+            <div>
+                <p>Teste de parágrafo</p>
+    
+                <div id="teste1" style="height: 100px; overflow: auto;" onscroll="chegouAoFimDeUmElementoQueTemScroll()">
+                    <p style="height: 1000px; background-color: bisque;">Teste</p>
+                </div>
+    
+
+                <script>
+    
+                    function chegouAoFimDeUmElementoQueTemScroll() {
+                        if (document.getElementById('teste1').clientHeight + document.getElementById('teste1').scrollTop >= document.getElementById('teste1').scrollHeight) {
+                            //chegou ao fim do elemento
+                            window.alert(
+                                'Tamanho do elemento: ' + document.getElementById('teste1').clientHeight
+                                + '\n scrollTop: ' + document.getElementById('teste1').scrollTop
+                                + '\n scrollHeight: ' + document.getElementById('teste1').scrollHeight
+                            )
+                        }
+                    }
+    
+                </script>
+    
+                <button onclick="teste()">Rodar script</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div style="margin: 0px 40px;">
+        <hgroup>
+            <h1>Exemplo do título h1</h1>
+            <h2>Exemplo do título h2</h2>
+            <h3>Exemplo do título h3</h3>
+            <h4>Exemplo do título h4</h4>
+            <h5>Exemplo do título h5</h5>
+            <h6>Exemplo do título h6</h6>
+        </hgroup>
+
+        <p>Exemplo de parágrafo</p>
+
+        Exemplo de texto escrito no body e de <a href="#">um link</a>
+
+        <code>Exemplo de texto dentro da tagname &lt; code &gt;
+            var x = 1
+            let y = 2
+            const z = x + y
+        </code>
+
+        <table>
+            <caption>Exemplo de tabela</caption>
+            <thead>
+                <tr>
+                    <th>lorem</th>
+                    <th>lorem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>lorem</td>
+                    <td>lorem</td>
+                </tr>
+                <tr>
+                    <td>lorem</td>
+                    <td>lorem</td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+        <ul>
+            <li>Lista</li>
+            <li>Não</li>
+            <li>Ordenada</li>
+        </ul>
+
+        <ol>
+            <li>Lista</li>
+            <li>Ordenada</li>
+        </ol>
+
+        <div>
+            <figcaption>Imagem:</figcaption>
+            <figure style="width: 100px;">
+                <!-- <img src="images/torre.ico" alt="Torre"> -->
+            </figure>
+        </div>
+        
+
+        <form method="get" action="">
+
+            <fieldset>
+                <legend>Campos de preenchimento</legend>
+
+                <div>
+                    <div>
+                        <button type="button">Botão por button</button>
+                        <button type="reset">Resetar por button</button>
+                        <button type="submit">Enviar por button</button>
+        
+                        <br>
+        
+                        <input type="button" value="Botão por input">
+                        <input type="reset" value="Resetar por input">
+                        <input type="submit" value="Enviar por input">
+                    </div>
+    
+                    <hr>
+
+                    <div>
+                        <input type="checkbox">
+                        <label for="">Checkbox</label>
+                        
+                        <br>
+        
+                        <input type="radio">
+                        <label for="">Bolinha</label>
+        
+                        <br>
+        
+                        <label for="">Alcance</label>
+                        <input type="range">
+                    </div>
+                    
+                    <hr>
+
+                    <div>
+                        <label for="">Cor</label>
+                        <input type="color">
+                    </div>
+                    
+                    <hr>
+
+                    <div>
+                        <label for="">Data</label>
+                        <input type="date">
+        
+                        <br>
+        
+                        <label for="">Data e hora</label>
+                        <input type="datetime-local">
+        
+                        <br>
+        
+                        <label for="">Mês</label>
+                        <input type="month">
+        
+                        <br>
+        
+                        <label for="">Horas</label>
+                        <input type="time">
+        
+                        <br>
+                    
+                        <label for="">Semana</label>
+                        <input type="week">
+                    </div>
+                    
+                    <hr>
+
+                    <div>
+                        <label for="">E-mail</label>
+                        <input type="email">
+        
+                        <br>
+        
+                        <label for="">Número</label>
+                        <input type="number">
+        
+                        <br>
+        
+                        <label for="">Senha</label>
+                        <input type="password">
+        
+                        <br>
+        
+                        <label for="">Procurar</label>
+                        <input type="search">
+        
+                        <br>
+        
+                        <label for="">Telefone</label>
+                        <input type="tel">
+        
+                        <br>
+        
+                        <label for="">Texto</label>
+                        <input type="text">
+                        
+                        <br>
+        
+                        <label for="">Link</label>
+                        <input type="url">
+                    </div>
+                    
+                    <hr>
+
+                    <div>
+                        <label for="">Arquivo</label>
+                        <input type="file">
+                        
+                        <br>
+        
+                        <label for="">Imagem</label>
+                        <div style="width: 200px; height: 200px;">
+                            <!-- <input type="image" src="images/torre.ico" alt="Torre"> -->
+                        </div>
+                    </div>
+        
+                    <hr>
+
+                    <div>
+                        <label for="">Escondido</label>
+                        <input type="hidden">
+                    </div>
+
+                    <hr>
+        
+                    <div>
+                        <label for="">Bloco de texto</label>
+                        <textarea id="itexto" name="ntexto" cols="30" rows="10"></textarea>
+                    </div>
+        
+                    <hr>
+
+                    <div>
+                        <label for="">Lista de opções</label>
+                        <select>
+                            <optgroup label="Opções">
+                                <option value="">Opção</option>
+                                <option value="">Opção 1</option>
+                                <option value="">Opção 2</option>
+                            </optgroup>
+                            <optgroup label="Selecionaveis">
+                                <option value="">Opção</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+        </form>
+        
+    </div>
+    
+</body>
+</html>

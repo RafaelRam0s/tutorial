@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Busca por cep automatica</title>
+</head>
+<body>
+    <h2>Fazendo busca por CEP:</h2>
+
+    <form action="">
+        <div>
+            <label for="cep">CEP: </label>
+            <input type="text" id="cep" name="cep">
+        </div>
+        <div>
+            <label for="rua">Rua: </label>
+            <input type="text" id="rua" name="rua">
+        </div>
+        <div>
+            <label for="bairro">Bairro: </label>
+            <input type="text" id="bairro" name="bairro">
+        </div>
+        <div>
+            <label for="cidade">Cidade: </label>
+            <input type="text" id="cidade" name="cidade">
+        </div>
+        <div>
+            <label for="estado">Estado: </label>
+            <input type="text" id="estado" name="estado">
+        </div>
+        <div>
+            <label for="complemento">Complemento: </label>
+            <input type="text" id="complemento" name="complemento">
+        </div>
+
+        <button type="button" onclick="buscarCep()">Buscar</button>
+    </form>
+
+    <script>
+
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                document.getElementById("rua").value = (conteudo.logradouro);
+                document.getElementById("bairro").value = (conteudo.bairro);
+                document.getElementById("cidade").value = (conteudo.localidade);
+                document.getElementById("estado").value = (conteudo.uf);
+                document.getElementById("complemento").value = (conteudo.complemento);
+
+            }
+            else {
+                document.getElementById("rua").value = "";
+                document.getElementById("bairro").value = "";
+                document.getElementById("cidade").value = "";
+                document.getElementById("estado").value = "";
+                document.getElementById("complemento").value = "";
+            }
+        }
+
+        function buscarCep() {
+            var cep = document.getElementById("cep").value
+            var cep_formatado = cep.replace(/\D/g, "")
+
+            if (cep_formatado.length == 8) {
+                
+                var valida_cep = /^[0-9]{8}$/
+
+                if (valida_cep.test(cep_formatado)) {
+
+                    if (document.getElementById("sitecep") != null) {
+                        document.getElementById("sitecep").parentNode.removeChild(document.getElementById("sitecep"))
+                    }
+
+                    document.getElementById("rua").value = "..."
+                    document.getElementById("bairro").value = "..."
+                    document.getElementById("cidade").value = "..."
+                    document.getElementById("estado").value = "..."
+                    document.getElementById("complemento").value = "..."
+
+                    var script = document.createElement("script");
+                    script.id = "sitecep"
+
+                    script.src = "https://viacep.com.br/ws/" + cep_formatado + "/json/?callback=meu_callback"
+
+                    document.body.appendChild(script);
+                } else {
+                    window.alert("O cep deve conter apenas números.")
+                }
+            }   
+        }
+
+    </script>
+</body>
+</html>

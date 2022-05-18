@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascarar Elementos</title>
+</head>
+<body>
+    
+    <div>
+
+        <div>
+            <h3>Mascarando elementos input</h3>
+
+            <p>Mascarar, significa que o usuário irá digitando algo em um campo e automaticamente terá valores no qual ele poderá visualizar para se basear</p>
+
+            <p>Data que foi feita essas máscaras: 29/09/2020</p>
+
+            <p>Lembre-se, verifique se na data em que você leu isso as máscaras não mudaram de regra</p>
+        </div>
+        
+
+        <hr />
+
+        <div>
+
+            <h5>Mascara automática</h5>
+
+            <p>Por exemplo o cpf, usemos um cpf de exemplo: 11144477735, se eu começo digitando 111 logo após os 3 primeiros dígitos deverá aparecer o ponto final . ficando da seguinte maneira; 111. agora eu devo continuar digitando os outros 3 números aí adiciona outro ponto final, depois digito mais 3 e deverá aparecer o - e depois digito os outros 2 e o que será esperado é 111.444.777-35</p>
+
+            <form action="">
+                <fieldset>
+                    <legend>Exemplo de formulário</legend>
+            
+                    <div>
+
+                        <label for="cpf_1_">Qual o seu CPF?</label>
+                        <input type="text" id="cpf_1_" name="cpf_1" placeholder="000.000.000-00" minlength="14" maxlength="14" onkeyup="mascaraAutoCpf(this, event)">
+                        
+                        <p>
+                            O que tem que ocorrer aqui? <br>
+                            O cpf só deve receber números, ponto final ou o sinal de menos (0123456789.-), se for colocado outra coisa deve ser excluído - ok <br>
+                            Ao digitar 3 números (123) deverá aparecer um ponto final (123.) - ok <br>
+                            Ao digitar 6 números (123.456) deverá aparecer um ponto final (123.456.) - ok <br>
+                            Ao digitar 9 números (123.456.789) deverá aparecer um sinal de menos (123.456.789-) - ok <br>
+                            Se eu segurar um dígito (11111111) e sair vários deles deverá ocorrer a formatação (111.111.11) - ok <br>
+                            O máximo de dígitos que devem ser suportados é 14 - ok <br>
+                            Se eu for apagando elemento por elemento os sinais incrementados como . e - devem sair ao eu clicar em Backspace - ok <br>
+                            Se o usuário clicar no meio dos números que ele foi digitando, e digitar um número (1239.456.) a formatação deverá continuar (123.945.6) - ok <br>
+                            Se o usuário clicar no meio dos números que ele foi digitando (123|.456.), e digitar um número (1239|.456.), o marcador de onde está selecionado deve continuar no local indicado (123.9|45.6) <br>
+                            Se o usuário clicar no meio dos números que ele foi digitando (123.|456.), e tentar apagar um sinal, será apagado o número anterior mais próximo (12.|456.) e o indicador ficará atrás do sinal (124|.56)
+                        </p>
+
+                        <script>
+                            
+                            function mascaraAutoCpf(elemento, tecla) {
+                                let cpf = elemento.value
+                                let cpf_formatado = String(cpf)
+                                
+                                // Tira tudo que não for número
+                                while (cpf_formatado.search(/[^0-9]/) != -1) {
+                                    cpf_formatado = cpf_formatado.replace(/[^0-9]/, "")
+                                }
+
+                                // Coleta as partes que irão constituir a formatação
+                                let cpf_bloco1 = cpf_formatado.substring(0, 3)
+                                let cpf_bloco2 = cpf_formatado.substring(3, 6)
+                                let cpf_bloco3 = cpf_formatado.substring(6, 9)
+                                let cpf_bloco4 = cpf_formatado.substring(9, 11)
+
+                                // Adiciona a formatação quando a quantidade de caracteres bater um valor
+                                if (cpf_formatado.length > 2) {
+                                    cpf_formatado = cpf_bloco1 + "." + cpf_bloco2
+                                }
+
+                                if (cpf_formatado.length > 6) {
+                                    cpf_formatado += "." + cpf_bloco3
+                                }
+
+                                if (cpf_formatado.length > 10) {
+                                    cpf_formatado += "-" + cpf_bloco4
+                                }
+
+                                // Se for usado o delete e estiver deletando um sinal o sinal é apagado e o número atrás dele também
+                                if (tecla.key == "Backspace" && (cpf_formatado.length == 4 || cpf_formatado.length == 8 || cpf_formatado.length == 12)) {
+                                    cpf_formatado = cpf_formatado.substr(0, cpf_formatado.length - 1)
+                                }
+                                
+                                elemento.value = cpf_formatado
+
+                            }
+                            
+                        </script>
+
+                    </div>
+                    
+                    <div>
+                        <label for="cep_1_">Qual o seu CEP?</label>
+                        <input type="text" id="cep_1_" name="cep_1" placeholder="00000-000" maxlength="9" onkeyup="mascaraAutoCep(this, event)">
+
+                        <p>
+                            O que tem que ocorrer? - ok <br>
+                            Só devem ser aceitos dígitos e um sinal de menos (0123456789-) - ok <br>
+                            Ao digitar 5 números (12345), deverá aparecer um sinal de menos (12345-) - ok <br>
+                            Só deverá ser permitido o uso de 9 dígitos - ok <br>
+                            Se eu segurar uma só tecla (1111111) a máscara ainda deverá ser ativada (11111-11) - ok <br>
+                            Se tentar excluir um por um (02914-0) o traço (02914-) deverá sair conforme solicitado (02914) - ok <br>
+                            Se o usuário clicar no meio dos números que ele foi digitando (123|45-6), e digitar um número (1239|45-6), o marcador de onde está selecionado deve continuar no local indicado (1239|4-56) <br>
+                            Se o usuário clicar no meio dos números que ele foi digitando (12345-|67), e tentar apagar um sinal, será apagado o número anterior mais próximo (12346-7) e o indicador ficará atrás do sinal (12346|-7)
+                        </p>
+
+                        <script>
+                            
+                            function mascaraAutoCep(elemento, tecla) {
+                                let cep = elemento.value
+                                let cep_formatado = String(cep)
+                                
+                                // Tira tudo que não for número
+                                while (cep_formatado.search(/[^0-9]/) != -1) {
+                                    cep_formatado = cep_formatado.replace(/[^0-9]/, "")
+                                }
+
+                                // Coleta as partes que irão constituir a formatação
+                                let cep_bloco1 = cep_formatado.substring(0, 5)
+                                let cep_bloco2 = cep_formatado.substring(5, 8)
+
+                                // Adiciona a formatação quando a quantidade de caracteres bater um valor
+                                if (cep_formatado.length > 4) {
+                                    cep_formatado = cep_bloco1 + "-" + cep_bloco2
+                                }
+
+                                // Se for usado o delete e estiver deletando um sinal o sinal é apagado e o número atrás dele também
+                                if (tecla.key == "Backspace" && (cep_formatado.length == 6) ) {
+                                    cep_formatado = cep_formatado.substr(0, cep_formatado.length - 1)
+                                }
+                                
+                                elemento.value = cep_formatado
+
+                            }
+                            
+                        </script>
+                    </div>
+                    
+                </fieldset>
+            </form>
+
+        </div>
+
+        <hr />
+
+        <div>
+            <h5>Mascara fixa</h5>
+
+            <p>Podemos usar a mascara desta forma, mas se quisermos podemos também preencher o campo no formato que queremos, por exemplo 000.000.000-00 ai quando algo for digitado o último zero é quem deverá ser apagado, então se digitascemos 111 ficaria 000.000.001-11</p>
+
+            <form action="">
+                <fieldset>
+                    <legend>Exemplo de formulário</legend>
+            
+                    <div>
+                        <label for="cpf_2_">Qual o seu CPF?</label>
+                        <input type="text" id="cpf_2_" name="cpf_2" placeholder="000.000.000-00" value="000.000.000-00" maxlength="14" onkeydown="mascaraFixaCpf(this, event)" onkeyup="mascaraFixaUpCpf(this, event)">
+                        
+                        <script>
+
+                            function mascaraFixaUpCpf(elemento, tecla) {
+
+                                // Se o usuario tentar apagar é colocado novamente um zero
+                                if (tecla.key == "Backspace") {
+                                    let cpf = elemento.value
+                                    let cpf_formatado = String(cpf)
+
+                                    cpf_formatado = "0" + cpf_formatado
+
+                                    elemento.value = cpf_formatado
+
+                                    mascaraFixaCpf(elemento, tecla)
+                                }
+                            }
+
+                            function mascaraFixaCpf(elemento, tecla) {
+                                let cpf = elemento.value
+                                let cpf_formatado = String(cpf)
+
+                                // Exclui tudo que não for número
+                                while (cpf_formatado.search(/[^0-9]/) != -1) {
+                                    cpf_formatado = cpf_formatado.replace(/[^0-9]/, "")
+                                }
+
+                                // Coloca zeros na frente caso não esteja com a quantidade de caracteres correta
+                                while (cpf_formatado.length < 11) {
+                                    cpf_formatado = "0" + cpf_formatado
+                                }
+                                
+                                // Se foi digitado um número
+                                if (!isNaN(Number(tecla.key))) {
+                                    // Tira o primeiro dígito
+                                    cpf_formatado = cpf_formatado.substring(1, cpf_formatado.length)
+                                }
+
+                                // Formata o cpf informado
+                                let cpf_bloco1 = cpf_formatado.substring(0, 3)
+                                let cpf_bloco2 = cpf_formatado.substring(3, 6)
+                                let cpf_bloco3 = cpf_formatado.substring(6, 9)
+                                let cpf_bloco4 = cpf_formatado.substring(9, 11)
+
+                                cpf_formatado = cpf_bloco1 + "." + cpf_bloco2 + "." + cpf_bloco3 + "-" + cpf_bloco4
+
+                                elemento.value = cpf_formatado
+                                
+                            }
+
+                        </script>
+
+                    </div>
+                    
+                    
+
+                    <div>
+                        <label for="cep_2_">Qual o seu CEP?</label>
+                        <input type="text" id="cep_2_" name="cep_2" placeholder="00000-000" maxlength="9" value="00000-000" onkeydown="mascaraFixaCep(this, event)" onkeyup="mascaraFixaUpCep(this, event)">
+
+                        <script>
+
+                            function mascaraFixaUpCep(elemento, tecla) {
+
+                                // Se o usuario tentar apagar é colocado novamente um zero
+                                if (tecla.key == "Backspace") {
+                                    let cep = elemento.value
+                                    let cep_formatado = String(cep)
+
+                                    cep_formatado = "0" + cep_formatado
+
+                                    elemento.value = cep_formatado
+
+                                    mascaraFixaCep(elemento, tecla)
+                                }
+                            }
+
+                            function mascaraFixaCep(elemento, tecla) {
+                                let cep = elemento.value
+                                let cep_formatado = String(cep)
+
+                                // Tira tudo que não é número
+                                while (cep_formatado.search(/[^0-9]/) != -1) {
+                                    cep_formatado = cep_formatado.replace(/[^0-9]/, "")
+                                }
+
+                                // Coloca zeros na frente caso não esteja com a quantidade de caracteres correta
+                                while (cep_formatado.length < 8) {
+                                    cep_formatado = "0" + cep_formatado
+                                }
+                                
+                                // Se for um número o que o usuario digitou
+                                if (!isNaN(Number(tecla.key))) {
+                                    // Apaga o primeiro número, para que o usuario possa inserir outro
+                                    cep_formatado = cep_formatado.substring(1, cep_formatado.length)
+                                }
+                                
+                                // Colocando o cep com a mascara
+                                let cep_bloco1 = cep_formatado.substring(0, 5)
+                                let cep_bloco2 = cep_formatado.substring(5, 8)
+                                cep_formatado = cep_bloco1 + "-" + cep_bloco2
+
+                                elemento.value = cep_formatado
+                            }
+
+                        </script>
+
+                    </div>
+                    
+                </fieldset>
+            </form>
+
+        </div>
+
+        <hr />
+
+    </div>
+
+    
+    
+
+    
+</body>
+</html>

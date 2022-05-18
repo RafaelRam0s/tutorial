@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --paleta_preta: rgba(6, 6, 7, 0.747);
+            --paleta_branca: white;
+            --paleta_azul_claro: aqua;
+            --paleta_amarelo: gold;
+            --paleta_cinza: rgb(95, 95, 95);
+            --paleta_button_branco: rgb(239, 239, 239);
+            --paleta_button_preto: rgb(0, 0, 0);
+        }
+
+        body {
+            background-color: var(--paleta_preta);
+            color: var(--paleta_branca);
+            font-family: serif;
+            font-size: 20px;
+            margin: 0px;
+        }
+
+        h1 {
+            text-decoration-line: underline;
+            font-size: 40px;
+        }
+        h1, h2, h3, h4, h5, h6 {font-weight: 900;}
+        h2 {font-size: 35px;}
+        h3 {font-size: 30px;}
+        h4 {font-size: 27px;}
+        h5 {font-size: 24px;}
+        h6 {font-size: 12px;}
+        p {font-size: 22px;}
+
+        a {color: var(--paleta_azul_claro);}
+            a:hover {color: var(--paleta_amarelo);}
+
+        code {
+            white-space: pre-line;
+            display: block;
+            margin: 20px 0px;
+        }
+
+        table, tr, th, td, caption {
+            border: 1px solid var(--paleta_branca);
+            border-collapse: collapse;
+        }
+
+        table {
+            margin: 20px 0px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        textarea {
+            display: block;
+        }
+
+        select {
+            max-width: 300px;
+        }
+
+        input {
+            background-color: var(--paleta_cinza);
+            color: var(--paleta_branca);
+            font-size: 15px;
+            font-weight: 100;
+            padding: 5px 7px 3px;
+            margin: 1px 0px;
+        }
+
+        input[type="button"], input[type="reset"], input[type="submit"] {
+            background-color: var(--paleta_button_branco);
+            color: var(--paleta_button_preto);
+            padding: 1px 6px;
+        }
+
+        input[type="image"] {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+    </style>
+    
+    <title>Base64</title>
+</head>
+<body>
+
+<input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+
+    <div id="imgTest"></div>
+
+    <script type='text/javascript'>
+
+        function encodeImageFileAsURL() {
+
+            var ArquivosSelecionados = document.getElementById("inputFileToLoad").files;
+            if (ArquivosSelecionados.length > 0) {
+                var fileToLoad = ArquivosSelecionados[0];
+
+                var fileReader = new FileReader();
+
+                fileReader.onload = function(fileLoadedEvent) {
+                    var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+                    var newImage = document.createElement('img');
+                    newImage.src = srcData;
+
+                    document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+
+                    alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+                    console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+                }
+                
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

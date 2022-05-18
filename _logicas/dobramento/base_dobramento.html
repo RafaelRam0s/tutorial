@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Rafael Ramos">
+    <meta name="keywords" content="front-end, html, elementos, tagname">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: rgba(6, 6, 7, 0.747);
+            margin: 5%;
+            color: rgba(255, 255, 240, 0.99);
+            font-size: 16px;
+        }
+        h1 {
+            text-decoration-line: underline;
+            font-size: 350%;
+        }
+        h2, h3, h4, h5, h6 {
+            text-align: left;
+        }
+        h2 {
+            font-size: 300%;
+        }
+        h3 {
+            font-size: 250%;
+        }
+        h4 {
+            font-size: 225%;
+        }
+        h5 {
+            font-size: 200%;
+        }
+        h6 {
+            font-size: 175%;
+        }
+        p {
+            font-size: 125%;
+        }
+        div {
+            margin-bottom: 50px;
+        }
+        div p {
+            margin-left: 20px;
+        }
+        a {
+            color: aqua;
+        }
+        a:hover {
+            color: gold;
+        }
+
+
+
+
+
+
+
+        div {
+            overflow: hidden;
+            max-height: 100px;
+            transition: max-height 1s ease-in-out;
+        }
+
+        div.hide {
+            max-height: 0;
+            pointer-events: none;
+        }
+
+
+    </style>
+
+    <title>Da internet</title>
+</head>
+<body>
+    
+    <h1>Tentando fazer um elemento só aparecer quando for clicado (dobrável)</h1>
+
+    
+
+    <div id="minhaId">
+        <h1>Hello, World!</h1>
+        <h2>Howdy?</h2>
+    </div>
+    <button onclick="ocultar()">Hide</button>
+    <button onclick="mostrar()">Show</button>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        function ocultar() {
+            var element = document.getElementById("minhaId");
+            element.classList.add("hide");
+        }
+
+        function mostrar() {
+            var element = document.getElementById("minhaId");
+            element.classList.remove("hide");
+        }
+    </script>
+</body>
+</html>

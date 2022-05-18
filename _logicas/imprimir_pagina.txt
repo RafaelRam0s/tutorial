@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="teste">
+
+  <h2>The window.print() Method</h2>
+
+  <p>Click the button to print the current page.</p>
+
+</div>
+
+<button type="button" onclick="Imprimir('termos_de_uso')">Imprimir</button>
+
+    <script>
+        function Imprimir(idElemento) {
+            //Forma 1         
+            //var printContents = document.getElementById(idElemento).innerHTML;
+            //var originalContents = document.body.innerHTML;
+            //document.body.innerHTML = printContents;
+            //window.print();
+            //Não indico fazer da Forma 1 pois ele acaba por quebrar páginas complexas que importam outros scripts como o jquerry bootstrap...
+            //document.body.innerHTML = originalContents;
+            //Fim Forma 1
+
+            //Forma 2
+            //Cria uma nova aba com o que você deseja imprimir
+            let conteudo = document.getElementById(idElemento).innerHTML;
+            let w = window.open();
+            w.document.write(conteudo);
+            w.print();
+            w.close();
+            //Fim Forma 2
+        }
+    </script>
+
+
+</body>
+</html>

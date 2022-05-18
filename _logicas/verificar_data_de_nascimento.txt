@@ -1,0 +1,29 @@
+
+
+Em c#
+
+string nascimento = "21/09/2000";
+
+while (nascimento.IndexOf("-") != -1 || nascimento.IndexOf("/") != -1)
+{
+    nascimento = nascimento.Replace("-", "");
+}
+
+int dia = Int32.Parse(nascimento.Substring(0, 2));
+int mes = Int32.Parse(nascimento.Substring(2, 2));
+int ano = Int32.Parse(nascimento.Substring(4, 4));
+
+int ano_atual = DateTime.Now.Year;
+int mes_atual = DateTime.Now.Month;
+int dia_atual = DateTime.Now.Day;
+
+if (nascimento.Length != 8 || ano > ano_atual || ano < ano_atual - 200 || mes < 1 || mes > 12 || dia < 1 || dia > 31 || ano == ano_atual && mes > mes_atual || ano == ano_atual && mes == mes_atual && dia > dia_atual)
+{
+    ViewBag.ErroNoCadastro = "Data de nascimento inválida.";
+    return View();
+}
+else if (ano_atual - ano < 18 || ano_atual - ano == 18 && mes_atual - mes < 0 || ano_atual - ano == 18 && mes_atual - mes == 0 && dia_atual - dia < 0)
+{
+    ViewBag.ErroNoCadastro = "Não é permitido o cadastro de menor de idade.";
+    return View();
+}

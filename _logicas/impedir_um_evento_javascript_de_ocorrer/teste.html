@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Rafael Ramos">
+    <meta name="keywords" content="javascript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/ico" href="../../midia/icones/logo.ico" />
+
+    <style>
+        :root {
+            --paleta_cinza: rgba(6, 6, 7, 0.747);
+            --paleta_branca: rgba(255, 255, 240, 0.99);
+            --paleta_azul_claro: aqua;
+            --paleta_amarelo: gold;
+        }
+        body {
+            background-color: var(--paleta_cinza);
+            margin: 5%;
+            color: var(--paleta_branca);
+            font-size: 16px;
+        }
+
+        h1 {
+            text-decoration-line: underline;
+            font-size: 40px;
+        }
+        h1, h2, h3, h4, h5, h6 {font-weight: 900;}
+        h2 {font-size: 35px;}
+        h3 {font-size: 30px;}
+        h4 {font-size: 26px;}
+        h5 {font-size: 22px;}
+        h6 {font-size: 12px;}
+        p {font-size: 18px;}
+
+        a {color: var(--paleta_azul_claro);}
+            a:hover {color: var(--paleta_amarelo);}
+    </style>
+
+    <title>Testes</title>
+</head>
+<body>
+    
+    <div>
+        <h1>Teste de título</h1>
+        <h2>Teste de título</h2>
+        <h3>Teste de título</h3>
+        <h4>Teste de título</h4>
+        <h5>Teste de título</h5>
+        <h6>Teste de título</h6>
+
+        <p>Teste de parágrafo Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem debitis in ipsam voluptatibus sunt assumenda cumque doloremque maxime. Ex explicabo ipsa quidem doloremque necessitatibus dicta consectetur in et impedit exercitationem.</p>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam sint quisquam porro saepe itaque est, dignissimos praesentium in necessitatibus, commodi rem cupiditate asperiores, quod perspiciatis soluta nihil reprehenderit. Voluptatibus, recusandae.
+    </div>
+
+
+    --------------------------------
+
+
+    
+    
+    <p>Please click on the checkbox control.</p>
+    
+    <form>
+        <input type="checkbox" id="my-checkbox" />
+        <label for="my-checkbox">Checkbox</label>
+    </form>
+
+    <script>
+        function stopDefAction(evt) {
+            evt.preventDefault();
+        }
+            
+        document.getElementById('my-checkbox').addEventListener(
+            'click', stopDefAction, false
+        );
+    </script>
+
+    --------------------------------
+
+
+
+
+
+
+
+
+    
+    --------------------------------
+    <form> 
+        <input type="text" id="my-textbox" /> 
+    </form> 
+    <script>
+        function Init () {
+            var myTextbox = document.getElementById('my-textbox');
+            myTextbox.addEventListener( 'keypress', checkName, false );
+        }
+
+        function checkName(evt) {
+            var charCode = evt.charCode;
+            if (charCode != 0) {
+                if (charCode < 97 || charCode > 122) {
+                    evt.preventDefault();
+                    alert(
+                        "Please use lowercase letters only."
+                        + "\n" + "charCode: " + charCode + "\n"
+                    );
+                }
+            }
+        } 
+
+        document.body.onload = Init
+    </script>
+
+    --------------------------------
+
+    
+</body>
+</html>
