@@ -1,0 +1,16 @@
+use Teste;
+
+alter table Testando
+add DataDisponivel datetime;
+
+update Testando
+set DataDisponivel = '2021-12-28T20:20:00'
+
+go
+create procedure SpTestandoVerTestando
+as
+begin
+select * from Testando
+where Ativo = 1 and m.DataDisponivel < GETUTCDATE()
+end
+go

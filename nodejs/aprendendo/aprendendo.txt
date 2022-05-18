@@ -1,0 +1,5 @@
+O Node.js é um programa que roda no lado do servidor, podendo tratar rotas de urls e dados que o usuário utiliza
+
+Primeiramente instale o node js
+
+Segundamente abra os arquivos js e veja o que cada um faz

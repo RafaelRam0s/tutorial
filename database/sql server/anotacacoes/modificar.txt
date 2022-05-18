@@ -217,5 +217,18 @@ Para modificar uma procedure
     select * from cadastros
     where nome like ''+@nome+'%'+@sobrenome;
 
+Para renomear uma procedure
+
+    USE AdventureWorks2012;  
+    GO  
+
+    CREATE PROCEDURE HumanResources.uspGetAllEmployeesTest  
+    AS  
+        SET NOCOUNT ON;  
+        SELECT LastName, FirstName, Department  
+        FROM HumanResources.vEmployeeDepartmentHistory;  
+    GO
+    
+    EXEC sp_rename 'HumanResources.uspGetAllEmployeesTest', 'uspEveryEmployeeTest'; 
 
 

@@ -1,0 +1,20 @@
+
+
+1- Criar arquivo .js
+
+2- Colocar um código javascript no arquivo criado do passo 1 de preferência um console.log("Hello World!")
+
+3- Abrir o prompt de comando, para isso clique: "tecla windows" + "r"
+
+4- Escreva "cmd" e de "ok" para iniciar o prompt de comando
+
+5- No prompt de comando acesse a pasta em que foi criado o arquivo, para isso escreva "cd " e logo depois o caminho do arquivo, note que se tiver alguma pasta com espaço no nome, tipo: "Exemplo 01" pode dar erro para encontrar o caminho, então se estiver assim o diretório "C:\Exemplo 01", você tem que escrever "cd "C:\Exemplo 01"", o uso das aspas se torna obrigatório para que possa encontrar
+
+6- Inicie a aplicação criada, escreva "node " e logo depois o nome do arquivo do passo 1
+
+
+
+
+
+
+

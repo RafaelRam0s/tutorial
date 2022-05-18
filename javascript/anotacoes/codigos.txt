@@ -1,0 +1,47 @@
+
+
+Para acessar elementos html:
+
+    document.getElementById()
+    document.getElementsByClassName()[]
+    document.getElementsByName()[]
+    document.getElementsByTagName()[]
+
+    document.querySelector()
+    document.querySelectorAll()[]
+
+Para mudar o texto de um elemento html:
+    
+    document.getElementById().innerText = 'Hello World!'
+
+Para mudar texto como se fosse um código html:
+
+    document.getElementById().innerHTML = 'Hello World!'
+    document.getElementById().innerHTML = '<strong>Hello World!</strong>'
+
+Para escrever onde o código for escrito:
+    
+    <div>
+        <script>
+            document.write('Hello World!')
+        </script>
+    </div>
+
+    Cuidado, se usado como um evento ele reescreve todo o documento html:
+        <!DOCTYPE html>
+        <html>
+        <body>
+
+        <h2>My First Web Page</h2>
+        <p>My first paragraph.</p>
+
+        <button type="button" onclick="document.write(5 + 6)">Try it</button>
+
+        </body>
+        </html> 
+
+
+
+
+
+
